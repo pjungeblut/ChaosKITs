@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{color}
+\definecolor{darkred}{rgb}{0.72,0.07,0.07}
+\definecolor{darkgreen}{rgb}{0.23,0.62,0.22}
+
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{Karlsruhe Institute of Technology}
+\chead{ChaosKITs}
+\ohead{\pagemark}
+
+\usepackage{listings}
+\lstset{
+	language={C++},
+    	numbers=left,
+     	stepnumber=1,
+     	numbersep=6pt,
+     	numberstyle=\footnotesize,
+     	breaklines=true,
+     	breakautoindent=true,
+     	breakatwhitespace=false,
+     	postbreak=\space,
+     	tabsize=2,
+     	basicstyle=\ttfamily\footnotesize,
+     	showspaces=false,
+     	showstringspaces=false,
+     	extendedchars=true,
+	keywordstyle=\color{blue}\bfseries,
+	stringstyle=\color{darkred},
+	commentstyle=\color{darkgreen}
+}
+
+\usepackage[top=2cm, bottom=2cm, left=3cm, right=2cm]{geometry}
+
+\begin{document}
+
+\input{maxFlow/maxFlow}
+
+\end{document}
