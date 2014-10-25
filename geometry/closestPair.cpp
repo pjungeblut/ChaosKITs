@@ -1,15 +1,13 @@
 double squaredDist(point a, point b) {
-	return (a.first - b.first) * (a.first - b.first) + (a.second - b.second) * (a.second - b.second);
+	return (a.first-b.first) * (a.first-b.first) + (a.second-b.second) * (a.second-b.second);
 }
 
 bool compY(point a, point b) {
-	if (a.second == b.second) {
-		return a.first < b.first;
-	}
+	if (a.second == b.second) return a.first < b.first;
 	return a.second < b.second;
 }
 
-void shortestDist(vector<point> &points) {
+double shortestDist(vector<point> &points) {
 	//check that points.size() > 1 and that ALL POINTS ARE DIFFERENT
 	set<point, bool(*)(point, point)> status(compY);
 	sort(points.begin(), points.end());
@@ -33,5 +31,6 @@ void shortestDist(vector<point> &points) {
 			}
 			status.insert(*(right++));
 		}
-	} // closest distance in sqrtOpt
+	}
+	return sqrtOpt;
 }

@@ -10,7 +10,7 @@ void augment(int v, int minEdge) {
 		res[p[v]][v] -= f; res[v][p[v]] += f;
 }}
 
-int main() { //first inititalize res, adjList, s and t
+nt maxFlow() { //first inititalize res, adjList, s and t
 	int mf = 0;
 	while (true) {
 		f = 0;
@@ -29,5 +29,6 @@ int main() { //first inititalize res, adjList, s and t
 		augment(t, INF); //add found path to max flow
 		if (f == 0) break;
 		mf += f;
-}}
-//max flow in mf}
+	}
+	return maxFlow;
+}
