@@ -10,8 +10,8 @@ int query(int x, int y, int k = 0, int X = 0, int Y = MAX_N - 1) {
 void update(int i, int v, int k = 0, int X = 0, int Y = MAX_N - 1) {
 	if (i < X || Y < i) return;
 	if (X == Y) {
-		m[k] = w;
-		a[i] = w;
+		m[k] = v;
+		a[i] = v;
 		return;
 	}
 	int M = (X + Y) / 2;
