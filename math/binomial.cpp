@@ -16,6 +16,3 @@ unsigned long long calc_binom(unsigned long long N, unsigned long long K)
    return r;
 }
 
-
-}
-
