@@ -1,4 +1,4 @@
-vector<int> parent, rank2; //mache compiler verbieten Variable mit Namen rank
+vector<int> parent, rank2; //manche compiler verbieten Variable mit Namen rank
 
 int findSet(int n) { //Pfadkompression
 	if (parent[n] != n) parent[n] = findSet(parent[n]);
