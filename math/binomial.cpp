@@ -1,15 +1,7 @@
-#include <iostream>
-
-using namespace std;
-
-
-unsigned long long calc_binom(unsigned long long N, unsigned long long K)
-{
-   unsigned long long r = 1;
-   unsigned long long d;
+ll calc_binom(ll N, ll K) {
+   ll r = 1, d;
    if (K > N) return 0;
-   for (d = 1; d <= K; d++)
-   {
+   for (d = 1; d <= K; d++) {
       r *= N--;
       r /= d;
    }
