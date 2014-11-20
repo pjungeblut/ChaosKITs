@@ -1,4 +1,5 @@
 //longest common substring in one string (overlapping not excluded)
+//contains suffix array:-------------------------------------------------------------------
 string lsubs(string s) {
 	if(s.length() == 0) return "";
 	vector<int> a(s.length());
@@ -12,6 +13,7 @@ string lsubs(string s) {
 		}
 		return !(ui < s.length());
 	});
+//------------------------------------------------------------------------------------------
 	int r = 0, m=0, c=0;
 	for(int i = 0; i < a.size() - 1; i++) {
 		c = 0;
