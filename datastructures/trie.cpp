@@ -1,3 +1,4 @@
+//nur für kleinbuchstaben!
 struct node {
 	node *(e)[26];
 	int c = 0;
