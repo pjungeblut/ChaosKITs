@@ -8,7 +8,7 @@ vector<int> primeSieve(int n) {
 		if(i*i <= n) {
 			if(isPrime[i]) {
 				primes.push_back(i);
-				for(int j = 1; i*j < n; j++) {
+				for(int j = 2; i*j < n; j++) {
 					isPrime[i*j] = false;
 				}
 			}
