@@ -44,13 +44,18 @@
 
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=1cm]{geometry}
 
+\usepackage{multicol}
+
 \title{Team Contest Reference}
 \author{ChaosKITs \\ Karlsruhe Institute of Technology}
 
 \begin{document}
 
 \maketitle
-\tableofcontents
+\setlength{\columnsep}{1cm}
+\begin{multicols}{2}
+	\tableofcontents
+\end{multicols}
 \newpage
 
 \input{datastructures/datastructures}
