@@ -7,7 +7,7 @@ typedef unsigned long long ll;
 
 vector<int> primeSieve(ll n) {
 	vector<int> primes;
-	vector<bool> isPrime(n,true);
+	vector<int> isPrime(n,true);
 	for(ll i = 2; i < n; i+=2) {
 		if(isPrime[i]) {
 			primes.push_back(i);
