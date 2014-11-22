@@ -17,7 +17,7 @@ string lcsub(string s) {
 	vector<vector<int>> v(2, vector<int>(s.length(), 0));
 	int vi = 0;
 	for(int k = 0; k < a.size(); k++) a[k] = k;	
-	for(int i = 1; i < s.length(); i *= 2, vi = (vi + 1) % 2) {
+	for(int i = 1; i <= s.length(); i *= 2, vi = (vi + 1) % 2) {
 		sort(a.begin(), a.end(), [&] (const int &u, const int &l) {
 			return cmp(s, v, i, vi, u, l) < 0;
 		});
