@@ -1,10 +1,10 @@
 //longest common substring in one string (overlapping not excluded)
-//contains suffix array:---------------------------------------------------------------------------------------------------------
+//contains suffix array:--------------------------------------------------------------------
 int cmp(string &s,vector<vector<int>> &v, vector<int> &a, int i, int vi, int u, int l) {
 	int vi2 = (vi + 1) % 2, u2 = u + i / 2, l2 = l + i / 2; 
 	if(i == 1) return s[u] - s[l];
 	else if (v[vi2][u] != v[vi2][l]) return (v[vi2][u] - v[vi2][l]);
-	else { //beide größer tifft nicht mehr ein, da ansonsten vorher schon unterschied in länge
+	else { //beide groesser tifft nicht mehr ein, da ansonsten vorher schon unterschied in Laenge
 		if(u2 >= s.length()) return -1;
 		else if(l2 >= s.length()) return 1;
 		else return v[vi2][u2] - v[vi2][l2];
@@ -24,7 +24,7 @@ string lcsub(string s) {
 		v[vi][a[0]] = 0;
 		for(int z = 1; z < a.size(); z++) v[vi][a[z]] = v[vi][a[z-1]] + (cmp(s, v, a, i, vi, a[z], a[z-1]) == 0 ? 0 : 1);
 	}
-//-------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 	int r = 0, m=0, c=0;
 	for(int i = 0; i < a.size() - 1; i++) {
 		c = 0;

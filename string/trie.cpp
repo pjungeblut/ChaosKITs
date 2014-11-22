@@ -1,7 +1,7 @@
-//nur für kleinbuchstaben!
+//nur fuer kleinbuchstaben!
 struct node {
 	node *(e)[26];
-	int c = 0;//anzahl der wörter die an dem node enden.
+	int c = 0;//anzahl der woerter die an dem node enden.
 	node() { for(int i = 0; i < 26; i++) e[i] = NULL; }	
 };
 
