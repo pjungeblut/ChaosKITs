@@ -1,5 +1,8 @@
 \section{Graphen}
 
+\subsection{Lowest Common Ancestor}
+\lstinputlisting{graph/LCA.cpp}
+
 \subsection{Kürzeste Wege}
 
 \subsubsection{Algorithmus von \textsc{Dijkstra}}
@@ -16,6 +19,18 @@ Alle kürzesten Pfade im Graphen.
 
 \subsection{Strongly Connected Components (\textsc{Tarjans}-Algorithmus)}
 \lstinputlisting{graph/scc.cpp}
+
+\subsection{Artikulationspunkte und Brücken}
+\lstinputlisting{graph/articulationPoints.cpp}
+
+\subsection{Eulertouren}
+\begin{itemize}
+	\item Zyklus existiert, wenn jeder Knoten geraden Grad hat (ungerichtet), bzw. bei jedem Knoten Ein- und Ausgangsgrad übereinstimmen (gerichtet).
+	\item Pfad existiert, wenn alle bis auf (maximal) zwei Knoten geraden Grad haben (ungerichtet), bzw. bei allen Knoten bis auf zwei Ein- und Ausgangsgrad übereinstimmen, wobei einer eine Ausgangskante mehr hat (Startknoten) und einer eine Eingangskante mehr hat (Endknoten).
+	\item \textbf{Je nach Aufgabenstellung überprüfen, wie isolierte Punkte interpretiert werden sollen.}
+	\item Der Code unten läuft in Linearzeit. Wenn das nicht notwenidg ist (oder bestimmte Sortierungen verlangt werden), gehts mit einem \lstinline{set} einfacher.
+\end{itemize}
+\lstinputlisting{graph/euler.cpp}
 
 \subsection{Max-Flow (\textsc{Edmonds-Karp}-Algorithmus)}
 \lstinputlisting{graph/edmondsKarp.cpp}

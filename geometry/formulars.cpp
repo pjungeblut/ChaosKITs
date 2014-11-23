@@ -56,3 +56,28 @@ bool pointOnLine(pt a, pt b, pt p) {
 bool isCoplanar(pt a, pt b, pt c, pt d) {
 	return (b - a) * (c - a) * (d - a) == 0;
 }
+//berechnet den Flaecheninhalt eines Polygons (nicht selbstschneidend)
+double areaOfPolygon(vector<pt> &polygon) { //jeder Eckpunkt nur einmal im Vektor
+	double res = 0; int n = polygon.size();
+	for (int i = 0; i < (int)polygon.size(); i++)
+		res += real(polygon[i]) * imag(polygon[(i + 1) % n]) - real(polygon[(i + 1) % n]) * imag(polygon[i]);
+	return 0.5 * abs(res);
+}
+//testet, ob sich zwei Rechtecke (p1, p2) und (p3, p4) schneiden (jeweils gegenueberliegende Ecken)
+bool rectIntersection(pt p1, pt p2, pt p3, pt p4) {
+	double minx12 = min(real(p1), real(p2)), maxx12 = max(real(p1), real(p2));
+	double minx34 = min(real(p3), real(p4)), maxx34 = max(real(p3), real(p4));
+	double miny12 = min(imag(p1), imag(p2)), maxy12 = max(imag(p1), imag(p2));
+	double miny34 = min(imag(p3), imag(p4)), maxy34 = max(imag(p3), imag(p4));
+	return (maxx12 >= minx34) && (maxx34 >= minx12) && (maxy12 >= miny34) && (maxy34 >= miny12);
+}
+//testet, ob ein Punkt im Polygon liegt (beliebige Polygone)
+bool pointInPolygon(pt p, vector<pt> &polygon) { //jeder Eckpunkt nur einmal im Vektor
+	pt rayEnd = p + pt(1, 1000000);
+	int counter = 0, n = polygon.size();
+	for (int i = 0; i < n; i++) {
+		pt start = polygon[i], end = polygon[(i + 1) % n];
+		if (lineSegmentIntersection(p, rayEnd, start, end)) counter++;
+	}
+	return counter & 1;
+}
