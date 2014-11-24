@@ -31,3 +31,11 @@ Sei $0 \leq x < n$. Definiere $d := gcd(x, n)$.
 
 \subsection{Primzahlsieb von Eratosthenes}
 \lstinputlisting{math/primeSieve.cpp}
+
+\subsection{Satz von \textsc{Sprague-Grundy}}
+Weise jedem Zustand $X$ wie folgt eine \textsc{Grundy}-Zahl $g\left(X\right)$ zu:
+\[
+	g\left(X\right) := \min\{ \mathbb{Z}_0^+ \textbackslash \{g\left(Y\right)~|~Y \text{ von } X \text{ aus direkt erreichbar}\}\} 
+\]
+$X$ ist genau dann gewonnen, wenn $g\left(X\right) > 0$ ist.\\\\
+Wenn man $k$ Spiele in den Zuständen $X_1, \ldots, X_k$ hat, dann ist die \textsc{Grundy}-Zahl des Gesamtzustandes $g\left(X_1\right) \oplus \ldots \oplus g\left(X_k\right)$.
