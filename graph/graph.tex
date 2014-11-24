@@ -30,6 +30,16 @@ Alle kürzesten Pfade im Graphen.
 	\item \textbf{Je nach Aufgabenstellung überprüfen, wie isolierte Punkte interpretiert werden sollen.}
 	\item Der Code unten läuft in Linearzeit. Wenn das nicht notwenidg ist (oder bestimmte Sortierungen verlangt werden), gehts mit einem \lstinline{set} einfacher.
 \end{itemize}
+\begin{figure}[h]
+\begin{lstlisting}
+VISIT(v):
+	forall e=(v,w) in E
+	delete e from E
+	VISIT(w)
+	print e
+\end{lstlisting}
+\caption{Idee für Eulerzyklen}
+\end{figure}
 \lstinputlisting{graph/euler.cpp}
 
 \subsection{Max-Flow (\textsc{Edmonds-Karp}-Algorithmus)}

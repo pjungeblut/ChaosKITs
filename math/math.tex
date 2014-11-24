@@ -39,3 +39,13 @@ Weise jedem Zustand $X$ wie folgt eine \textsc{Grundy}-Zahl $g\left(X\right)$ zu
 \]
 $X$ ist genau dann gewonnen, wenn $g\left(X\right) > 0$ ist.\\\\
 Wenn man $k$ Spiele in den Zuständen $X_1, \ldots, X_k$ hat, dann ist die \textsc{Grundy}-Zahl des Gesamtzustandes $g\left(X_1\right) \oplus \ldots \oplus g\left(X_k\right)$.
+
+\subsection{Maximales Teilfeld}
+\lstinputlisting{math/maxTeilfeld.cpp}
+Obiger Code findet kein maximales Teilfeld, das über das Ende hinausgeht. Dazu:
+\begin{enumerate}
+	\item finde maximales Teilfeld, das nicht übers Ende geht
+	\item berechne minimales Teilfeld, das nicht über den Rand geht (analog)
+	\item nimm Maximum aus gefundenem Maximalem und Allem\textbackslash Minimalem
+\end{enumerate}
+

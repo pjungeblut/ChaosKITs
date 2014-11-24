@@ -1,4 +1,9 @@
-- max-Teilfeld
 - max cardinality bipartite matching
-- mathe formeln, kombinatorik
+- mathe formeln, kombinatorik (catalan, stirling, euler, ...)
 - java big integer
+- bitonic tsp
+- josephus problem
+- min cost max flow
+- linear time sorting
+- roman numerals
+- towers of hanoi
