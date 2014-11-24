@@ -1,0 +1,4 @@
+- max-Teilfeld
+- max cardinality bipartite matching
+- mathe formeln, kombinatorik
+- java big integer
