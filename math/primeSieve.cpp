@@ -1,12 +1,5 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-typedef unsigned long long ll;
-
-vector<int> primeSieve(ll n) {
-	vector<int> primes;
+vector<int> primes;
+void primeSieve(ll n) { //berechnet die Primzahlen kleiner n
 	vector<int> isPrime(n,true);
 	for(ll i = 2; i < n; i+=2) {
 		if(isPrime[i]) {
@@ -15,8 +8,6 @@ vector<int> primeSieve(ll n) {
 				for(ll j = i; i*j < n; j+=2) isPrime[i*j] = false;
 			}
 		}
-		if(i == 2)
-			i--;
+		if(i == 2) i--;
 	}
-	return primes;
 } 

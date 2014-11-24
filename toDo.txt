@@ -7,3 +7,5 @@
 - linear time sorting
 - roman numerals
 - towers of hanoi
+- Schnitteigenschaft/Kreiseigenschaft
+- Zusammenhang Max Flow, Max Independent Set, etc.
