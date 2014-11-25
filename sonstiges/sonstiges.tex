@@ -7,3 +7,30 @@
 	\item Finde die starken Zusammenhangskomponenten.
 	\item Genau dann lösbar, wenn keine Variable mit ihrer Negation in einer SCC liegt.
 \end{enumerate}
+
+\subsection{Linear time sorting}
+
+\begin{lstlisting}
+int p[10] = {1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000};
+
+int get_i_th_digit(int digit, int i) {
+	return (digit / p[i]) % 10;
+}
+
+void sortLinear(vector<int> &s) {
+	int max_digit;
+	for(int i = 0; i < s.size(); i++) {
+		int digit = ceil(log10(s[i]));
+		if(digit > max_digit)
+			max_digit = digit;
+	}
+	for(int d = 0; d < max_digit; d++) {
+		vector<vector<int>> bucket(10);
+		for(int i = 0; i < s.size(); i++)
+			bucket[get_i_th_digit(s[i],d)].push_back(s[i]);
+		s.clear();
+		for(int i = 0; i < 10; i++)
+			copy(bucket[i].begin(), bucket[i].end(), back_inserter(s));
+	}
+}
+\end{lstlisting}
