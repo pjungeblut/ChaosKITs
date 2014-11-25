@@ -7,4 +7,4 @@
 - linear time sorting
 - roman numerals
 - towers of hanoi
-- Schnitteigenschaft/Kreiseigenschaft
+- NIM GAMES (WICHTIG)
