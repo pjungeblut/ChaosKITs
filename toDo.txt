@@ -1,6 +1,4 @@
-- max cardinality bipartite matching
 - mathe formeln, kombinatorik (catalan, stirling, euler, ...)
-- java big integer
 - bitonic tsp
 - josephus problem
 - min cost max flow
