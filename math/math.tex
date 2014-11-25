@@ -53,17 +53,17 @@ Obiger Code findet kein maximales Teilfeld, das über das Ende hinausgeht. Dazu:
 \subsection{Kombinatorik}
 
 \subsubsection{Berühmte Zahlen}
-\begin{small}
 \begin{tabular}{|l|l|l|}
 	\hline
 	\textsc{Fibonacci}-Zahlen	& $f(0) = 0 \quad f(1) = 1 \quad f(n+2) = f(n+1) + f(n)$	& Bem. \ref{bem:fibonacciMat}, \ref{bem:fibonacciGreedy}\\
 	\textsc{Catalan}-Zahlen		& $C_0 = 1 \quad C_n = \sum\limits_{k = 0}^{n - 1} C_kC_{n - 1 - k} = \frac{1}{n + 1}{2n \choose n} = \frac{2(2n - 1)}{n+1} \cdot C_{n-1}$	& Bem. \ref{bem:catalanOverflow}, \ref{bem:catalanAnwendung}\\
-	\textsc{Euler}-Zahlen (I)	& $\left\langle\begin{array}{c} n \\ 0\end{array}\right\rangle = \left\langle\begin{array}{c} n \\ n-1 \end{array}\right\rangle = 1 \quad \left\langle\begin{array}{c} n \\ k\end{array}\right\rangle = (k + 1)\left\langle\begin{array}{c} n-1 \\ k\end{array}\right\rangle + (n-k)\left\langle\begin{array}{c} n-1 \\ k-1\end{array}\right\rangle$ & Bem. \ref{bem:euler1Intuition}\\
-	\textsc{Euler}-Zahlen (II)	& $\left\langle\left\langle\begin{array}{c}n\\0\end{array}\right\rangle\right\rangle = 1 \quad \left\langle\left\langle\begin{array}{c}n\\n\end{array}\right\rangle\right\rangle = 0 \quad \left\langle\left\langle\begin{array}{c}n\\k\end{array}\right\rangle\right\rangle = (k + 1)\left\langle\left\langle\begin{array}{c}n-1\\k\end{array}\right\rangle\right\rangle + (2n - k - 1)\left\langle\left\langle\begin{array}{c}n-1\\k-1\end{array}\right\rangle\right\rangle$ & Bem. \ref{bem:euler2Intuition}\\
+	\textsc{Euler}-Zahlen (I)	& $\left\langle\begin{array}{c} n \\ 0\end{array}\right\rangle = \left\langle\begin{array}{c} n \\ n-1 \end{array}\right\rangle = 1 \quad \left\langle\begin{array}{c} n \\ k\end{array}\right\rangle = (k + 1)\left\langle\begin{array}{c} n-1 \\ k\end{array}\right\rangle + (n-k)\left\langle\begin{array}{c} n-1 \\ k-1\end{array}\right\rangle$ & Bem. \ref{bem:euler1}\\
+	\textsc{Euler}-Zahlen (II)	& $\left\langle\left\langle\begin{array}{c}n\\0\end{array}\right\rangle\right\rangle = 1 \quad \left\langle\left\langle\begin{array}{c}n\\n\end{array}\right\rangle\right\rangle = 0 \quad \left\langle\left\langle\begin{array}{c}n\\k\end{array}\right\rangle\right\rangle = (k + 1)\left\langle\left\langle\begin{array}{c}n-1\\k\end{array}\right\rangle\right\rangle + (2n - k - 1)\left\langle\left\langle\begin{array}{c}n-1\\k-1\end{array}\right\rangle\right\rangle$ & Bem. \ref{bem:euler2}\\
 	\textsc{Stirling}-Zahlen (I)	& $\left[\begin{array}{c}0\\0\end{array}\right] = 1 \quad \left[\begin{array}{c}n\\0\end{array}\right] = \left[\begin{array}{c}0\\n\end{array}\right] = 0 \quad \left[\begin{array}{c}n\\k\end{array}\right] = \left[\begin{array}{c}n-1\\k-1\end{array}\right] + (n-1)\left[\begin{array}{c}n-1\\k\end{array}\right]$ & Bem. \ref{bem:stirling1}\\
+	\textsc{Stirling}-Zahlen (II)	& $\left\{\begin{array}{c}n\\1\end{array}\right\} = \left\{\begin{array}{c}n\\n\end{array}\right\} = 1 \quad \left\{\begin{array}{c}n\\k\end{array}\right\} = k\left\{\begin{array}{c}n-1\\k\end{array}\right\} + \left\{\begin{array}{c}n-1\\k-1\end{array}\right\}$ & Bem. \ref{bem:stirling2}\\
+	Integer-Partitions		& $f(1,1) = 1 \quad f(n,k) = 0 \text{ für } k > n \quad f(n,k)  = f(n-k,k) + f(n,k-1)$ & Bem. \ref{bem:integerPartitions}\\
 	\hline
 \end{tabular}
-\end{small}
 
 \begin{bem}\label{bem:fibonacciMat}
 $\left(\begin{array}{cc} 0 & 1 \\ 1 & 1\end{array}\right)^n \cdot \left(\begin{array}{c}0 \\ 1\end{array}\right) = \left(\begin{array}{c}f_n \\ f_{n+1}\end{array}\right)$
@@ -93,23 +93,39 @@ Die \textsc{Catalan}-Zahlen geben an: $C_n =$
 \end{itemize}
 \end{bem}
 
-\begin{bem}[\textsc{Euler}-Zahlen 1. Ordnung]\label{bem:euler1Intuition}
+\begin{bem}[\textsc{Euler}-Zahlen 1. Ordnung]\label{bem:euler1}
 Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Anstiegen.
 
-Die Formel folgt aus folgender Überlegung: Für die $n$-te Zahl gibt es $n$ mögliche Positionen zum Einfügen. Dabei wird entweder ein Ansteig in zwei gesplitted oder ein Anstieg um $n$ ergänzt.
+Begründung: Für die $n$-te Zahl gibt es $n$ mögliche Positionen zum Einfügen. Dabei wird entweder ein Ansteig in zwei gesplitted oder ein Anstieg um $n$ ergänzt.
 \end{bem}
 
-\begin{bem}[\textsc{Euler}-Zahlen 2. Ordnung]\label{bem:euler2Intuition}
+\begin{bem}[\textsc{Euler}-Zahlen 2. Ordnung]\label{bem:euler2}
 Die Anzahl der Permutationen von $\{1,1, \ldots, n,n\}$ mit genau $k$ Anstiegen.
+\end{bem}
+
+\begin{bem}[\textsc{Stirling}-Zahlen 1. Ordnung]\label{bem:stirling1}
+Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Zyklen.
+
+Begründung: Es gibt zwei Möglichkeiten für die $n$-te Zahl. Entweder sie bildet einen eigene Zyklus, oder sie kann an jeder Position in jedem Zyklus einsortiert werden.
+\end{bem}
+
+\begin{bem}[\textsc{Stirling}-Zahlen 2. Ordnung]\label{bem:stirling2}
+Die Anzahl der Möglichkeiten $n$ Elemente in $k$ nichtleere Teilmengen zu zerlegen.
+
+Begründung: Es gibt $k$ Möglichkeiten die $n$ in eine $n-1$-Partition einzuordnen. Dazu kommt der Fall, dass die $n$ in ihrer eigenen Teilmenge (alleine) steht.
+\end{bem}
+
+\begin{bem}\label{bem:integerPartitions}
+Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximalem Elment $\leq k$.
 \end{bem}
 
 \subsubsection{Verschiedenes}
 \begin{tabular}{|l|l|}
 	\hline
 	Hanoi Towers (min steps)		& $T_n = 2^n - 1$\\
-	regions by $n$ lines			& $n\left(n + 1\right) / 2 + 1$\\
-	bounded regions by $n$ lines		& $\left(n^2 - 3n + 2\right) / 2$\\
-	labeled rooted trees			& $n^{n-1}$\\
-	labeled unrooted trees			& $n^{n-2}$\\
+	\#regions by $n$ lines			& $n\left(n + 1\right) / 2 + 1$\\
+	\#bounded regions by $n$ lines		& $\left(n^2 - 3n + 2\right) / 2$\\
+	\#labeled rooted trees			& $n^{n-1}$\\
+	\#labeled unrooted trees			& $n^{n-2}$\\
 	\hline
 \end{tabular}

@@ -24,17 +24,11 @@ string convertToRoman(int n) {
 			n -= num[i];
 		}
 	}
-	int pos = roman.find("CCCC");
-	if(pos != string::npos) roman.replace(pos,4,"CD");
-	pos = roman.find("XXXX");
-	if(pos != string::npos) roman.replace(pos,4,"XL");
-	pos = roman.find("IIII");
-	if(pos != string::npos) roman.replace(pos,4,"IV");
-	pos = roman.find("DCD");
-	if(pos != string::npos) roman.replace(pos,3,"CM");
-	pos = roman.find("LXL");
-	if(pos != string::npos) roman.replace(pos,3,"XC");
-	pos = roman.find("VIV");
-	if(pos != string::npos) roman.replace(pos,3,"IX");
+	int pos = roman.find("CCCC"); if(pos != string::npos) roman.replace(pos,4,"CD");
+	pos = roman.find("XXXX"); if(pos != string::npos) roman.replace(pos,4,"XL");
+	pos = roman.find("IIII"); if(pos != string::npos) roman.replace(pos,4,"IV");
+	pos = roman.find("DCD"); if(pos != string::npos) roman.replace(pos,3,"CM");
+	pos = roman.find("LXL"); if(pos != string::npos) roman.replace(pos,3,"XC");
+	pos = roman.find("VIV"); if(pos != string::npos) roman.replace(pos,3,"IX");
 	return roman;
 }
