@@ -1,22 +1,15 @@
-// [lsb: 0-th bit, msb: n-th bit,]
-
-//Get j-th bit:
+//lsb: 0-th bit, msb: n-th bit
+//get j-th bit
 (a & (1 << j)) != 0
-
-//Set j-th bit:
+//set j-th bit
 a |= (1 << j)
-
-//Clear j-th bit:
+//clear j-th bit
 a &= ~(1 << j)
-
-//Toggle j-th bit:
+//toggle j-th bit
 a ^= (1 << j)
-
-//Get value of first set bit:
+//get value of least significant bit set
 (a & -a)
-
-//Turn on all bits:
+//turn on all bits
 a = -1
-
-//Turn on first n bits:
+//turn on first n bits (be aware of overflows)
 a = (1 << n) - 1
