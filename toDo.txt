@@ -2,7 +2,6 @@
 - bitonic tsp
 - josephus problem
 - min cost max flow
-- linear time sorting
 - roman numerals
 - towers of hanoi
 - NIM GAMES (WICHTIG)
