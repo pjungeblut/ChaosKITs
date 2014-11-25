@@ -49,3 +49,51 @@ Obiger Code findet kein maximales Teilfeld, das über das Ende hinausgeht. Dazu:
 	\item nimm Maximum aus gefundenem Maximalem und Allem\textbackslash Minimalem
 \end{enumerate}
 
+\subsection{Kombinatorik}
+
+\subsubsection{Berühmte Zahlen}
+\begin{tabular}{|l|l|l|}
+	\hline
+	\textsc{Fibonacci}	& $f(0) = 0 \quad f(1) = 1 \quad f(n+2) = f(n+1) + f(n)$	& siehe Bemerkungen \ref{bem:fibonacciMat}, \ref{bem:fibonacciGreedy}\\
+	\textsc{Catalan}	& $C_n = \sum\limits_{k = 0}^{n - 1} C_kC_{n - 1 - k} = \frac{1}{n + 1}{2n \choose n} = \frac{2(2n - 1)}{n+1} \cdot C_{n-1}$	& siehe Bemerkungen \ref{bem:catalanOverflow}, \ref{bem:catalanAnwendung}\\
+	\hline
+\end{tabular}
+
+\begin{bem}\label{bem:fibonacciMat}
+$\left(\begin{array}{cc} 0 & 1 \\ 1 & 1\end{array}\right)^n \cdot \left(\begin{array}{c}0 \\ 1\end{array}\right) = \left(\begin{array}{c}f_n \\ f_{n+1}\end{array}\right)$
+\end{bem}
+
+\begin{bem}[\textsc{Zeckendorfs} Theorem]\label{bem:fibonacciGreedy}
+Jede positive natürliche Zahl kann eindeutig als Summe einer oder mehrerer verschiedener \textsc{Fibonacci}-Zahlen geschrieben werden, sodass keine zwei aufeinanderfolgenden \textsc{Fibonacci}-Zahlen in der Summe vorkommen.
+
+\emph{Lösung: } Greedy, nimm immer die größte \textsc{Fibonacci}-Zahl, die noch hineinpasst.
+\end{bem}
+
+\begin{bem}\label{bem:catalanOverflow}
+\begin{itemize}
+	\item Die erste und dritte angegebene Formel sind relativ sicher gegen Overflows.
+	\item Die erste Formel kann auch zur Berechnung der \textsc{Catalan}-Zahlen bezüglich eines Moduls genutzt werden.
+\end{itemize}
+\end{bem}
+
+\begin{bem}\label{bem:catalanAnwendung}
+Die \textsc{Catalan}-Zahlen geben an: $C_n =$
+\begin{itemize}
+	\item Anzahl der Binärbäume mit $n$ Knoten
+	\item Anzahl der validen Klammerausdrücke mit $n$ Klammerpaaren
+	\item Anzahl der korrekten Klammerungen von $n+1$ Faktoren
+	\item Anzahl der Möglichkeiten ein konvexes Polygon mit $n+2$ Ecken in Dreiecke zu zerlegen.
+	\item Anzahl der monotonen Pfade in einem $n \times n$-Gitter, die nicht die Diagonale kreuzen. (zwischen gegenüberliegenden Ecken)
+\end{itemize}
+\end{bem}
+
+\subsubsection{Verschiedenes}
+\begin{tabular}{|l|l|}
+	\hline
+	Hanoi Towers (min steps)		& $T_n = 2^n - 1$\\
+	regions by $n$ lines			& $n\left(n + 1\right) / 2 + 1$\\
+	bounded regions by $n$ lines		& $\left(n^2 - 3n + 2\right) / 2$\\
+	labeled rooted trees			& $n^{n-1}$\\
+	labeled unrooted trees			& $n^{n-2}$\\
+	\hline
+\end{tabular}

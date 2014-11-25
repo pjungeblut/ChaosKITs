@@ -1,7 +1,6 @@
-- mathe formeln, kombinatorik (catalan, stirling, euler, ...)
 - bitonic tsp
 - josephus problem
 - min cost max flow
 - roman numerals
-- towers of hanoi
 - NIM GAMES (WICHTIG)
+- bit operationen (WICHTIG)
