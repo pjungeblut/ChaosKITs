@@ -1,3 +1,2 @@
 - bitonic tsp
-- josephus problem
 - min cost max flow
