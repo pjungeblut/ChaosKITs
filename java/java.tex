@@ -1,17 +1,24 @@
 \section{Java}
+\lstset{language=Java}
 
 \subsection{Introduction}
 
 \begin{itemize}
 \item Compilen: \lstinline{javac main.java}
 \item Ausführen: \lstinline{java main < sample.in}
-\item Einlesen:
-\lstset{language=Java}
+\item Eingabe:
 \begin{lstlisting}
 Scanner in = new Scanner(System.in); //java.util.Scanner
 String line = in.nextLine(); //reads the next line of the input
 int num = in.nextInt(); //reads the next token of the input as an int
 double num2 = in.nextDouble(); //reads the next token of the input as a double
+\end{lstlisting}
+\item Ausgabe:
+\begin{lstlisting}
+//Ausgabe in StringBuilder schreiben und am Ende alles auf einmal ausgeben -> viel schneller
+StringBuilder sb = new StringBuilder(); //java.lang.StringBuilder
+sb.append("Hallo Welt");
+System.out.print(sb.toString());
 \end{lstlisting}
 \end{itemize}
 
