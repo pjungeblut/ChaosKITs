@@ -1,10 +1,3 @@
-#include <algorithm>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-using namespace std;
-
 struct point {
   double x, y;
   point(){} point(double x, double y) : x(x), y(y) {}
