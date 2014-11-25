@@ -1,4 +1,3 @@
 - bitonic tsp
 - josephus problem
 - min cost max flow
-- bit operationen (WICHTIG)
