@@ -1,0 +1,17 @@
+\subsection{BigInteger}
+
+Hier ein kleiner überblick über die Methoden der Klasse BigInteger: \\
+
+\begin{enumerate}
+\item BigInteger add(BigInteger val), multiply(BigInteger val), divide(BigInteger val), substract(BigInteger val) \\ 
+Returns this +,*,/,- val
+\item BigInteger pow(BigInteger e) \\ Returns this\(^e\)
+\item BigInteger and(BigInteger val), or(BigInteger val), xor(BigInteger val), not(), shiftLeft(int n), shiftRight(int n) \\ 
+Bit-Operations
+\item BigInteger gcd(BigInteger val) \\ Returns the greatest common divisor of abs(this) and abs(val)
+\item BigInteger mod(BigInteger m), modInverse(BigInteger m), modPow(BigInteger e, BigInteger m) \\
+Returns this mod m, this\(^{-1}\) mod m, this\(^e\) mod m
+\item BigInteger  nextProbablePrime() \\ Returns the next number that is greater than this and that is probably a prime.
+\item int intValue(), long longValue(), float floatValue(), double doubleValue() \\ 
+Converting BigInteger. Attention: If the BigInteger is to big the lowest bits were choosen which fits into the converted data-type.
+\end{enumerate}
