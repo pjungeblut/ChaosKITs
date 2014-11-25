@@ -1,3 +1,4 @@
+//Comparable with sort from <algorithms> in a range from 0 to 5000, for values greater than 5000 use sort
 const int p[10] = {1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000};
 
 int getLongestNumber(vector<int> &a) {
