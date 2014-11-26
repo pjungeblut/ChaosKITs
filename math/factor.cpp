@@ -12,7 +12,7 @@ vector<int> factorize(ll n) {
 			factor.push_back(primes[pos]);
 		}
 		else pos++;
-		if(primes[pos]*primes[pos] > n) break;
+		if(primes[pos]*primes[pos] > num) break;
 	}
 	if(num != 1) factor.push_back(num);
 	return factor;
