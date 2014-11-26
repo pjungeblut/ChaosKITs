@@ -15,7 +15,7 @@ Wenn die Eingabe aus einem kleinen Intervall $\left[0, n\right)$ stammt ist Buck
 \lstinputlisting{sonstiges/bucketSort.cpp}
 
 \subsubsection{LSD-Radixsort}
-\lstinputlisting{sonstiges/radixsort.cpp}
+\lstinputlisting{sonstiges/radixSort.cpp}
 
 \subsection{Bit Operations}
 \lstinputlisting{sonstiges/bitOps.cpp}
@@ -27,6 +27,8 @@ Wenn die Eingabe aus einem kleinen Intervall $\left[0, n\right)$ stammt ist Buck
 $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 \begin{description}
 	\item[Spezialfall $k=2$:] Betrachte Binärdarstellung von $n$. Für $n = 1b_1b_2b_3..b_n$ ist $b_1b_2b_3..b_n1$ die Position des letzten Überlebenden. (Rotiere $n$ um eine Stelle nach links)
+	\lstinputlisting{sonstiges/josephus2.cpp}
 	\item[Allgemein:] Sei $F(n,k)$ die Position des letzten Überlebenden. Nummeriere die Personen mit $0, 1, \ldots, n-1$. Nach Erschießen der $k$-ten Person, hat der Kreis noch Größe $n-1$ und die Position des Überlebenden ist jetzt $F(n-1,k)$. Also: $F(n,k) = (F(n-1,k)+k)\%n$. Basisfall: $F(1,k) = 0$. 
+	\lstinputlisting{sonstiges/josephusK.cpp}
 \end{description}
 \textbf{Beachte bei der Ausgabe, dass die Personen im ersten Fall von $1, \ldots, n$ nummeriert sind, im zweiten Fall von $0, \ldots, n-1$!}
