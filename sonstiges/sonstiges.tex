@@ -32,3 +32,18 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	\lstinputlisting{sonstiges/josephusK.cpp}
 \end{description}
 \textbf{Beachte bei der Ausgabe, dass die Personen im ersten Fall von $1, \ldots, n$ nummeriert sind, im zweiten Fall von $0, \ldots, n-1$!}
+
+\subsection{Gemischtes}
+\begin{itemize}[itemsep=5mm]
+	\item \emph{\textsc{Johnsons} Reweighting Algorithmus:} Füge neue Quelle \lstinline{S} hinzu, mit Kanten mit Gewicht 0 zu allen Knoten. Nutze \textsc{Bellmann-Ford} zum Betsimmen der Entfernungen \lstinline{d[i]} von \lstinline{S} zu allen anderen Knoten. Stoppe, wenn es negative Zyklen gibt. Sonst ändere die gewichte von allen Kanten \lstinline{(u,v)} im ursprünglichen Graphen zu \lstinline{d[u]+w[u,v]-d[v]}. Dann sind alle Kantengewichte nichtnegativ, \textsc{Dijkstra} kann angewendet werden.
+	\item Für ein System von Differenzbeschränkungen: Ändere alle Bedingungen in die Form $a-b \leq c$. Für jede Bedingung füge eine Kante \lstinline{(b,a)} mit Gweicht \lstinline{c} ein. Füge Quelle \lstinline{s} hinzu, mit Kanten zu allen Knoten mit Gewicht 0. Nutze \textsc{Bellmann-Ford}, um die kürzesten Pfade von \lstinline{s} aus zu finden. \lstinline{d[v]} ist mögliche Lösung für \lstinline{v}.
+	\item Min-Weight-Vertex-Cover im bipartiten Graph: Partitioniere in \lstinline{A, B} und füge Kanten \lstinline{s -> A} mit Gewicht \lstinline{w(A)} und Kanten  \lstinline{B -> t} mit Gewicht \lstinline{w(B)} hinzu. Füge Kanten mit Kapazität $\infty$ von \lstinline{A} nach \lstinline{B} hinzu, wo im originalen Graphen Kanten waren. Max-Flow ist die Lösung.\newline
+	Im Residualgraphen:
+	\begin{itemize}
+		\item Das Vertex-Cover sind die Knoten inzident zu den Brücken. \emph{oder}
+		\item Die Knoten in \lstinline{A}, die \emph{nicht} von \lstinline{s} erreichber sind und die Knoten in \lstinline{B}, die von \lstinline{erreichber} sind.
+	\end{itemize}
+	\item Allgemeiner Graph: Das Komplement eines Vertex-Cover ist ein Independent Set. $\Rightarrow$ Max Weight Independent Set ist Komplement von Min Weight Vertex Cover.
+	\item Bipartiter Graph: Min Cover (kleinste Menge Knoten, die alle Kanten berühren) = Max Matching.
+	\item Bipartites Matching mit Gewichten auf linken Knoten. Minimiere Matchinggewicht. Lösung: Sortiere Knoten links aufsteigend nach Gewicht, danach nutze normlen Algorithmus (\textsc{Kuhn}, Seite \pageref{kuhn})
+\end{itemize}

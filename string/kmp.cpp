@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 //Preprocessing Substring sub for KMP-Search
 vector<int> kmp_preprocessing(string& sub) {
 	vector<int> b(sub.size() + 1);
