@@ -1,2 +1,2 @@
-- bitonic tsp
+- kondensierter Graph
 - min cost max flow
