@@ -1,2 +1,3 @@
-- bitonic tsp
+- kondensierter Graph
 - min cost max flow
+- dijkstra mit variablen startknoten

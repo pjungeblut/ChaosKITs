@@ -20,6 +20,7 @@ Kürzestes Pfade in Graphen mit negativen Kanten. Erkennt negative Zyklen.
 \subsubsection{\textsc{Floyd-Warshall}-Algorithmus}
 Alle kürzesten Pfade im Graphen.
 \lstinputlisting{graph/floydWarshall.cpp}
+\textsc{Floyd-Warshall} findet auch negative Kreise. Es existiert genau dann ein negativer Kreis, wenn \lstinline{dist[i][i] < 0} ist.
 
 \subsection{Strongly Connected Components (\textsc{Tarjans}-Algorithmus)}
 \lstinputlisting{graph/scc.cpp}
@@ -66,7 +67,7 @@ Finde die maximale Anzahl Pfade von $s$ nach $t$, die keinen Knoten teilen.
 	\item Der maximale Fluss entspricht der unterschiedlichen Pfade ohne gemeinsame Knoten.
 \end{enumerate}
 
-\subsection{Maximal Cardinatlity Bipartite Mathcing}
+\subsection{Maximal Cardinatlity Bipartite Matching}\label{kuhn}
 \lstinputlisting{graph/maxCarBiMatch.cpp}
 
 \subsection{TSP}
