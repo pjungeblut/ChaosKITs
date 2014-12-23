@@ -1,8 +1,8 @@
 priority_queue<ii, vector<ii>, greater<ii> > pq;
 vector<int> dist;
 dist.assign(NUM_VERTICES, INF);
-dist[0] = 0;
-pq.push(ii(0, 0));
+dist[START] = 0;
+pq.push(ii(0, START));
 
 while (!pq.empty()) {
 	ii front = pq.top(); pq.pop();
