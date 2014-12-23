@@ -1,2 +1,1 @@
 - kondensierter Graph
-- min cost max flow
