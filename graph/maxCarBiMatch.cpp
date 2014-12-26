@@ -1,4 +1,4 @@
-vector< vector<int> > adjlist;
+vector< vector<int> > adjlist; //seems to work directed, from left to right
 vector<int> pairs; //for every node, stores the matching node on the other side or -1
 vector<bool> visited;
 
