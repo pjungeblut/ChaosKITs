@@ -1,6 +1,6 @@
 int s, t, f; //source, target, single flow
 int res[MAX_V][MAX_V]; //adj-matrix
-vector< vector<int> > adjList;
+vector< vector<int> > adjlist;
 int p[MAX_V]; //bfs spanning tree
 
 void augment(int v, int minEdge) {
@@ -20,8 +20,8 @@ int maxFlow() { //first inititalize res, adjList, s and t
 		while (!q.empty()) { //BFS
 			int u = q.front(); q.pop();
 			if (u == t) break;
-			for (int j = 0; j < (int)adjList[u].size(); j++) {
-				int v = adjList[u][j];
+			for (int j = 0; j < (int)adjlist[u].size(); j++) {
+				int v = adjlist[u][j];
 				if (res[u][v] > 0 && !vis[v]) {
 					vis[v] = true; q.push(v); p[v] = u;
 		}}}
