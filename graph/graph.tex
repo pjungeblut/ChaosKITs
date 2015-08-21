@@ -20,7 +20,10 @@ Kürzestes Pfade in Graphen mit negativen Kanten. Erkennt negative Zyklen.
 \subsubsection{\textsc{Floyd-Warshall}-Algorithmus}
 Alle kürzesten Pfade im Graphen.
 \lstinputlisting{graph/floydWarshall.cpp}
-\textsc{Floyd-Warshall} findet auch negative Kreise. Es existiert genau dann ein negativer Kreis, wenn \lstinline{dist[i][i] < 0} ist.
+\begin{itemize}
+	\item \textsc{Floyd-Warshall} findet auch negative Kreise. Es existiert genau dann ein negativer Kreis, wenn \lstinline{dist[i][i] < 0} ist.
+	\item Evtl. überschreibt die Eingabe die Nullen auf der Hauptdiagonalen.
+\end{itemize}
 
 \subsection{Strongly Connected Components (\textsc{Tarjans}-Algorithmus)}
 \lstinputlisting{graph/scc.cpp}
