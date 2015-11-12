@@ -12,7 +12,7 @@ void initRMQ() {
 		}
 	}
 }
-//returns index of minimum! [a, b)
+//returns index of minimum! [l, r)
 int queryRMQ(int l, int r) {
 	if(l >= r) return l;
 	int s = floor(log2(r-l)); r = r - (1 << s);

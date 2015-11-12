@@ -17,8 +17,9 @@ void visit(int v, int parent) {
 				maxlow = low[*vit];
 			}
 			
-			if (low[*vit] > d[v]) { //nur fuer Bruecken
-				bridges[v].push_back(*vit); bridges[*vit].push_back(v);
+			if (low[*vit] > d[v]) { //nur fuer Bruecken, evtl. parent betrachten!
+				bridges[v].push_back(*vit);
+				bridges[*vit].push_back(v);
 			}
 			
 			low[v] = min(low[v], low[*vit]);
