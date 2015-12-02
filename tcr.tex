@@ -44,6 +44,17 @@
 	commentstyle=\itshape\bfseries,
 	frame=trbl
 }
+% Listings doesn't support UTF8. This is just enough for German umlauts.
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
 
 % Don't waste space at the page borders.
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=1cm]{geometry}

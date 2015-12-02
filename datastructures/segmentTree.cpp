@@ -1,8 +1,10 @@
+// Laufzeit: init: O(n), query: O(log n), update: O(log n)
+// Berechnet das Maximum im Array.
 int a[MAX_N], m[4 * MAX_N];
 
 int query(int x, int y, int k = 0, int X = 0, int Y = MAX_N - 1) {
 	if (x <= X && Y <= y) return m[k];
-	if (y < X || Y < x) return -1000000000; //ein "neutrales" Element
+	if (y < X || Y < x) return -1000000000; // Ein "neutrales" Element.
 	int M = (X + Y) / 2;
 	return max(query(x, y, 2 * k + 1, X, M), query(x, y, 2 * k + 2, M + 1, Y));
 }
@@ -20,6 +22,7 @@ void update(int i, int v, int k = 0, int X = 0, int Y = MAX_N - 1) {
 	m[k] = max(m[2 * k + 1], m[2 * k + 2]);
 }
 
+// Einmal vor allen anderen Operationen aufrufen.
 void init(int k = 0, int X = 0, int Y = MAX_N - 1) {
 	if (X == Y) {
 		m[k] = a[X];
