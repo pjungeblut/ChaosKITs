@@ -1,19 +1,19 @@
 \documentclass{article}
 
+% Font encoding.
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 
+% Display math.
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+% Nice enumerations without wasting space above and below.
 \usepackage{enumitem}
 \setlist{nosep}
 
-\usepackage{color}
-\definecolor{darkred}{rgb}{0.72,0.07,0.07}
-\definecolor{darkgreen}{rgb}{0.23,0.62,0.22}
-
+% Headline and bottomline.
 \usepackage{scrpage2}
 \pagestyle{scrheadings}
 \clearscrheadfoot
@@ -21,6 +21,7 @@
 \chead{ChaosKITs}
 \ohead{\pagemark}
 
+% Source code listings.
 \usepackage{pxfonts}
 \usepackage{listings}
 \lstset{
@@ -40,22 +41,26 @@
 	extendedchars=true,
 	keywordstyle=\bfseries,
 	stringstyle=\bfseries,
-	commentstyle=\bfseries,
+	commentstyle=\itshape\bfseries,
 	frame=trbl
 }
 
+% Don't waste space at the page borders.
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=1cm]{geometry}
 
+% Multicol layout for the table of contents.
 \usepackage{multicol}
 \usepackage{multirow}
 
+% New enviroment for remarks.
 \newtheorem{bem}{Bemerkung}
+
 
 \title{Team Contest Reference}
 \author{ChaosKITs \\ Karlsruhe Institute of Technology}
-
 \begin{document}
 
+% Titlepage with table of contents.
 \maketitle
 \setlength{\columnsep}{1cm}
 \begin{multicols}{2}
