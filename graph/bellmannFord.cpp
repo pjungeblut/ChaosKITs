@@ -1,18 +1,30 @@
-//n = number of vertices, edges is vector of edges
-dist.assign(n, INF); dist[0] = 0;
-parent.assign(n, -1);
-for (i = 0; i < n - 1; i++) {
-	for (j = 0; j < (int)edges.size(); j++) {
-		if (dist[edges[j].from] + edges[j].cost < dist[edges[j].to]) {
-			dist[edges[j].to] = dist[edges[j].from] + edges[j].cost;
-			parent[edges[j].to] = edges[j].from;
+// Laufzeit: O(|V|*|E|)
+struct edge {
+	int from; int to; int cost;
+	edge () {};
+	edge (int from, int to, int cost) : from(from), to(to), cost(cost) {};
+};
+
+vector<edge> edges; // Kanten einfügen!
+vector<int> dist, parent;
+
+void bellmannFord() {
+	dist.assign(NUM_VERTICES, INF); dist[0] = 0;
+	parent.assign(NUM_VERTICES, -1);
+	for (int i = 0; i < NUM_VERTICES - 1; i++) {
+		for (int j = 0; j < (int)edges.size(); j++) {
+			if (dist[edges[j].from] + edges[j].cost < dist[edges[j].to]) {
+				dist[edges[j].to] = dist[edges[j].from] + edges[j].cost;
+				parent[edges[j].to] = edges[j].from;
+			}
 		}
 	}
-}
-//now dist and parent are correct shortest paths
-//next lines check for negative cycles
-for (j = 0; j < (int)edges.size(); j++) {
-	if (dist[edges[j].from] + edges[j].cost < dist[edges[j].to]) {
-		//NEGATIVE CYCLE found
+
+	// "dist" und "parent" sind korrekte kürzeste Pfade.
+	// Folgende Zeilen prüfen nur negative Kreise.
+	for (int j = 0; j < (int)edges.size(); j++) {
+		if (dist[edges[j].from] + edges[j].cost < dist[edges[j].to]) {
+			// Negativer Kreis gefunden.
+		}
 	}
 }

@@ -1,11 +1,17 @@
 \section{Graphen}
 
 \subsection{Minimale Spannbäume}
+% Add an implementation.
 Benutze Algorithmus von \textsc{Kruskal} oder Algorithmus von \textsc{Prim}.
-\begin{description}
-	\item[Schnitteigenschaft] Für jeden Schnitt $C$ im Graphen gilt: Gibt es eine Kante $e$, die echt leichter ist als alle anderen Schnittkanten, so gehört diese zu allen minimalen Spannbäumen. ($\Rightarrow$ Die leichteste Kante in einem Schnitt kann in einem minimalen Spannbaum verwendet werden.)
-	\item[Kreiseigenschaft] Für jeden Kreis $K$ im Graphen gilt: Die schwerste Kante auf dem Kreis ist nicht Teil des minimalen Spannbaums.
-\end{description}
+
+\paragraph{Schnitteigenschaft}
+Für jeden Schnitt $C$ im Graphen gilt:
+Gibt es eine Kante $e$, die echt leichter ist als alle anderen Schnittkanten, so gehört diese zu allen minimalen Spannbäumen.
+($\Rightarrow$ Die leichteste Kante in einem Schnitt kann in einem minimalen Spannbaum verwendet werden.)
+
+\paragraph{Kreiseigenschaft}
+Für jeden Kreis $K$ im Graphen gilt:
+Die schwerste Kante auf dem Kreis ist nicht Teil des minimalen Spannbaums.
 
 \subsection{Kürzeste Wege}
 
@@ -14,20 +20,23 @@ Kürzeste Pfade in Graphen ohne negative Kanten.
 \lstinputlisting{graph/dijkstra.cpp}
 
 \subsubsection{\textsc{Bellmann-Ford}-Algorithmus}
-Kürzestes Pfade in Graphen mit negativen Kanten. Erkennt negative Zyklen.
+Kürzestes Pfade in Graphen mit negativen Kanten.
+Erkennt negative Zyklen.
 \lstinputlisting{graph/bellmannFord.cpp}
 
 \subsubsection{\textsc{Floyd-Warshall}-Algorithmus}
-Alle kürzesten Pfade im Graphen.
 \lstinputlisting{graph/floydWarshall.cpp}
 \begin{itemize}
-	\item \textsc{Floyd-Warshall} findet auch negative Kreise. Es existiert genau dann ein negativer Kreis, wenn \lstinline{dist[i][i] < 0} ist.
-	\item Evtl. überschreibt die Eingabe die Nullen auf der Hauptdiagonalen.
+	\item \textsc{Floyd-Warshall} findet auch negative Kreise.
+	Es existiert genau dann ein negativer Kreis, wenn \lstinline{dist[i][i] < 0} ist.
+	\item \textbf{Evtl. überschreibt die Eingabe die Nullen auf der Hauptdiagonalen.}
+	Das ist fast immer ungewollt! 
 \end{itemize}
 
 \subsection{Strongly Connected Components (\textsc{Tarjans}-Algorithmus)}
 \lstinputlisting{graph/scc.cpp}
 
+% TODO (pjungeblut): This has errors for bridges!
 \subsection{Artikulationspunkte und Brücken}
 \lstinputlisting{graph/articulationPoints.cpp}
 
@@ -36,25 +45,37 @@ Alle kürzesten Pfade im Graphen.
 	\item Zyklus existiert, wenn jeder Knoten geraden Grad hat (ungerichtet), bzw. bei jedem Knoten Ein- und Ausgangsgrad übereinstimmen (gerichtet).
 	\item Pfad existiert, wenn alle bis auf (maximal) zwei Knoten geraden Grad haben (ungerichtet), bzw. bei allen Knoten bis auf zwei Ein- und Ausgangsgrad übereinstimmen, wobei einer eine Ausgangskante mehr hat (Startknoten) und einer eine Eingangskante mehr hat (Endknoten).
 	\item \textbf{Je nach Aufgabenstellung überprüfen, wie isolierte Punkte interpretiert werden sollen.}
-	\item Der Code unten läuft in Linearzeit. Wenn das nicht notwenidg ist (oder bestimmte Sortierungen verlangt werden), gehts mit einem \lstinline{set} einfacher.
+	\item Der Code unten läuft in Linearzeit.
+	Wenn das nicht notwenidg ist (oder bestimmte Sortierungen verlangt werden), gehts mit einem \lstinline{set} einfacher.
 \end{itemize}
 \begin{figure}[h]
-\begin{lstlisting}
-VISIT(v):
-	forall e=(v,w) in E
-	delete e from E
-	VISIT(w)
-	print e
-\end{lstlisting}
-\caption{Idee für Eulerzyklen}
+	\begin{lstlisting}
+	VISIT(v):
+		forall e=(v,w) in E
+		delete e from E
+		VISIT(w)
+		print e
+	\end{lstlisting}
+	\caption{Idee für Eulerzyklen}
 \end{figure}
 \lstinputlisting{graph/euler.cpp}
+\paragraph{Achtung:}
+\begin{itemize}
+	\item Die Ausgabe erfolgt in falscher Reihenfolge.
+	\item Algorithmus schlägt nicht fehl, falls kein Eulerzyklus existiert.
+	Die Existenz muss separat geprüft werden.
+\end{itemize}
 
 \subsection{Lowest Common Ancestor}
 \lstinputlisting{graph/LCA.cpp}
 
-\subsection{Max-Flow (\textsc{Edmonds-Karp}-Algorithmus)}
+\subsection{Max-Flow}
+
+\subsubsection{\textsc{Edmonds-Karp}-Algorithmus}
 \lstinputlisting{graph/edmondsKarp.cpp}
+
+\subsubsection{Capacity Scaling}
+\lstinputlisting{graph/capacityScaling.cpp}
 
 \subsubsection{Maximum Edge Disjoint Paths}
 Finde die maximale Anzahl Pfade von $s$ nach $t$, die keine Kante teilen.

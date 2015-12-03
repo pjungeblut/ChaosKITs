@@ -1,4 +1,5 @@
-//nodes[0] has to be the start and end node.
+// Laufzeit: O(n*2^n)
+// nodes[0] ist Start- und Endknoten.
 vector<vector<int>> dist;
 vector<int> TSP() {
 	int n = dist.size(), m = 1 << n;

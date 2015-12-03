@@ -1,23 +1,24 @@
-int s, t, f, c; //source, target, single flow, single cost
-int res[MAX_V][MAX_V]; //residual graph
-vector<edge> edges; //edge list
-vector<int> p, dist; //parent pointer, dist field
+// Laufzeit: O(|V|^2 * |E|^2)
+int s, t, f, c; // Quelle, Senke, single flow, single cost
+int res[MAX_V][MAX_V];
+vector<edge> edges;
+vector<int> p, dist;
 
 void augment(int v, int minEdge) {
-	if (v == s) { f = minEdge; c = minEdge * dist[t]; return; } //c = minEdge * dist[t] added
+	if (v == s) { f = minEdge; c = minEdge * dist[t]; return; } // c = minEdge * dist[t] added
 	else if (p[v] != -1) {
 		augment(p[v], min(minEdge, res[p[v]][v]));
 		res[p[v]][v] -= f; res[v][p[v]] += f;
 }}
 
-//first inititalize res, edges, s and t
-int minCostMaxFlow(int v) { //v is number of vertices
+// Initialisiere res, edges, s und t.
+int minCostMaxFlow(int v) { // v = #Knoten
 	int mf = 0, mc = 0, i, j;
 	while (true) {
 		f = 0; c = 0;
 		dist.assign(v, INF); dist[s] = 0;
 		p.assign(v, -1);
-		for (i = 0; i < v - 1; i++) { //Bellmann-Ford
+		for (i = 0; i < v - 1; i++) { // Bellmann-Ford.
 			for (j = 0; j < (int)edges.size(); j++) {
 				if (res[edges[j].from][edges[j].to] > 0 && dist[edges[j].from] + edges[j].cost < dist[edges[j].to]) {
 					dist[edges[j].to] = dist[edges[j].from] + edges[j].cost;
@@ -26,9 +27,9 @@ int minCostMaxFlow(int v) { //v is number of vertices
 			}
 		}
 		
-		augment(t, INF); //add found path to max flow, method as in EdmondsKarp
+		augment(t, INF); // Gefunden Pfad zum Fluss hinzufügen.
 		if (f == 0) break;
 		mf += f; mc += c;
 	}
-	return mf; //returns max flow, for in cost, use mc
+	return mf; // mf is der maximale Fluss, mc sind die minimalen Kosten.
 }
