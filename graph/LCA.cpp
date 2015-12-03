@@ -2,6 +2,7 @@
 vector<int> visited(2*MAX_N), first(MAX_N, 2*MAX_N), depth(2*MAX_N);
 vector<vector<int>> graph(MAX_N);
 
+//Runtime: O(n)
 void initLCA(int gi, int d, int &c) {
 	visited[c] = gi, depth[c] = d, first[gi] = min(c, first[gi]), c++;
 	for(int gn : graph[gi]) {
@@ -10,6 +11,7 @@ void initLCA(int gi, int d, int &c) {
 	}
 }
 //[a, b]
+//Runtime: O(1)
 int getLCA(int a, int b) {
 	return visited[queryRMQ(min(first[a], first[b]), max(first[a], first[b]))];
 }
