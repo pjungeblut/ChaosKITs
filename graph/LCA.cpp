@@ -15,4 +15,4 @@ void initLCA(int gi, int d, int &c) {
 int getLCA(int a, int b) {
 	return visited[queryRMQ(min(first[a], first[b]), max(first[a], first[b]))];
 }
-//=> int c = 0; initLCA(0,0,c); initRMQ(); done!
+//=> int c = 0; initLCA(0,0,c); initRMQ(); done! [rmq on depth]
