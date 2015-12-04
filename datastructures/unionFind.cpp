@@ -1,6 +1,8 @@
 // Laufzeit: O(n*alpha(n))
-// "size" ist obere Schranke für die Höhe der Bäume.
-vector<int> parent, size;
+// "height" ist obere Schranke für die Höhe der Bäume. Sobald Pfadkompression
+// angewendet wurde, ist die genaue Höhe nicht mehr effizient berechenbar.
+vector<int> parent // Initialisiere mit Index im Array.
+vector<int> height; // Initialisiere mit 0.
 
 int findSet(int n) { // Pfadkompression
 	if (parent[n] != n) parent[n] = findSet(parent[n]);
@@ -8,11 +10,11 @@ int findSet(int n) { // Pfadkompression
 }
 
 void linkSets(int a, int b) { // Union by rank.
-	if (size[a] < size[b]) parent[a] = b;
-	else if (size[b] < size[a]) parent[b] = a;
+	if (height[a] < height[b]) parent[a] = b;
+	else if (height[b] < height[a]) parent[b] = a;
 	else {
 		parent[a] = b;
-		size[b]++;
+		height[b]++;
 	}
 }
 
