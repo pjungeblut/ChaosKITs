@@ -1,35 +1,74 @@
-// Laufzeit: O(|V|^2 * |E|^2)
-int s, t, f, c; // Quelle, Senke, single flow, single cost
-int res[MAX_V][MAX_V];
-vector<edge> edges;
-vector<int> p, dist;
+typedef long long ll;
+static const ll flowlimit = 1LL << 60; // Should be bigger than the max flow.
+struct MinCostFlow { // Should be initialized with new.
+	static const int maxn = 400; // Should be bigger than the #vertices.
+	static const int maxm = 5000; //#edges.
+	struct edge { int node; int next; ll flow; ll value; } edges[maxm << 1];
+	int graph[maxn], queue[maxn], pre[maxn], con[maxn], n, m, source, target, top;
+	bool inqueue[maxn];
+	ll maxflow, mincost, dis[maxn];
 
-void augment(int v, int minEdge) {
-	if (v == s) { f = minEdge; c = minEdge * dist[t]; return; } // c = minEdge * dist[t] added
-	else if (p[v] != -1) {
-		augment(p[v], min(minEdge, res[p[v]][v]));
-		res[p[v]][v] -= f; res[v][p[v]] += f;
-}}
+	MinCostFlow() { memset(graph, -1, sizeof(graph)); top = 0; }
 
-// Initialisiere res, edges, s und t.
-int minCostMaxFlow(int v) { // v = #Knoten
-	int mf = 0, mc = 0, i, j;
-	while (true) {
-		f = 0; c = 0;
-		dist.assign(v, INF); dist[s] = 0;
-		p.assign(v, -1);
-		for (i = 0; i < v - 1; i++) { // Bellmann-Ford.
-			for (j = 0; j < (int)edges.size(); j++) {
-				if (res[edges[j].from][edges[j].to] > 0 && dist[edges[j].from] + edges[j].cost < dist[edges[j].to]) {
-					dist[edges[j].to] = dist[edges[j].from] + edges[j].cost;
-					p[edges[j].to] = edges[j].from;
+	inline int inverse(int x) {	return 1 + ((x >> 1) << 2) - x; }
+
+	// Directed edge from u to v, capacity c, weight w.
+	inline int addedge(int u, int v, int c, int w) {
+		edges[top].value = w; edges[top].flow = c; edges[top].node = v;
+		edges[top].next = graph[u];	graph[u] = top++;
+		edges[top].value = -w; edges[top].flow = 0; edges[top].node = u;
+		edges[top].next = graph[v];	graph[v] = top++;
+		return top - 2;
+	}
+
+	bool SPFA() {
+		int point, node, now, head = 0, tail = 1;
+		memset(pre, -1, sizeof(pre));
+		memset(inqueue, 0, sizeof(inqueue));
+		memset(dis, 0x7F, sizeof(dis));
+		dis[source] = 0; queue[0] = source;
+		pre[source] = source; inqueue[source] = true;
+
+		while (head != tail) {
+			now = queue[head++];
+			point = graph[now];
+			inqueue[now] = false;
+			head %= maxn;
+
+			while (point != -1) {
+				node = edges[point].node;
+				if (edges[point].flow > 0 && dis[node] > dis[now] + edges[point].value) {
+					dis[node] = dis[now] + edges[point].value;
+					pre[node] = now; con[node] = point;
+					if (!inqueue[node]) {
+						inqueue[node] = true; queue[tail++] = node;
+						tail %= maxn;
+					}
 				}
+				point = edges[point].next;
 			}
 		}
-		
-		augment(t, INF); // Gefunden Pfad zum Fluss hinzufügen.
-		if (f == 0) break;
-		mf += f; mc += c;
+		return pre[target] != -1;
 	}
-	return mf; // mf is der maximale Fluss, mc sind die minimalen Kosten.
-}
+
+	void extend() {
+		ll w = flowlimit;
+		for (int u = target; pre[u] != u; u = pre[u]) {
+			w = min(w, edges[con[u]].flow);
+		}
+		maxflow += w;
+		mincost += dis[target] * w;
+		for (int u = target; pre[u] != u; u = pre[u]) {
+			edges[con[u]].flow -= w;
+			edges[inverse(con[u])].flow += w;
+		}
+	}
+
+	void mincostflow() {
+		maxflow = 0;
+		mincost = 0;
+		while (SPFA()) {
+			extend();
+		}
+	}
+};
