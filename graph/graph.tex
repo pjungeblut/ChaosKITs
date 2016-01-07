@@ -30,10 +30,12 @@ Erkennt negative Zyklen.
 \subsubsection{\textsc{Floyd-Warshall}-Algorithmus}
 \lstinputlisting{graph/floydWarshall.cpp}
 \begin{itemize}
-	\item \textsc{Floyd-Warshall} findet auch negative Kreise.
-	Es existiert genau dann ein negativer Kreis, wenn \lstinline{dist[i][i] < 0} ist.
-	\item \textbf{Evtl. überschreibt die Eingabe die Nullen auf der Hauptdiagonalen.}
-	Das ist fast immer ungewollt! 
+	\item Evtl. überschreibt die Eingabe die Nullen auf der Hauptdiagonalen.
+	Nur negative Werte sollten die Nullen überschreiben.
+	\item Von parallelen Kanten sollte nur die günstigste gespeichert werden.
+	\item Knoten \lstinline{i} liegt genau dann auf einem negativen Kreis, wenn \lstinline{dist[i][i] < 0} ist.
+	\item Ein u-v-Pfad existiert nicht, wenn \lstinline{dist[u][v] == INF}.
+	\item Gibt es einen Knoten \lstinline{c}, sodass \lstinline{dist[u][c] != INF && dist[c][v] != INF && dist[c][c] < 0}, wird der u-v-Pfad beliebig kurz.
 \end{itemize}
 
 \subsection{Strongly Connected Components (\textsc{Tarjans}-Algorithmus)}
