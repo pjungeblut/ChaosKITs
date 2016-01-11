@@ -26,7 +26,7 @@ Sei $0 \leq x < n$. Definiere $d := gcd(x, n)$.
 \subsubsection{Mod-Exponent über $\mathbb{F}_p$}
 \lstinputlisting{math/modExp.cpp}
 
-\subsection{LGS über $\mathbb{F}_p$}
+\subsubsection{LGS über $\mathbb{F}_p$}
 \lstinputlisting{math/lgsFp.cpp}
 
 \subsection{Binomialkoeffizienten}
@@ -49,6 +49,16 @@ Obiger Code findet kein maximales Teilfeld, das über das Ende hinausgeht. Dazu:
 	\item berechne minimales Teilfeld, das nicht über den Rand geht (analog)
 	\item nimm Maximum aus gefundenem Maximalem und Allem\textbackslash Minimalem
 \end{enumerate}
+
+\subsection{Polynome \& FFT}
+Multipliziert Polynome $A$ und $B$.
+\begin{itemize}
+	\item $\deg(A * B) = \deg(A) + \deg(B)$
+	\item Vektoren \lstinline{a} und \lstinline{b} müssen mindestens Größe $\deg(A * B) + 1$ haben.
+	Größe muss eine Zweierpotenz sein.
+	\item Für ganzzahlige Koeffizienten: \lstinline{(int)round(real(a[i]))}
+\end{itemize}
+\lstinputlisting{math/fft.cpp}
 
 \subsection{Kombinatorik}
 
