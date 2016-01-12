@@ -1,3 +1,5 @@
+// Laufzeit: O(n log(n)).
+typedef complex<double> cplx; // Eigene Implementierung ist noch deutlich schneller.
 // s.size() muss eine Zweierpotenz sein!
 vector<cplx> fft(const vector<cplx> &a, bool inverse = 0) {
 	int logn = 1, n = a.size();
