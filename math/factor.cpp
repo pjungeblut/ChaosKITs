@@ -1,19 +1,20 @@
-const ll PRIME_SIZE = 10000000;
-vector<int> primes; //call primeSieve(PRIME_SIZE); before
-
-//Factorize the number n
-vector<int> factorize(ll n) {
-	vector<int> factor;
-	ll num = n;
-	int pos = 0;
-	while(num != 1)  {
-		if(num % primes[pos] == 0) {
-			num /= primes[pos];
-			factor.push_back(primes[pos]);
-		}
-		else pos++;
-		if(primes[pos]*primes[pos] > num) break;
-	}
-	if(num != 1) factor.push_back(num);
-	return factor;
+typedef pair<int,int> ii;
+//Factorize a number n in its prime factors
+//Call primeSieve-method before with N > sqrt(n)
+//Return: Returns a vector of pairs, where the first entry in the pair is
+//the prime factor p and the second counts how many times p divides n
+vector<ii> factorize(ll n) {
+  vector<ii> fact; ll num = n, i = 0, c = 0;
+  while(num != 1) {
+    if(num % primes[i] == 0) {
+      c++; num /= primes[i];
+    } else {
+      if(c > 0)
+	      fact.push_back(make_pair(primes[i],c));
+      i++; c = 0;
+      if(primes[i]*primes[i] > num) break;
+    }
+  }
+  if(num != 1) fact.push_back(make_pair(num,c+1));
+  return fact;
 }
