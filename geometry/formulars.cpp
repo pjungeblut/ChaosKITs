@@ -46,7 +46,7 @@ bool similar (pt a1, pt b1, pt c1, pt a2, pt b2, pt c2) {
 // Einschränken der Rückgabe auf [-1,1] ist sicherer gegen Overflows.
 double orientation(pt a, pt b, pt c) {
 	double orien = cross(b - a, c - a);
-	if (abs(orien) < EPSILON) return 0;
+	if (abs(orien) < EPSILON) return 0; // Might need large EPSILON: ~1e-6
 	return orien < 0 ? -1 : 1;
 }
 
@@ -70,10 +70,32 @@ bool pointOnLine(pt a, pt b, pt p) {
 }
 
 // Liegt p auf der Strecke a-b?
-bool pointOnLineSegment(pt p, pt a, pt b) {
+bool pointOnLineSegment(pt a, pt b, pt p) {
 	if (orientation(a, b, p) != 0) return false;
 	return real(p) >= min(real(a), real(b)) && real(p) <= max(real(a), real(b)) &&
 			imag(p) >= min(imag(a), imag(b)) && imag(p) <= max(imag(a), imag(b));
+}
+
+// Entfernung von Punkt p zur Strecke a-b.
+double distToSegment(pt a, pt b, pt p) {
+  if (a == b) return abs(p - a);
+    double segLength = abs(a - b);
+		double u = ((real(p) - real(a)) * (real(b) - real(a)) +
+				(imag(p) - imag(a)) * (imag(b) - imag(a))) /
+				(segLength * segLength);
+    pt projection(real(a) + u * (real(b) - real(a)), imag(a) + u * (imag(b) - imag(a)));
+    double projectionDist = abs(p - projection);
+    if (!pointOnLineSegment(a, b, projection)) projectionDist = 1e30;
+    return min(projectionDist, min(abs(p - a), abs(p - b)));
+}
+
+// Kürzeste Entfernung zwischen den Strecken a-b und c-d.
+double distBetweenSegments(pt a, pt b, pt c, pt d) {
+	if (lineSegmentIntersection(a, b, c, d)) return 0.0;
+	double result = distToSegment(a, b, c);
+	result = min(result, distToSegment(a, b, d));
+	result = min(result, distToSegment(c, d, a));
+	return min(result, distToSegment(c, d, b));
 }
 
 // Liegt d in der gleichen Ebene wie a, b, und c?
