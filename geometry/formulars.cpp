@@ -106,9 +106,9 @@ bool isCoplanar(pt a, pt b, pt c, pt d) {
 // Berechnet den Flächeninhalt eines Polygons (nicht selbstschneidend).
 double areaOfPolygon(vector<pt> &polygon) { // Jeder Eckpunkt nur einmal im Vektor.
 	double res = 0; int n = polygon.size();
-	for (int i = 0; i < (int)polygon.size(); i++)
+	for (int i = 0; i < n; i++)
 		res += real(polygon[i]) * imag(polygon[(i + 1) % n]) - real(polygon[(i + 1) % n]) * imag(polygon[i]);
-	return 0.5 * abs(res);
+	return 0.5 * res; // Positiv, wenn Punkte gegen den Uhrzeigersinn gegeben sind. Sonst negativ.
 }
 
 // Testet, ob sich zwei Rechtecke (p1, p2) und (p3, p4) schneiden (jeweils gegenüberliegende Ecken).
