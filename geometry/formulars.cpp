@@ -50,13 +50,39 @@ double orientation(pt a, pt b, pt c) {
 	return orien < 0 ? -1 : 1;
 }
 
-// Streckenschnitt zwischen a-b und c-d.
+// Test auf Streckenschnitt zwischen a-b und c-d.
 bool lineSegmentIntersection(pt a, pt b, pt c, pt d) {
 	if (orientation(a, b, c) == 0 && orientation(a, b, d) == 0) { // Falls kollinear.
 		double dist = abs(a - b);
 		return (abs(a - c) <= dist && abs(b - c) <= dist) || (abs(a - d) <= dist && abs(b - d) <= dist);
 	}
 	return orientation(a, b, c) * orientation(a, b, d) <= 0 && orientation(c, d, a) * orientation(c, d, b) <= 0;
+}
+
+// Berechnet die Schnittpunkte der Strecken a-b und c-d.
+// Enthält entweder keinen Punkt, den einzigen Schnittpunkt oder die Endpunkte der Schnittstrecke.
+// Achtung: operator<, min, max müssen selbst geschrieben werden!
+vector<pt> lineSegmentIntersection(pt a, pt b, pt c, pt d) {
+	vector<pt> result;
+	if (orientation(a, b, c) == 0 && orientation(a, b, d) == 0 &&
+			orientation(c, d, a) == 0 && orientation(c, d, b) == 0) {
+		pt minAB = min(a, b), maxAB = max(a, b), minCD = min(c, d), maxCD = max(c, d);
+		if (minAB < minCD && maxAB < minCD) return result;
+		if (minCD < minAB && maxCD < minAB) return result;
+		pt start = max(minAB, minCD), end = min(maxAB, maxCD);
+		result.push_back(start);
+		if (start != end) result.push_back(end); 
+		return result;
+	}
+	double x1 = real(b) - real(a), y1 = imag(b) - imag(a);
+	double x2 = real(d) - real(c), y2 = imag(d) - imag(c);
+	double u1 = (-y1 * (real(a) - real(c)) + x1 * (imag(a) - imag(c))) / (-x2 * y1 + x1 * y2);
+	double u2 = (x2 * (imag(a) - imag(c)) - y2 * (real(a) - real(c))) / (-x2 * y1 + x1 * y2);
+	if (u1 >= 0 && u1 <= 1 && u2 >= 0 && u2 <= 1) {
+		double x = real(a) + u2 * x1, y = imag(a) + u2 * y1;
+		result.push_back(pt(x, y));
+	}
+	return result;
 }
 
 // Entfernung von Punkt p zur Gearden durch a-b.
