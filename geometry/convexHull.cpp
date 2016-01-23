@@ -1,42 +1,32 @@
-struct point {
-  double x, y;
-  point(){} point(double x, double y) : x(x), y(y) {}
-  bool operator <(const point &p) const {
-    return x < p.x || (x == p.x && y < p.y);
-  }
-};
- 
-// 2D cross product.
-// Return a positive value, if OAB makes a counter-clockwise turn,
-// negative for clockwise turn, and zero if the points are collinear.
-double cross(const point &O, const point &A, const point &B){
-  double d = (A.x - O.x) * (B.y - O.y) - (A.y - O.y) * (B.x - O.x);
-  if (fabs(d) < 1e-9) return 0.0;
-  return d;
+// Laufzeit: O(n*log(n))
+typedef pair<ll, ll> pt;
+
+// >0 => PAB dreht gegen den Uhrzeigersinn.
+// <0 => PAB dreht im Uhrzeigersinn.
+// =0 => PAB sind kollinear.
+ll cross(const pt p, const pt a, const pt b) {
+  return (a.first - p.first) * (b.second - p.second) -
+      (a.second - p.second) * (b.first - p.first);
 }
- 
-// Returns a list of points on the convex hull in counter-clockwise order.
-// Colinear points are not in the convex hull, if you want colinear points in the hull remove "=" in the CCW-Test
-// Note: the last point in the returned list is the same as the first one.
-vector<point> convexHull(vector<point> P){
-  int n = P.size(), k = 0;
-  vector<point> H(2*n);
-  
-  // Sort points lexicographically
-  sort(P.begin(), P.end());
-  
-  // Build lower hull
+
+// Punkte auf der konvexen Hülle, gegen den Uhrzeigersinn sortiert.
+// Kollineare Punkte sind nicht enthalten. Entferne "=" im CCW-Test um sie aufzunehmen.
+// Achtung: Der erste und letzte Punkt im Ergebnis sind gleich.
+// Achtung: Alle Punkte müssen verschieden sein.
+vector<pt> convexHull(vector<pt> p){
+  int n = p.size(), k = 0;
+  vector<pt> h(2 * n);
+  sort(p.begin(), p.end());
+  // Untere Hülle.
   for (int i = 0; i < n; i++) {
-    while (k >= 2 && cross(H[k-2], H[k-1], P[i]) <= 0.0) k--;
-    H[k++] = P[i];
+    while (k >= 2 && cross(h[k - 2], h[k - 1], p[i]) <= 0.0) k--;
+    h[k++] = p[i];
   }
-  
-  // Build upper hull
-  for (int i = n-2, t = k+1; i >= 0; i--) {
-    while (k >= t && cross(H[k-2], H[k-1], P[i]) <= 0.0) k--;
-    H[k++] = P[i];
+  // Obere Hülle.
+  for (int i = n - 2, t = k + 1; i >= 0; i--) {
+    while (k >= t && cross(h[k - 2], h[k - 1], p[i]) <= 0.0) k--;
+    h[k++] = p[i];
   }
-  
-  H.resize(k);
-  return H;
+  h.resize(k);
+  return h;
 }
