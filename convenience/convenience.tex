@@ -6,7 +6,14 @@
 \subsection{Template}
 \lstinputlisting{convenience/template.cpp}
 
-\subsection{Deutsches Tatstaturlayout}
+\subsection{Sonstiges}
 \begin{lstlisting}
+// Setzt das deutsche Tastaturlayout.
 setxkbmap de
+
+// Schnelle Ein-/Ausgabe mit cin/cout.
+ios::sync_with_stdio(false);
+
+// Set mit eigener Sortierfunktion. Typ muss nicht explizit angegeben werden.
+set<point2, decltype(comp)> set1(comp);
 \end{lstlisting}
