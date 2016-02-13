@@ -1,6 +1,6 @@
-//theoretical: n < 318,665,857,834,031,151,167,461 ( > 10^23)
-//but: n ~<= 10^18 (because of MAX(ll))
-//O(logn)
+// Theoretisch: n < 318,665,857,834,031,151,167,461 (> 10^23)
+// Praktisch: n <= 10^18 (long long)
+// Laufzeit: O(log n)
 bool isPrime(ll n) {
 	if(n == 2) return true;
 	if(n < 2 || n % 2 == 0) return false;
@@ -13,7 +13,6 @@ bool isPrime(ll n) {
 			v = mult_mod(v, v, n);
 			if(v == n-1 || v <= 1) break;
 		}
-		
 		if(v != n-1) return false;
 	}
 	return true;
