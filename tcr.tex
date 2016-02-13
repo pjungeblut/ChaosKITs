@@ -21,6 +21,14 @@
 \chead{ChaosKITs}
 \ohead{\pagemark}
 
+% Colors, used for syntax highlighting.
+% To print this document, set all colors to black!
+\usepackage{xcolor}
+\definecolor{keyword}{rgb}{0, 0, 1}
+\definecolor{string}{rgb}{1, 0, 0}
+\definecolor{comment}{rgb}{0.2, 0.6, 0.2}
+\definecolor{identifier}{rgb}{0, 0, 0}
+
 % Source code listings.
 \usepackage{pxfonts}
 \usepackage{listings}
@@ -39,9 +47,10 @@
 	showspaces=false,
 	showstringspaces=false,
 	extendedchars=true,
-	keywordstyle=\bfseries,
-	stringstyle=\bfseries,
-	commentstyle=\itshape\bfseries,
+	keywordstyle=\color{keyword}\bfseries,
+	stringstyle=\color{string}\bfseries,
+	commentstyle=\color{comment}\bfseries,
+  identifierstyle=\color{identifier},
 	frame=trbl
 }
 % Listings doesn't support UTF8. This is just enough for German umlauts.
