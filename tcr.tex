@@ -7,6 +7,7 @@
 
 % Display math.
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{amssymb}
 
 % Nice enumerations without wasting space above and below.
@@ -72,10 +73,64 @@
 \usepackage{multicol}
 \usepackage{multirow}
 
+% Automatically have table fill horizontal space.
+\usepackage{tabularx}
+
 % New enviroment for remarks.
 \newtheorem{bem}{Bemerkung}
 
+% New commands for math operators.
+% Binomial coefficients.
+\renewcommand{\binom}[2]{
+  \biggl(
+  \begin{matrix}
+    #1 \\
+    #2
+  \end{matrix}
+  \biggr)
+}
+% Euler numbers, first kind.
+\newcommand{\eulerI}[2]{
+  \biggl\langle
+  \begin{matrix}
+    #1 \\
+    #2
+  \end{matrix}
+  \biggr\rangle
+}
+% Euler numbers, second kind.
+\newcommand{\eulerII}[2]{
+  \biggl\langle
+  \negthinspace
+  \biggl\langle
+  \begin{matrix}
+    #1 \\
+    #2
+  \end{matrix}
+  \biggr\rangle
+  \negthinspace
+  \biggr\rangle
+}
+% Stirling numbers, first kind.
+\newcommand{\stirlingI}[2]{
+  \biggl[
+  \begin{matrix}
+    #1 \\
+    #2
+  \end{matrix}
+  \biggr]
+}
+% Stirling numbers, second kind.
+\newcommand{\stirlingII}[2]{
+  \biggl\{
+  \begin{matrix}
+    #1 \\
+    #2
+  \end{matrix}
+  \biggr\}
+}
 
+% Title and author information.
 \title{Team Contest Reference}
 \author{ChaosKITs \\ Karlsruhe Institute of Technology}
 \begin{document}
