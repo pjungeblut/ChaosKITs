@@ -3,11 +3,11 @@
 \subsection{Zeileneingabe}
 \lstinputlisting{convenience/split.cpp}
 
-\subsection{Template}
-\lstinputlisting{convenience/template.cpp}
-
 \subsection{Sonstiges}
 \begin{lstlisting}
+// Alles-Haeder.
+#include <bits/stdc++.h>
+
 // Setzt das deutsche Tastaturlayout.
 setxkbmap de
 
@@ -16,4 +16,7 @@ ios::sync_with_stdio(false);
 
 // Set mit eigener Sortierfunktion. Typ muss nicht explizit angegeben werden.
 set<point2, decltype(comp)> set1(comp);
+
+// PI
+#define PI (2*acos(0))
 \end{lstlisting}
