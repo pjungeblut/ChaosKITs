@@ -1,3 +1,4 @@
+// Laufzeit: O(nm), Speicher: O(m), n = #s1, m = #s2
 int levenshtein(string& s1, string& s2) {
 	int len1 = s1.size(), len2 = s2.size();
 	vector<int> col(len2 + 1), prevCol(len2 + 1);

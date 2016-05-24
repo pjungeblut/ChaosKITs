@@ -1,14 +1,14 @@
-//nur fuer kleinbuchstaben!
+// Implementierung für Kleinbuchstaben.
 struct node {
 	node *(e)[26];
-	int c = 0;//anzahl der woerter die an dem node enden.
+	int c = 0; // Anzahl der Wörter, die an diesem node enden.
 	node() { for(int i = 0; i < 26; i++) e[i] = NULL; }	
 };
 
 void insert(node *root, string *txt, int s) {
-	if(s >= txt->length()) root->c++;
+	if(s == txt->length()) root->c++;
 	else {
-		int idx = (int)((*txt).at(s) - 'a');
+		int idx = (int)(*txt[s] - 'a');
 		if(root->e[idx] == NULL) {
 			root->e[idx] = new node();
 		}
@@ -17,8 +17,8 @@ void insert(node *root, string *txt, int s) {
 }
 
 int contains(node *root, string *txt, int s) {
-	if(s >= txt->length()) return root->c;
-	int idx = (int)((*txt).at(s) - 'a');
+	if(s == txt->length()) return root->c;
+	int idx = (int)(*txt[s] - 'a');
 	if(root->e[idx] != NULL) {
 			return contains(root->e[idx], txt, s+1);
 	} else return 0;
