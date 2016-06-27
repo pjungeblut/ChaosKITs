@@ -1,8 +1,8 @@
 vector<int> FT; //Fenwick-Tree
 
 //Build an Fenwick-Tree over an array a. Time Complexity: O(n*log(n))
-buildFenwickTree(vector<int>& a) {
-  n = a.size();
+void buildFenwickTree(vector<int>& a) {
+  int n = a.size();
   FT.assign(n+1,0);
   for(int i = 0; i < n; i++)  updateFT(i,a[i]);
 }
