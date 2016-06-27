@@ -1,4 +1,4 @@
-#Most important function!!!11elf
+// Laufzeit: O(#game)
 bool WinNimm(vector<int> game) {
 	int result = 0;
 	for(int s: game) result ^= s;

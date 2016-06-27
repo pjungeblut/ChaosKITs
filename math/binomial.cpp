@@ -1,10 +1,10 @@
-ll calc_binom(ll N, ll K) {
+// Laufzeit: O(k)
+ll calc_binom(ll n, ll k) {
    ll r = 1, d;
-   if (K > N) return 0;
-   for (d = 1; d <= K; d++) {
-      r *= N--;
+   if (k > n) return 0;
+   for (d = 1; d <= k; d++) {
+      r *= n--;
       r /= d;
    }
    return r;
 }
-

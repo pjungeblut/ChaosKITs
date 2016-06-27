@@ -1,4 +1,4 @@
-//0<=a,b <=n and n <= MAX(ll)/2
+// Laufzeit: O(log(b))
 ll mult_mod(ll a, ll b, ll n) {
 	if(a == 0 || b == 0) return 0;
 	if(b == 1) return a % n;
@@ -7,7 +7,7 @@ ll mult_mod(ll a, ll b, ll n) {
 	else return mult_mod((a + a) % n, b / 2, n);
 }
 
-//0<=a,b<=n and n <= MAX(ll)/2
+// Laufzeit: O(log(b))
 ll pow_mod(ll a, ll b, ll n) {
 	if(b == 0) return 1;
 	if(b == 1) return a % n;

@@ -1,4 +1,4 @@
-vector<string> split(string &s, string delim) { //zerlegt s anhand aller Zeichen in delim
+vector<string> split(string &s, string delim) { // Zerlegt s anhand aller Zeichen in delim.
 	vector<string> result; char *token;
 	token = strtok((char*)s.c_str(), (char*)delim.c_str());
 	while (token != NULL) {

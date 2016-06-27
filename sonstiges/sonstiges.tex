@@ -8,6 +8,9 @@
 	\item Genau dann lösbar, wenn keine Variable mit ihrer Negation in einer SCC liegt.
 \end{enumerate}
 
+\subsection{Zeileneingabe}
+\lstinputlisting{sonstiges/split.cpp}
+
 \subsection{Bit Operations}
 \lstinputlisting{sonstiges/bitOps.cpp}
 
@@ -59,3 +62,28 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	Lösung: Sortiere Knoten links aufsteigend nach Gewicht, danach nutze normlen Algorithmus (\textsc{Kuhn}, Seite \pageref{kuhn})
 	\item \textbf{Tobi, cool down!}
 \end{itemize}
+
+\subsection{Sonstiges}
+\begin{lstlisting}
+// Alles-Header.
+#include <bits/stdc++.h>
+
+// Setzt das deutsche Tastaturlayout.
+setxkbmap de
+
+// Schnelle Ein-/Ausgabe mit cin/cout.
+ios::sync_with_stdio(false);
+
+// Set mit eigener Sortierfunktion. Typ muss nicht explizit angegeben werden.
+set<point2, decltype(comp)> set1(comp);
+
+// PI
+#define PI (2*acos(0))
+
+// STL-Debugging, Compiler flags.
+-D_GLIBCXX_DEBUG
+#define _GLIBCXX_DEBUG
+
+// 128-Bit Integer. Muss zum Einlesen/Ausgeben in einen int oder long long gecastet werden.
+__int128
+\end{lstlisting}

@@ -1,15 +1,14 @@
-//lsb: 0-th bit, msb: n-th bit
-//get j-th bit
+// Bit an Position j auslesen.
 (a & (1 << j)) != 0
-//set j-th bit
+// Bit an Position j setzen.
 a |= (1 << j)
-//clear j-th bit
+// Bit an Position j löschen.
 a &= ~(1 << j)
-//toggle j-th bit
+// Bit an Position j umkehren.
 a ^= (1 << j)
-//get value of least significant bit set
+// Wert des niedrigsten gesetzten Bits.
 (a & -a)
-//turn on all bits
+// Setzt alle Bits auf 1.
 a = -1
-//turn on first n bits (be aware of overflows)
+// Setzt die ersten n Bits auf 1. Achtung: Overflows.
 a = (1 << n) - 1

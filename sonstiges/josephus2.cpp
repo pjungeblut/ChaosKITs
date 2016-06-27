@@ -1,4 +1,4 @@
-int rotateLeft(int n) { //returns the number of the last survivor (1 based)
+int rotateLeft(int n) { // Gibt Index des letzten Überlebenden zurück, 1-basiert.
 	for (int i = 31; i >= 0; i--)
 		if (n & (1 << i)) {
 			n &= ~(1 << i);

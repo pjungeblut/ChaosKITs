@@ -1,4 +1,4 @@
-// Sieb des Eratosthenes. Laufzeit: O(n * log log n)
+// Laufzeit: O(n * log log n)
 #define N 100000001 // Bis 10^8 in unter 64MB Speicher.
 bitset<N / 2> isPrime;
 
