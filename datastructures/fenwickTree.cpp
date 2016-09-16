@@ -1,6 +1,11 @@
 vector<int> FT; //Fenwick-Tree
 int n;
 
+//Adds val to index i. Time Complexity O(log(n))
+void updateFT(int i, int val) {
+	i++; while(i <= n) { FT[i] += val; i += (i & (-i)); }
+}
+
 //Build an Fenwick-Tree over an array a. Time Complexity: O(n*log(n))
 void buildFenwickTree(vector<int>& a) {
   n = a.size();
@@ -14,9 +19,3 @@ int prefix_sum(int i) {
   while(i > 0) { sum += FT[i]; i -= (i & (-i)); }	
   return sum;
 }
-
-//Adds val to index i. Time Complexity O(log(n))
-void updateFT(int i, int val) {
-	i++; while(i <= n) { FT[i] += val; i += (i & (-i)); }
-}
-	
