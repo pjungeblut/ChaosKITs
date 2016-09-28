@@ -1,9 +1,7 @@
 // Laufzeit: O((|E|+|V|)*log |V|) 
 void dijkstra(int start) {
 	priority_queue<ii, vector<ii>, greater<ii> > pq;
-	vector<int> dist, parent;
-	dist.assign(NUM_VERTICES, INF);
-	parent.assign(NUM_VERTICES, -1);
+	vector<int> dist(NUM_VERTICES, INF), parent(NUM_VERTICES, -1);
 
 	dist[start] = 0;
 	pq.push(ii(0, start));
@@ -14,9 +12,8 @@ void dijkstra(int start) {
 		
 		if (curDist > dist[curNode]) continue;
 		
-		for (int i = 0; i < (int)adjlist[curNode].size(); i++) {
-			int nextNode = adjlist[curNode][i].first, nextDist = curDist + adjlist[curNode][i].second;
-			
+		for (auto n : adjlist[curNode]) {
+			int nextNode = n.first, nextDist = curDist + n.second;
 			if (nextDist < dist[nextNode]) {
 				dist[nextNode] = nextDist; parent[nextNode] = curNode;
 				pq.push(ii(nextDist, nextNode));
