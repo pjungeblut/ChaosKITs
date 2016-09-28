@@ -2,9 +2,10 @@
 // Findet mehrere Patterns gleichzeitig in einem String.
 // 1) Wurzel erstellen: vertex *automaton = new vertex();
 // 2) Mit addString(automaton, s, idx); Patterns hinzufügen.
-// 3) finishAutomaton aufrufen.
-// 4) Mit automaton = go(automaton, c) in nächsten Zustand wechseln. Wenn patterns-Vektor nicht leer ist:
-//    Hier enden alle anthaltenen Patterns.
+// 3) finishAutomaton(automaton) aufrufen.
+// 4) Mit automaton = go(automaton, c) in nächsten Zustand wechseln. DANACH: Wenn patterns-Vektor nicht leer
+//    ist: Hier enden alle enthaltenen Patterns.
+// ACHTUNG: Die Zahlenwerte der auftretenden Buchstaben müssen zusammenhängend sein und bei 0 beginnen!
 struct vertex {
   vertex *next[ALPHABET_SIZE], *failure;
   char character; 
