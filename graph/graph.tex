@@ -1,8 +1,6 @@
 \section{Graphen}
 
 \subsection{Minimale Spannbäume}
-% Add an implementation.
-Benutze Algorithmus von \textsc{Kruskal} oder Algorithmus von \textsc{Prim}.
 
 \paragraph{Schnitteigenschaft}
 Für jeden Schnitt $C$ im Graphen gilt:
@@ -53,18 +51,14 @@ Erkennt negative Zyklen.
 	\item Der Code unten läuft in Linearzeit.
 	Wenn das nicht notwenidg ist (oder bestimmte Sortierungen verlangt werden), gehts mit einem \lstinline{set} einfacher.
 \end{itemize}
-\begin{figure}[h]
-	\begin{lstlisting}
-	VISIT(v):
-		forall e=(v,w) in E
-		delete e from E
-		VISIT(w)
-		print e
-	\end{lstlisting}
-	\caption{Idee für Eulerzyklen}
-\end{figure}
+\begin{lstlisting}
+VISIT(v):
+	forall e=(v,w) in E
+	delete e from E
+	VISIT(w)
+	print e
+\end{lstlisting}
 \lstinputlisting{graph/euler.cpp}
-\paragraph{Achtung:}
 \begin{itemize}
 	\item Die Ausgabe erfolgt in falscher Reihenfolge.
 	\item Algorithmus schlägt nicht fehl, falls kein Eulerzyklus existiert.

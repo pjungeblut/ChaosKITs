@@ -1,6 +1,3 @@
-typedef pair<int,int> ii;
-typedef vector<pair<int,ii>> graph;
-
 //Takes a Graph g (EdgeList!!!) with N nodes and computes the MST and Cost of it. Runtime: O(|E|*log(|E|))
 //Requires UnionFind-Datastructure!!!
 pair<graph,int> buildMST(int N, graph& g) {
