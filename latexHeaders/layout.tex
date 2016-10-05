@@ -1,0 +1,32 @@
+% Don't waste space at the page borders. Use two column layout.
+\usepackage[
+  top=2cm,
+  bottom=1cm,
+  left=1cm,
+  right=1cm,
+  landscape
+]{geometry}
+
+
+% Headline and bottomline.
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{\university}
+\chead{\teamname}
+\ohead{\pagemark}
+
+% Shift the title up to waste less space.
+\usepackage{titling}
+\setlength{\droptitle}{-8em}
+
+% Nice enumerations without wasting space above and below.
+\usepackage{enumitem}
+\setlist{nosep}
+
+% Multicol layout for the table of contents.
+\usepackage{multicol}
+\usepackage{multirow}
+
+% Automatically have table fill horizontal space.
+\usepackage{tabularx}

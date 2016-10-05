@@ -1,0 +1,44 @@
+% Colors, used for syntax highlighting.
+% To print this document, set all colors to black!
+\usepackage{xcolor}
+\definecolor{keyword}{rgb}{0, 0, 1}
+\definecolor{string}{rgb}{1, 0, 0}
+\definecolor{comment}{rgb}{0.2, 0.6, 0.2}
+\definecolor{identifier}{rgb}{0, 0, 0}
+
+% Source code listings.
+\usepackage{pxfonts}
+\usepackage{listings}
+\lstset{
+	language={C++},
+	numbers=left,
+	stepnumber=1,
+	numbersep=6pt,
+	numberstyle=\footnotesize,
+	breaklines=true,
+	breakautoindent=true,
+	breakatwhitespace=false,
+	postbreak=\space,
+	tabsize=2,
+	basicstyle=\ttfamily\footnotesize,
+	showspaces=false,
+	showstringspaces=false,
+	extendedchars=true,
+	keywordstyle=\color{keyword}\bfseries,
+	stringstyle=\color{string}\bfseries,
+	commentstyle=\color{comment}\bfseries,
+  identifierstyle=\color{identifier},
+	frame=trbl
+}
+
+% Listings doesn't support UTF8. This is just enough for German umlauts.
+\lstset{literate=%
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ß}{{\ss}}1
+  {ü}{{\"u}}1
+  {ä}{{\"a}}1
+  {ö}{{\"o}}1
+  {~}{{\textasciitilde}}1
+}
