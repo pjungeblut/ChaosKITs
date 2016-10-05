@@ -66,8 +66,14 @@
   {~}{{\textasciitilde}}1
 }
 
-% Don't waste space at the page borders.
-\usepackage[top=2cm, bottom=1cm, left=1cm, right=1cm]{geometry}
+% Don't waste space at the page borders. Use two column layout.
+\usepackage[
+  top=2cm,
+  bottom=1cm,
+  left=1cm,
+  right=1cm,
+  landscape
+]{geometry}
 
 % Multicol layout for the table of contents.
 \usepackage{multicol}
@@ -130,6 +136,10 @@
   \biggr\}
 }
 
+% Shift the title up to waste less space.
+\usepackage{titling}
+\setlength{\droptitle}{-8em}
+
 % Title and author information.
 \title{Team Contest Reference}
 \author{ChaosKITs \\ Karlsruhe Institute of Technology}
@@ -138,17 +148,20 @@
 % Titlepage with table of contents.
 \maketitle
 \setlength{\columnsep}{1cm}
-\begin{multicols}{2}
+\begin{multicols}{3}
 	\tableofcontents
 \end{multicols}
 \newpage
 
-\input{datastructures/datastructures}
-\input{graph/graph}
-\input{geometry/geometry}
-\input{math/math}
-\input{string/string}
-\input{java/java}
-\input{sonstiges/sonstiges}
+% Content.
+\begin{multicols}{2}
+  \input{datastructures/datastructures}
+  \input{graph/graph}
+  \input{geometry/geometry}
+  \input{math/math}
+  \input{string/string}
+  \input{java/java}
+  \input{sonstiges/sonstiges}
+\end{multicols}
 
 \end{document}
