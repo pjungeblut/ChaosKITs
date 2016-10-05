@@ -1,5 +1,5 @@
 vector<int> data(RMQ_SIZE);
-vector<vector<int>> rmq(floor(log2(RMQ_SIZE)) + 1, vector<int>(RMQ_SIZE));
+vector<vector<int>> rmq(floor(log2(RMQ_SIZE))+1, vector<int>(RMQ_SIZE));
 
 // Baut Struktur auf. O(n*log(n))
 void initRMQ() {
@@ -8,7 +8,8 @@ void initRMQ() {
 			if(i == 0) rmq[0][l] = l;
 			else {
 				int r = l + ss;
-				rmq[i][l] = (data[rmq[i-1][l]] <= data[rmq[i-1][r]] ? rmq[i-1][l] : rmq[i-1][r]);
+				rmq[i][l] = (data[rmq[i-1][l]] <= data[rmq[i-1][r]]) ?
+						rmq[i-1][l] : rmq[i-1][r];
 }}}}
 
 // Gibt den Index des Minimums im Intervall [l,r) zurück. O(1).

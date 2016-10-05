@@ -1,6 +1,7 @@
 // Laufzeit: O(n*alpha(n))
-// "height" ist obere Schranke für die Höhe der Bäume. Sobald Pfadkompression
-// angewendet wurde, ist die genaue Höhe nicht mehr effizient berechenbar.
+// "height" ist obere Schranke für die Höhe der Bäume. Sobald
+// Pfadkompression angewendet wurde, ist die genaue Höhe nicht mehr
+// effizient berechenbar.
 vector<int> parent // Initialisiere mit Index im Array.
 vector<int> height; // Initialisiere mit 0.
 
