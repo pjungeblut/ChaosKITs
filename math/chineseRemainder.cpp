@@ -16,7 +16,7 @@ struct ChineseRemainder {
 		return res;
 	}
 
-	// Fügt Kongruenz l * x = b (mod m) hinzu.
+	// Fügt Kongruenz l * x = r (mod m) hinzu.
 	void addEquation(ll l, ll r, ll m) {
 		lhs.push_back(l);
 		rhs.push_back(r);
