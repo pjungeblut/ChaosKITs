@@ -1,11 +1,6 @@
-struct pt { //complex<double> does not work here, becuase we need to set pt.x and pt.y
-	double x, y;
-	pt() {};
-	pt(double x, double y) : x(x), y(y) {};
-};
-
+// Nicht complex<double> benutzen. Eigene struct schreiben.
 struct line {
-	double a, b, c; //a*x+b*y+c, b=0 <=> vertical line, b=1 <=> otherwise
+	double a, b, c; // ax + by + c = 0; vertikale Line: b = 0, sonst: b = 1
 };
 
 line pointsToLine(pt p1, pt p2) {
