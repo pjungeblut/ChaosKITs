@@ -74,18 +74,18 @@ Gut bei sehr dicht besetzten Graphen.
 \lstinputlisting{graph/pushRelabel.cpp}
 
 \subsubsection{Anwendungen}
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item \textbf{Maximum Edge Disjoint Paths}\newline
 	Finde die maximale Anzahl Pfade von $s$ nach $t$, die keine Kante teilen.
-	\begin{enumerate}
+	\begin{enumerate}[nosep]
 		\item Setze $s$ als Quelle, $t$ als Senke und die Kapazität jeder Kante auf 1.
-		\item Der maximale Fluss entspricht der unterschiedlichen Pfade ohne gemeinsame Kanten.
+		\item Der maximale Fluss entspricht den unterschiedlichen Pfaden ohne gemeinsame Kanten.
 	\end{enumerate}
 	\item \textbf{Maximum Independent Paths}\newline
-	Finde die maximale Anzahl Pfade von $s$ nach $t$, die keinen Knoten teilen.
-	\begin{enumerate}
+	Finde die maximale Anzahl an Pfaden von $s$ nach $t$, die keinen Knoten teilen.
+	\begin{enumerate}[nosep]
 		\item Setze $s$ als Quelle, $t$ als Senke und die Kapazität jeder Kante \emph{und jedes Knotens} auf 1.
-		\item Der maximale Fluss entspricht der unterschiedlichen Pfade ohne gemeinsame Knoten.
+		\item Der maximale Fluss entspricht den unterschiedlichen Pfaden ohne gemeinsame Knoten.
 	\end{enumerate}
 	\item \textbf{Min-Cut}\newline
 	Der maximale Fluss ist gleich dem minimalen Schnitt.

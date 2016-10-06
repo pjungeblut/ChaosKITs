@@ -5,9 +5,12 @@ struct PushRelabel {
 
 	PushRelabel(int n) {
 		this->n = n;
-		memset(capacities, 0L, sizeof(capacities)); memset(flow, 0L, sizeof(flow));
-		memset(excess, 0L, sizeof(excess)); memset(height, 0, sizeof(height));
-		memset(list, 0, sizeof(list)); 	memset(seen, 0, sizeof(seen));
+		memset(capacities, 0L, sizeof(capacities));
+		memset(flow, 0L, sizeof(flow));
+		memset(excess, 0L, sizeof(excess));
+		memset(height, 0, sizeof(height));
+		memset(list, 0, sizeof(list)); 
+		memset(seen, 0, sizeof(seen));
 	}
 
 	inline void addEdge(int u, int v, ll c) { capacities[u][v] += c; }
@@ -30,8 +33,9 @@ struct PushRelabel {
 		while (excess[u] > 0) {
 			if (seen[u] < n) {
 				int v = seen[u];
-				if (capacities[u][v] - flow[u][v] > 0 && height[u] > height[v]) push(u, v);
-				else seen[u]++;
+				if (capacities[u][v] - flow[u][v] > 0 && height[u] > height[v]) {
+					push(u, v);
+				} else seen[u]++;
 			} else {
 				relabel(u);
 				seen[u] = 0;
@@ -39,13 +43,13 @@ struct PushRelabel {
 
 	void moveToFront(int u) {
 		int temp = list[u];
-		for (int i = u; i > 0; i--) 
-			list[i] = list[i - 1];
+		for (int i = u; i > 0; i--) list[i] = list[i - 1];
 		list[0] = temp;
 	}
 
 	ll maxFlow(int source, int target) {
-		for (int i = 0, p = 0; i < n; i++) if (i != source && i != target) list[p++] = i;
+		for (int i = 0, p = 0; i < n; i++)
+			if (i != source && i != target) list[p++] = i;
 
 		height[source] = n;
 		excess[source] = LLONG_MAX / 2;
