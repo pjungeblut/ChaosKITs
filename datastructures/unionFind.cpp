@@ -16,8 +16,7 @@ void linkSets(int a, int b) { // Union by rank.
 	else {
 		parent[a] = b;
 		height[b]++;
-	}
-}
+}}
 
 void unionSets(int a, int b) { // Diese Funktion aufrufen.
 	if (findSet(a) != findSet(b)) linkSets(findSet(a), findSet(b));
