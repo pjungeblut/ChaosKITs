@@ -48,6 +48,8 @@ Erkennt negative Zyklen.
 	\item \textbf{Je nach Aufgabenstellung überprüfen, wie isolierte Punkte interpretiert werden sollen.}
 	\item Der Code unten läuft in Linearzeit.
 	Wenn das nicht notwenidg ist (oder bestimmte Sortierungen verlangt werden), gehts mit einem \lstinline{set} einfacher.
+	\item Algorithmus schlägt nicht fehl, falls kein Eulerzyklus existiert.
+	Die Existenz muss separat geprüft werden.
 \end{itemize}
 \begin{lstlisting}
 VISIT(v):
@@ -57,11 +59,6 @@ VISIT(v):
 	print e
 \end{lstlisting}
 \lstinputlisting{graph/euler.cpp}
-\begin{itemize}
-	\item Die Ausgabe erfolgt in falscher Reihenfolge.
-	\item Algorithmus schlägt nicht fehl, falls kein Eulerzyklus existiert.
-	Die Existenz muss separat geprüft werden.
-\end{itemize}
 
 \subsection{Lowest Common Ancestor}
 \lstinputlisting{graph/LCA.cpp}
