@@ -1,8 +1,7 @@
-// Ford Fulkerson mit Capacity Scaling.
-// Laufzeit: O(|E|^2*log(C))
+// Ford Fulkerson mit Capacity Scaling. Laufzeit: O(|E|^2*log(C))
 struct MaxFlow { // Muss mit new erstellt werden!
-  static const int MAX_N = 500; // #Knoten, kein Einfluss auf die Laufzeit.
-  struct edge { int dest, rev; ll capacity, flow; };
+  static const int MAX_N = 500; // #Knoten, egal für die Laufzeit.
+  struct edge { int dest, rev; ll cap, flow; };
   vector<edge> adjlist[MAX_N];
   int visited[MAX_N] = {0}, target, dfsCounter = 0;
   ll capacity;
@@ -12,12 +11,11 @@ struct MaxFlow { // Muss mit new erstellt werden!
     if (visited[x] == dfsCounter) return 0;
     visited[x] = dfsCounter;
     for (edge &e : adjlist[x]) {
-      if (e.capacity >= capacity && dfs(e.dest)) {
-        e.capacity -= capacity; adjlist[e.dest][e.rev].capacity += capacity;
+      if (e.cap >= capacity && dfs(e.dest)) {
+        e.cap -= capacity; adjlist[e.dest][e.rev].cap += capacity;
         e.flow += capacity; adjlist[e.dest][e.rev].flow -= capacity;
         return 1;
-      }
-    }
+    }}
     return 0;
   }
 
@@ -31,9 +29,7 @@ struct MaxFlow { // Muss mit new erstellt werden!
     target = t;
     ll flow = 0L;
     while (capacity) {
-      while (dfsCounter++, dfs(s)) {
-        flow += capacity;
-      }
+      while (dfsCounter++, dfs(s)) flow += capacity;
       capacity /= 2;
     }
     return flow;
