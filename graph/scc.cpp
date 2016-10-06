@@ -2,49 +2,40 @@
 int counter, sccCounter;
 vector<bool> visited, inStack;
 vector< vector<int> > adjlist;
-vector<int> d, low, sccs;
+vector<int> d, low, sccs; // sccs enthält den Index der SCC pro Knoten.
 stack<int> s;
 
 void visit(int v) {
 	visited[v] = true;
-	d[v] = counter; low[v] = counter; counter++;
-	inStack[v] = true; s.push(v);
-	
-	for (int i = 0; i < (int)adjlist[v].size(); i++) {
-		int u = adjlist[v][i];
+	d[v] = low[v] = counter++;
+	s.push(v); inStack[v] = true;
+
+	for (auto u : adjlist[v]) {
 		if (!visited[u]) {
 			visit(u);
 			low[v] = min(low[v], low[u]);
 		} else if (inStack[u]) {
 			low[v] = min(low[v], low[u]);
-		}
-	}
-	
+	}}
+
 	if (d[v] == low[v]) {
 		int u;
 		do {
 			u = s.top(); s.pop(); inStack[u] = false;
 			sccs[u] = sccCounter;
-		} while(u != v);
+		} while (u != v);
 		sccCounter++;
-	}
-}
+}}
 
 void scc() {
-	// Initialisiere adjlist!
-	visited.clear(); visited.assign(NUM_VERTICES, false);
-	d.clear(); d.resize(NUM_VERTICES);
-	low.clear(); low.resize(NUM_VERTICES);
-	inStack.clear(); inStack.assign(NUM_VERTICES, false);
-	sccs.clear(); sccs.resize(NUM_VERTICES);
-	
-	counter = 0;
-	sccCounter = 0;
-	for (i = 0; i < NUM_VERTICES; i++) {
+	visited.assign(adjlist.size(), false);
+	d.assign(adjlist.size(), -1);
+	low.assign(adjlist.size(), -1);
+	inStack.assign(adjlist.size(), false);
+	sccs.resize(adjlist.size(), -1);
+
+	counter = sccCounter = 0;
+	for (int i = 0; i < (int)adjlist.size(); i++) {
 		if (!visited[i]) {
 			visit(i);
-		}
-	}
-	// sccCounter ist Anzahl der starkem Zusammenhangskomponenten.
-	// sccs enthält den Index der SCC für jeden Knoten.
-}
+}}}
