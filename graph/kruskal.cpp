@@ -1,4 +1,4 @@
-// Union-Find Implementierung von oben. Laufzeit: O(n*log(n))
+// Union-Find Implementierung von oben. Laufzeit: O(|E|*log(|E|))
 sort(edges.begin(), edges.end());
 vector<ii> mst; int cost = 0;
 for (auto &e : edges) {
