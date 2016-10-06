@@ -1,10 +1,10 @@
-typedef long long ll;
-static const ll flowlimit = 1LL << 60; // Should be bigger than the max flow.
-struct MinCostFlow { // Should be initialized with new.
-	static const int maxn = 400; // Should be bigger than the #vertices.
-	static const int maxm = 5000; //#edges.
-	struct edge { int node; int next; ll flow; ll value; } edges[maxm << 1];
-	int graph[maxn], queue[maxn], pre[maxn], con[maxn], n, m, source, target, top;
+static const ll flowlimit = 1LL << 60; // Größer als der maximale Fluss.
+struct MinCostFlow { // Mit new erstellen!
+	static const int maxn = 400; // Größer als die Anzahl der Knoten.
+	static const int maxm = 5000; // Größer als die Anzahhl der Kanten.
+	struct edge { int node, next; ll flow, value; } edges[maxm << 1];
+	int graph[maxn], queue[maxn], pre[maxn], con[maxn];
+	int n, m, source, target, top;
 	bool inqueue[maxn];
 	ll maxflow, mincost, dis[maxn];
 
@@ -37,38 +37,32 @@ struct MinCostFlow { // Should be initialized with new.
 
 			while (point != -1) {
 				node = edges[point].node;
-				if (edges[point].flow > 0 && dis[node] > dis[now] + edges[point].value) {
+				if (edges[point].flow > 0 &&
+						dis[node] > dis[now] + edges[point].value) {
 					dis[node] = dis[now] + edges[point].value;
 					pre[node] = now; con[node] = point;
 					if (!inqueue[node]) {
 						inqueue[node] = true; queue[tail++] = node;
 						tail %= maxn;
-					}
-				}
+				}}
 				point = edges[point].next;
-			}
-		}
+		}}
 		return pre[target] != -1;
 	}
 
 	void extend() {
 		ll w = flowlimit;
-		for (int u = target; pre[u] != u; u = pre[u]) {
+		for (int u = target; pre[u] != u; u = pre[u])
 			w = min(w, edges[con[u]].flow);
-		}
 		maxflow += w;
 		mincost += dis[target] * w;
 		for (int u = target; pre[u] != u; u = pre[u]) {
 			edges[con[u]].flow -= w;
 			edges[inverse(con[u])].flow += w;
-		}
-	}
+	}}
 
 	void mincostflow() {
-		maxflow = 0;
-		mincost = 0;
-		while (SPFA()) {
-			extend();
-		}
+		maxflow = mincost = 0;
+		while (SPFA()) extend();
 	}
 };
