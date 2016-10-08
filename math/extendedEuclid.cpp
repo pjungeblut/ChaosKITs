@@ -1,11 +1,6 @@
-// Accepted in Aufgabe mit Forderung: |X|+|Y| minimal (primaer) und X<=Y (sekundaer).
-// Hab aber keinen Beweis dafuer :)
-ll x, y, d; // a * x + b * y = d = ggT(a,b)
-void extendedEuclid(ll a, ll b) {
-	if (!b) {
-		x = 1; y = 0; d = a; return;
-	}
-	extendedEuclid(b, a % b);
-	ll x1 = y; ll y1 = x - (a / b) * y;
-	x = x1; y = y1;
+ll extendedEuclid(ll a, ll b, ll &x, ll &y) { // a*x + b*y = ggt(a, b).
+	if (a == 0) { x = 0; y = 1; return b; }
+	ll x1, y1, d = extendedEuclid(b % a, a, x1, y1);
+	x = y1 - (b / a) * x1; y = x1;
+	return d;
 }

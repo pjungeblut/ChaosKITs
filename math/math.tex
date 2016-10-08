@@ -4,18 +4,16 @@
 \lstinputlisting{math/gcd-lcm.cpp}
 \lstinputlisting{math/extendedEuclid.cpp}
 
-\subsubsection{Multiplikatives Inverses von $x$ in $\mathbb{Z}/n\mathbb{Z}$}
-Sei $0 \leq x < n$. Definiere $d := \gcd(x, n)$.
-\begin{description}
-	\item[Falls $d = 1$:] ~
-	\begin{itemize}[nosep]
-		\item Erweiterter euklidischer Algorithmus liefert $\alpha$ und $\beta$ mit
-		$\alpha x + \beta n = 1$.
-		\item Nach Kongruenz gilt $\alpha x + \beta n \equiv \alpha x \equiv 1 \mod n$.
-		\item $x^{-1} :\equiv \alpha \mod n$
+\paragraph{Multiplikatives Inverses von $x$ in $\mathbb{Z}/n\mathbb{Z}$}
+Sei $0 \leq x < n$. Definiere $d := \gcd(x, n)$.\newline
+\textbf{Falls $d = 1$:}
+\begin{itemize}[nosep]
+	\item Erweiterter euklidischer Algorithmus liefert $\alpha$ und $\beta$ mit
+	$\alpha x + \beta n = 1$.
+	\item Nach Kongruenz gilt $\alpha x + \beta n \equiv \alpha x \equiv 1 \mod n$.
+	\item $x^{-1} :\equiv \alpha \mod n$
 	\end{itemize}
-	\item[Falls $d \neq 1$:] Es existiert kein $x^{-1}$.
-\end{description}
+\textbf{Falls $d \neq 1$:} Es existiert kein $x^{-1}$.
 \lstinputlisting{math/multInv.cpp}
 
 \subsection{Mod-Exponent über $\mathbb{F}_p$}
