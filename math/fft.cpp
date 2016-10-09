@@ -1,6 +1,8 @@
 // Laufzeit: O(n log(n)).
-typedef complex<double> cplx; // Eigene Implementierung ist noch deutlich schneller.
-vector<cplx> fft(const vector<cplx> &a, bool inverse = 0) { // a.size() muss eine Zweierpotenz sein!
+typedef complex<double> cplx; // Eigene Implementierung ist schneller.
+
+// a.size() muss eine Zweierpotenz sein!
+vector<cplx> fft(const vector<cplx> &a, bool inverse = 0) {
 	int logn = 1, n = a.size();
 	vector<cplx> A(n);
 	while ((1 << logn) < n) logn++;
@@ -20,14 +22,12 @@ vector<cplx> fft(const vector<cplx> &a, bool inverse = 0) { // a.size() muss ein
 				A[j + s / 2 + k] = u - w * t;
 				if (inverse) A[j + k] /= 2,	A[j + s / 2 + k] /= 2;
 				w *= ws;
-			}
-		}
-	}
+	}}}
 	return A;
 }
 
 // Polynome: a[0] = a_0, a[1] = a_1, ... und b[0] = b_0, b[1] = b_1, ...
-// Integer-Koeffizienten: Runde beim Auslesen der Koeffizienten: (int)round(a[i].real()) 
+// Bei Integern: Runde Koeffizienten: (int)round(a[i].real()) 
 vector<cplx> a = {0,0,0,0,1,2,3,4}, b = {0,0,0,0,2,3,0,1};
 a = fft(a); b = fft(b);
 for (int i = 0; i < (int)a.size(); i++) a[i] *= b[i];
