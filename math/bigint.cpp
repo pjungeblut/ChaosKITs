@@ -1,16 +1,15 @@
 // Bislang keine Division. Multiplikation nach Schulmethode.
-#define PLUS  0
-#define MINUS 1
-#define BASE  1000000000
+#define PLUS    0
+#define MINUS   1
+#define BASE    1000000000 
+#define EXPONET 9
 
 struct bigint {
   int sign;
   vector<ll> digits;
 
   // Initialisiert mit 0.
-  bigint(void) {
-    sign = PLUS;
-  }
+  bigint(void) { sign = PLUS; }
 
   // Initialisiert mit kleinem Wert.
   bigint(ll value) {
@@ -21,9 +20,7 @@ struct bigint {
       while (value) {
         digits.push_back(value % BASE);
         value /= BASE;
-      }
-    } 
-  }
+  }}}
 
   // Initialisiert mit C-String. Kann nicht mit Vorzeichen umgehen.
   bigint(char *str, int length) {
@@ -43,22 +40,19 @@ struct bigint {
 
   // Löscht führende Nullen und macht -0 zu 0.
   void trim() {
-    while (digits.size() > 0 && digits[digits.size() - 1] == 0) digits.pop_back();
+    while (digits.size() > 0 && digits[digits.size() - 1] == 0)
+        digits.pop_back();
     if (digits.size() == 0 && sign == MINUS) sign = PLUS;
   }
 
   // Gibt die Zahl aus.
   void print() {
-    if (digits.size() == 0) {
-      printf("0");
-      return;
-    }
+    if (digits.size() == 0) { printf("0"); return; }
     if (sign == MINUS) printf("-");
     printf("%lld", digits[digits.size() - 1]);
     for (int i = digits.size() - 2; i >= 0; i--) {
-      printf("%09lld", digits[i]);
-    }
-  }
+      printf("%09lld", digits[i]); // Anpassen, wenn andere Basis gewählt wird.
+  }}
 };
 
 // Kleiner-oder-gleich-Vergleich.
@@ -91,7 +85,7 @@ bool operator<(bigint &a, bigint &b) {
 
 void sub(bigint *a, bigint *b, bigint *c);
 
-// a+b=c. a, b, c dürfen gleich sein.
+// a + b = c. a, b, c dürfen gleich sein.
 void add(bigint *a, bigint *b, bigint *c) {
   if (a->sign == b->sign) c->sign = a->sign;
   else {
@@ -126,14 +120,11 @@ void add(bigint *a, bigint *b, bigint *c) {
       ll sum = carry + b->digits[i];
       c->digits[i] = sum % BASE;
       carry = sum / BASE;
-    }
-  }
-  if (carry) {
-    c->digits.push_back(carry);
-  }
+  }}
+  if (carry) c->digits.push_back(carry);
 }
 
-// a-b=c. c darf a oder b sein. a und b müssen verschieden sein.
+// a - b = c. c darf a oder b sein. a und b müssen verschieden sein.
 void sub(bigint *a, bigint *b, bigint *c) {
   if (a->sign == MINUS || b->sign == MINUS) {
     b->sign ^= 1;
@@ -173,7 +164,8 @@ void sub(bigint *a, bigint *b, bigint *c) {
   c->trim();
 }
 
-// Ziffernmultiplikation a*b=c. b und c dürfen gleich sein. a muss kleiner BASE sein.
+// Ziffernmultiplikation a * b = c. b und c dürfen gleich sein.
+// a muss kleiner BASE sein.
 void digitMul(ll a, bigint *b, bigint *c) {
   if (a == 0) {
     c->digits.clear();
@@ -192,7 +184,8 @@ void digitMul(ll a, bigint *b, bigint *c) {
   c->trim();
 }
 
-// Zifferndivision b/a=c. b und c dürfen gleich sein. a muss kleiner BASE sein.
+// Zifferndivision b / a = c. b und c dürfen gleich sein.
+// a muss kleiner BASE sein.
 void digitDiv(ll a, bigint *b, bigint *c) {
   c->digits.resize(b->digits.size());
   ll carry = 0;
@@ -205,10 +198,9 @@ void digitDiv(ll a, bigint *b, bigint *c) {
   c->trim();
 } 
 
-// a*b=c. c darf weder a noch b sein. a und b dürfen gleich sein.
+// a * b = c. c darf weder a noch b sein. a und b dürfen gleich sein.
 void mult(bigint *a, bigint *b, bigint *c) {
-  bigint row = *a;
-  bigint tmp;
+  bigint row = *a, tmp;
   c->digits.clear();
   for (int i = 0; i < (int)b->digits.size(); i++) {
     digitMul(b->digits[i], &row, &tmp);
@@ -228,18 +220,19 @@ inline ll pow10(int n) {
 
 // Berechnet eine große Zehnerpotenz.
 void power10(ll e, bigint *out) {
-  out->digits.assign(e / 9 + 1, 0);
-  if (e % 9) out->digits[out->digits.size() - 1] = pow10(e % 9);
+  out->digits.assign(e / EXPONET + 1, 0);
+  if (e % EXPONET)
+    out->digits[out->digits.size() - 1] = pow10(e % EXPONET);
   else out->digits[out->digits.size() - 1] = 1;
 }
 
 // Nimmt eine Zahl module einer Zehnerpotenz 10^e.
 void mod10(int e, bigint *a) {
-  int idx = e / 9;
+  int idx = e / EXPONET;
   if ((int)a->digits.size() < idx + 1) return;
-  if (e % 9) {
+  if (e % EXPONET) {
     a->digits.resize(idx + 1);
-    a->digits[idx] %= pow10(e % 9);
+    a->digits[idx] %= pow10(e % EXPONET);
   } else {
     a->digits.resize(idx);
   }
