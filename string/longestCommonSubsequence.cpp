@@ -1,3 +1,4 @@
+// Laufzeit: O(|a|*|b|)
 string lcss(string &a, string &b) {
 	int m[a.length() + 1][b.length() + 1], x=0, y=0;
 	memset(m, 0, sizeof(m));
@@ -5,8 +6,7 @@ string lcss(string &a, string &b) {
 		for(int x = b.length() - 1; x >= 0; x--) {
 			if(a[y] == b[x]) m[y][x] = 1 + m[y+1][x+1];
 			else m[y][x] = max(m[y+1][x], m[y][x+1]);
-		}
-	} //for length only: return m[0][0];
+	}} // Für die Länge: return m[0][0];
 	string res;
 	while(x < b.length() && y < a.length()) {
 		if(a[y] == b[x]) res += a[y++], x++;

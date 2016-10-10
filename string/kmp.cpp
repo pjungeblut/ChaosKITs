@@ -1,5 +1,5 @@
 // Laufzeit: O(n + m), n = #Text, m = #Pattern
-vector<int> kmp_preprocessing(string &sub) {
+vector<int> kmpPreprocessing(string &sub) {
   vector<int> b(sub.length() + 1);
   b[0] = -1;
   int i = 0, j = -1;
@@ -11,9 +11,8 @@ vector<int> kmp_preprocessing(string &sub) {
   return b;
 }
 
-vector<int> kmp_search(string &s, string &sub) {
-  vector<int> pre = kmp_preprocessing(sub);
-  vector<int> result;
+vector<int> kmpSearch(string &s, string &sub) {
+  vector<int> pre = kmpPreprocessing(sub), result;
   int i = 0, j = 0;
   while (i < (int)s.length()) {
     while (j >= 0 && s[i] != sub[j]) j = pre[j];
@@ -21,7 +20,6 @@ vector<int> kmp_search(string &s, string &sub) {
     if (j == (int)sub.length()) {
       result.push_back(i - j);
       j = pre[j];
-    }
-  }
+  }}
   return result;
 }
