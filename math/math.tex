@@ -44,12 +44,34 @@ Sei $0 \leq x < n$. Definiere $d := \gcd(x, n)$.\newline
 \subsection{Primzahlsieb von \textsc{Eratosthenes}}
 \lstinputlisting{math/primeSieve.cpp}
 
-\subsection{\textsc{Miller}-\textsc{Rabin}-Primzahltest}
-\lstinputlisting{math/millerRabin.cpp}
+\subsection{Primzahltest \& Faktorisierung}
+\lstinputlisting{math/primes.cpp}
 
 \subsection{Binomialkoeffizienten}
 Vorberechnen, wenn häufig benötigt.
 \lstinputlisting{math/binomial.cpp}
+
+\subsection{\textsc{Euler}sche $\varphi$-Funktion}
+\begin{itemize}[nosep]
+	\item Zählt die relativ primen Zahlen $\leq n$.
+
+	\item Multiplikativ:
+	$\gcd(a,b) = 1 \Longrightarrow \varphi(a) \cdot \varphi(b) = \varphi(ab)$
+
+	\item $p$ prim, $k \in \mathbb{N}$:
+	$~\varphi(p^k) = p^k - p^{k - 1}$
+
+	\item $n = p_1^{a_1} \cdot \ldots \cdot p_k^{a_k}$:
+	$~\varphi(n) = n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \ldots \cdot \left(1 - \frac{1}{p_k}\right)$
+	Evtl. ist es sinnvoll obgien Code zum Faktorisieren zu benutzen und dann diese Formel anzuwenden.
+
+	\item \textbf{\textsc{Euler}'s Theorem:}
+	Seien $a$ und $m$ teilerfremd. Dann:
+	$a^{\varphi(m)} \equiv 1 \mod m$\newline
+	Falls $m$ prim ist, liefert das den \textbf{kleinen Satz von \textsc{Fermat}}:
+	$a^{m} \equiv a \mod m$
+\end{itemize}
+\lstinputlisting{math/phi.cpp}
 
 \subsection{Polynome \& FFT}
 Multipliziert Polynome $A$ und $B$.
