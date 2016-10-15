@@ -73,6 +73,24 @@ Vorberechnen, wenn häufig benötigt.
 \end{itemize}
 \lstinputlisting{math/phi.cpp}
 
+\subsection{Primitivwurzeln}
+\begin{itemize}[nosep]
+	\item Primitivwurzel modulo $n$ existiert genau dann wenn:
+	\begin{itemize}[nosep]
+		\item $n$ ist $1$, $2$ oder $4$, oder
+		\item $n$ ist Potenz einer ungeraden Primzahl, oder
+		\item $n$ ist das Doppelte einer Potenz einer ungeraden Primzahl.
+	\end{itemize}
+
+	\item Sei $g$ Primitivwurzel modulo $n$.
+	Dann gilt:\newline
+	Das kleinste $k$, sodass $g^k \equiv 1 \mod n$, ist $k = \varphi(n)$.
+\end{itemize}
+\lstinputlisting{math/primitiveRoot.cpp}
+
+\subsection{Diskreter Logarithmus}
+\lstinputlisting{math/discreteLogarithm.cpp}
+
 \subsection{Polynome \& FFT}
 Multipliziert Polynome $A$ und $B$.
 \begin{itemize}[nosep]
