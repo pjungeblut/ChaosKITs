@@ -27,7 +27,7 @@ Erkennt negative Zyklen.
 
 \subsubsection{\textsc{Floyd-Warshall}-Algorithmus}
 \lstinputlisting{graph/floydWarshall.cpp}
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item Nur negative Werte sollten die Nullen überschreiben.
 	\item Von parallelen Kanten sollte nur die günstigste gespeichert werden.
 	\item \lstinline{i} liegt genau dann auf einem negativen Kreis, wenn \lstinline{dist[i][i] < 0} ist.
@@ -42,7 +42,7 @@ Erkennt negative Zyklen.
 \lstinputlisting{graph/articulationPoints.cpp}
 
 \subsection{Eulertouren}
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item Zyklus existiert, wenn jeder Knoten geraden Grad hat (ungerichtet), bzw. bei jedem Knoten Ein- und Ausgangsgrad übereinstimmen (gerichtet).
 	\item Pfad existiert, wenn alle bis auf (maximal) zwei Knoten geraden Grad haben (ungerichtet), bzw. bei allen Knoten bis auf zwei Ein- und Ausgangsgrad übereinstimmen, wobei einer eine Ausgangskante mehr hat (Startknoten) und einer eine Eingangskante mehr hat (Endknoten).
 	\item \textbf{Je nach Aufgabenstellung überprüfen, wie isolierte Punkte interpretiert werden sollen.}
