@@ -14,6 +14,26 @@
 
 \subsection{Suffix-Automaton}
 \lstinputlisting{string/suffixAutomaton.cpp}
+\begin{itemize}[nosep]
+	\item \textbf{Ist \lstinline{w} Substring von \lstinline{s}?}
+	Baue Automaten für \lstinline{s} und wende ihn auf \lstinline{w} an.
+	Wenn alle Übergänge vorhanden sind, ist \lstinline{w} Substring von \lstinline{s}.
+
+	\item \textbf{Ist \lstinline{w} Suffix von \lstinline{s}?}
+	Wie oben.
+	Überprüfe am Ende, ob aktueller Zustand ein Terminal ist.
+
+	\item \textbf{Anzahl verschiedener Substrings.}
+	Jeder Pfad im Automaten entspricht einem Substring.
+	Für einen Knoten ist die Anzahl der ausgehenden Pfade gleich der Summe über die Anzahlen der Kindknoten plus 1.
+	Der letzte Summand ist der Pfad, der in diesem Knoten endet.
+
+	\item \textbf{Wie oft taucht \lstinline{w} in \lstinline{s} auf?}
+	Sei \lstinline{p} der Zustand nach Abarbeitung von \lstinline{w}.
+	Lösung ist Anzahl der Pfade, die in \lstinline{p} starten und in einem Terminal enden.
+	Diese Zahl lässt sich wie oben rekursiv berechnen.
+	Bei jedem Knoten darf nur dann plus 1 gerechnet werden, wenn es ein Terminal ist.
+\end{itemize}
 
 \subsection{Longest Common Subsequence}
 \lstinputlisting{string/longestCommonSubsequence.cpp}

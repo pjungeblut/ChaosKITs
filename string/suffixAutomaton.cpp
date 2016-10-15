@@ -15,8 +15,8 @@ struct SuffixAutomaton {
 		for (auto c : s) extend(c);
 	}
 
-	void extend(char c) { // Werte von c müssen bei 0 beginnen.
-		c -= 'a';
+	void extend(char c) {
+		c -= 'a'; // Werte von c müssen bei 0 beginnen.
 		int current = size++;
 		states[current].length = states[last].length + 1;
 		int pos = last;
@@ -58,5 +58,15 @@ struct SuffixAutomaton {
 		}
 		return ii(bestpos - best + 1, best);
 	}
-};
 
+	// Berechnet die Terminale des Automaten.
+	vector<int> calculateTerminals() {
+		vector<int> terminals;
+		int pos = last;
+		while (pos != -1) {
+			terminals.push_back(pos);
+			pos = states[pos].link;
+		}
+		return terminals;
+	}
+};
