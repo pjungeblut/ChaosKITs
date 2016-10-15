@@ -111,60 +111,44 @@ Multipliziert Polynome $A$ und $B$.
 \subsection{Kombinatorik}
 
 \subsubsection{Berühmte Zahlen}
-\begin{tabularx}{\textwidth}{|l|X|l|}
+\begin{tabular}{|l|l|}
 	\hline
-	\textsc{Fibonacci}-Zahlen	&
-	$f(0) = 0 \qquad
-	f(1) = 1 \qquad
-	f(n+2) = f(n+1) + f(n)$ &
-	Bem. \ref{bem:fibonacciMat}, \ref{bem:fibonacciGreedy} \\
+	\textsc{Fibonacci}	&
+	$f(0) = 0 \quad
+	f(1) = 1 \quad
+	f(n+2) = f(n+1) + f(n)$ \\
 
-	\textsc{Catalan}-Zahlen	&
+	\textsc{Catalan}	&
 	$C_0 = 1 \qquad
 	C_n = \sum\limits_{k = 0}^{n - 1} C_kC_{n - 1 - k} =
-	\frac{1}{n + 1}\binom{2n}{n} = \frac{2(2n - 1)}{n+1} \cdot C_{n-1}$ &
-	Bem. \ref{bem:catalanOverflow}, \ref{bem:catalanAnwendung} \\
+	\frac{1}{n + 1}\binom{2n}{n} = \frac{2(2n - 1)}{n+1} \cdot C_{n-1}$ \\
 
-	\textsc{Euler}-Zahlen (I) &
+	\textsc{Euler} I &
 	$\eulerI{n}{0} = \eulerI{n}{n-1} = 1 \qquad
-	\eulerI{n}{k} = (k+1) \eulerI{n-1}{k} + (n-k) \eulerI{n-1}{k-1} $ &
-	Bem. \ref{bem:euler1} \\
+	\eulerI{n}{k} = (k+1) \eulerI{n-1}{k} + (n-k) \eulerI{n-1}{k-1} $ \\
 
-	\textsc{Euler}-Zahlen (II) &
-	$\eulerII{n}{0} = 1 \qquad
-	\eulerII{n}{n} = 0 \qquad
-	\eulerII{n}{k} = (k+1) \eulerII{n-1}{k} + (2n-k-1) \eulerII{n-1}{k-1}$ &
-	Bem. \ref{bem:euler2} \\
+	\textsc{Euler} II &
+	$\eulerII{n}{0} = 1 \quad
+	\eulerII{n}{n} = 0 \quad
+	\eulerII{n}{k} = (k+1) \eulerII{n-1}{k} + (2n-k-1) \eulerII{n-1}{k-1}$ \\
 
-	\textsc{Stirling}-Zahlen (I) &
+	\textsc{Stirling} I &
 	$\stirlingI{0}{0} = 1 \qquad
 	\stirlingI{n}{0} = \stirlingI{0}{n} = 0 \qquad
-	\stirlingI{n}{k} = \stirlingI{n-1}{k-1} + (n-1) \stirlingI{n-1}{k}$ &
-	Bem. \ref{bem:stirling1} \\
+	\stirlingI{n}{k} = \stirlingI{n-1}{k-1} + (n-1) \stirlingI{n-1}{k}$ \\
 
-	\textsc{Stirling}-Zahlen (II) &
+	\textsc{Stirling} II &
 	$\stirlingII{n}{1} = \stirlingII{n}{n} = 1 \qquad
-	\stirlingII{n}{k} = k \stirlingII{n-1}{k} + \stirlingII{n-1}{k-1}$ &
-	Bem. \ref{bem:stirling2} \\
+	\stirlingII{n}{k} = k \stirlingII{n-1}{k} + \stirlingII{n-1}{k-1}$ \\
 
-	Integer-Partitions &
-	$f(1,1) = 1 \qquad f(n,k) = 0 \text{ für } k > n \qquad f(n,k)  =
-	f(n-k,k) + f(n,k-1)$ &
-	Bem. \ref{bem:integerPartitions} \\
+	\textsc{Bell} &
+	$f(1,1) = 1 \quad
+	f(n,k) = 0 \text{ für } k > n \quad
+	f(n,k) = f(n-k,k) + f(n,k-1)$ \\
 	\hline
-\end{tabularx}
+\end{tabular}
 
-\begin{bem}\label{bem:fibonacciMat}
-	$
-	\begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}^n
-	\cdot
-	\begin{pmatrix} 0 \\ 1 \end{pmatrix}
-	=
-	\begin{pmatrix}f_n \\ f_{n+1} \end{pmatrix}
-	$
-\end{bem}
-
-\begin{bem}[\textsc{Zeckendorfs} Theorem]\label{bem:fibonacciGreedy}
+\begin{bem}[\textsc{Zeckendorfs} Theorem]
 	Jede positive natürliche Zahl kann eindeutig als Summe einer oder mehrerer
 	verschiedener \textsc{Fibonacci}-Zahlen geschrieben werden, sodass keine zwei
 	aufeinanderfolgenden \textsc{Fibonacci}-Zahlen in der Summe vorkommen.
@@ -173,39 +157,36 @@ Multipliziert Polynome $A$ und $B$.
 	hineinpasst.
 \end{bem}
 
-\begin{bem}\label{bem:catalanOverflow}
-	\begin{itemize}
+\begin{bem}[\textsc{Catalan}-Zahlen]
+	\begin{itemize}[nosep]
 		\item Die erste und dritte angegebene Formel sind relativ sicher gegen Overflows.
 		\item Die erste Formel kann auch zur Berechnung der \textsc{Catalan}-Zahlen
 		bezüglich eines Moduls genutzt werden.
+		\item Die \textsc{Catalan}-Zahlen geben an: $C_n =$
+		\begin{itemize}[nosep]
+			\item Anzahl der Binärbäume mit $n$ nicht unterscheidbaren Knoten.
+			\item Anzahl der validen Klammerausdrücke mit $n$ Klammerpaaren.
+			\item Anzahl der korrekten Klammerungen von $n+1$ Faktoren.
+			\item Anzahl der Möglichkeiten ein konvexes Polygon mit $n + 2$ Ecken in
+			Dreiecke zu zerlegen.
+			\item Anzahl der monotonen Pfade (zwischen gegenüberliegenden Ecken) in
+			einem $n \times n$-Gitter, die nicht die Diagonale kreuzen.
+		\end{itemize}
 	\end{itemize}
 \end{bem}
 
-\begin{bem}\label{bem:catalanAnwendung}
-	Die \textsc{Catalan}-Zahlen geben an: $C_n =$
-	\begin{itemize}
-		\item Anzahl der Binärbäume mit $n$ nicht unterscheidbaren Knoten.
-		\item Anzahl der validen Klammerausdrücke mit $n$ Klammerpaaren.
-		\item Anzahl der korrekten Klammerungen von $n+1$ Faktoren.
-		\item Anzahl der Möglichkeiten ein konvexes Polygon mit $n + 2$ Ecken in
-		Dreiecke zu zerlegen.
-		\item Anzahl der monotonen Pfade (zwischen gegenüberliegenden Ecken) in
-		einem $n \times n$-Gitter, die nicht die Diagonale kreuzen.
-	\end{itemize}
-\end{bem}
-
-\begin{bem}[\textsc{Euler}-Zahlen 1. Ordnung]\label{bem:euler1}
+\begin{bem}[\textsc{Euler}-Zahlen 1. Ordnung]
 	Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Anstiegen.
 
 	Begründung: Für die $n$-te Zahl gibt es $n$ mögliche Positionen zum Einfügen.
 	Dabei wird entweder ein Ansteig in zwei gesplitted oder ein Anstieg um $n$ ergänzt.
 	\end{bem}
 
-\begin{bem}[\textsc{Euler}-Zahlen 2. Ordnung]\label{bem:euler2}
+\begin{bem}[\textsc{Euler}-Zahlen 2. Ordnung]
 	Die Anzahl der Permutationen von $\{1,1, \ldots, n,n\}$ mit genau $k$ Anstiegen.
 \end{bem}
 
-\begin{bem}[\textsc{Stirling}-Zahlen 1. Ordnung]\label{bem:stirling1}
+\begin{bem}[\textsc{Stirling}-Zahlen 1. Ordnung]
 	Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Zyklen.
 
 	Begründung: Es gibt zwei Möglichkeiten für die $n$-te Zahl. Entweder sie
@@ -213,7 +194,7 @@ Multipliziert Polynome $A$ und $B$.
 	einsortiert werden.
 \end{bem}
 
-\begin{bem}[\textsc{Stirling}-Zahlen 2. Ordnung]\label{bem:stirling2}
+\begin{bem}[\textsc{Stirling}-Zahlen 2. Ordnung]
 	Die Anzahl der Möglichkeiten $n$ Elemente in $k$ nichtleere Teilmengen zu zerlegen.
 
 	Begründung: Es gibt $k$ Möglichkeiten die $n$ in eine $n-1$-Partition
@@ -221,7 +202,7 @@ Multipliziert Polynome $A$ und $B$.
 	(alleine) steht.
 \end{bem}
 
-\begin{bem}\label{bem:integerPartitions}
+\begin{bem}[Bell-Zahlen]
 	Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit
 	maximalem Elment $\leq k$.
 \end{bem}
