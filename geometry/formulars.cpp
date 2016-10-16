@@ -2,11 +2,11 @@
 // complex<int> verwenden. Funktionen wie abs() geben dann int zurück.
 typedef pt complex<double>;
 
-// Winkel zwischen Punkt und x-Achse in [0, 2 * PI), bzw. zwischen a, b.
-double angle = arg (a), angle_a_b = arg (a - b);
+// Winkel zwischen Punkt und x-Achse in [0, 2 * PI).
+double angle = arg(a);
 
 // Punkt rotiert um Winkel theta.
-pt a_rotated = a * exp (pt (0, theta));
+pt a_rotated = a * exp(pt(0, theta));
 
 // Mittelpunkt des Dreiecks abc.
 pt centroid = (a + b + c) / 3.0;
