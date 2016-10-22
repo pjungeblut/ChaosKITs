@@ -25,5 +25,5 @@ void findArticulationPoints() {
 	d.assign(adjlist.size(), 0);
 	isArtPoint.assign(adjlist.size(), false);
 	bridges.clear(); //nur fuer Bruecken
-	for (int v = 0; v < (int)adjlist.size(); v++) if (!d[v]) visit(v, -1);
+	for (int v = 0; v < (int)adjlist.size(); v++) if (!d[v]) dfs(v, -1);
 }
