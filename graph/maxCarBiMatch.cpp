@@ -13,7 +13,7 @@ bool dfs(int v) {
 }
 
 int kuhn(int n) { // n = #Knoten links.
-	pairs.assign(adjlist.size(), -1);
+	pairs.assign(NUM_VERTICES, -1);
 	int ans = 0;
 	// Greedy Matching. Optionale Beschleunigung.
 	for (int i = 0; i < n; i++) for (auto w : adjlist[i])
