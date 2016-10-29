@@ -99,6 +99,14 @@ Gut bei sehr dicht besetzten Graphen.
 \subsection{Maximal Cardinatlity Bipartite Matching}\label{kuhn}
 \lstinputlisting{graph/maxCarBiMatch.cpp}
 
+\subsection{2-SAT}
+\begin{enumerate}
+	\item Bedingungen in 2-CNF formulieren.
+	\item Implikationsgraph bauen, $\left(a \vee b\right)$ wird zu $\neg a \Rightarrow b$ und $\neg b \Rightarrow a$.
+	\item Finde die starken Zusammenhangskomponenten.
+	\item Genau dann lösbar, wenn keine Variable mit ihrer Negation in einer SCC liegt.
+\end{enumerate}
+
 % \subsection{TSP}
 % \lstinputlisting{graph/TSP.cpp}
 
