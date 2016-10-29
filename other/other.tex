@@ -83,3 +83,42 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	Minimiere Matchinggewicht.
 	Lösung: Sortiere Knoten links aufsteigend nach Gewicht, danach nutze normlen Algorithmus (\textsc{Kuhn}, Seite \pageref{kuhn})
 \end{itemize}
+
+\section{Tipps \& Tricks}
+
+\begin{itemize}
+	\item Run Tim Error:
+	\begin{itemize}
+		\item Stack Overflow? Evtl. rekurisve Tiefensuche auf langem Pfad?
+		\item Array-Grenzen überprüfen. Indizierung bei $0$ oder bei $1$ beginnen?
+		\item Abbruchbedingung bei Rekursion?
+		\item Evtl. Memory Limit Exceeded?
+	\end{itemize}
+
+	\item Gleitkommazahlen:
+	\begin{itemize}
+		\item \lstinline{NaN}? Evtl. ungültige Werte für mathematische Funktionen, z.B. \lstinline{acos(1.00000000000001)}?
+		\item Flasches Runden bei negativen Zahlen? Abschneiden $\neq$ Abrunden!
+		\item Output in wissenschaftlicher Notation (\lstinline{1e-25})?
+		\item Kann \lstinline{-0.000} ausgegeben werden?
+	\end{itemize}
+
+	\item Wrong Answer:
+	\begin{itemize}
+		\item Lies Aufgabe erneut. Sorgfältig!
+		\item Mehrere Testfälle in einer Datei? Probiere gleichen Testcase mehrfach hintereinander.
+		\item Integer Overflow? Teste maximale Eingabegrößen und mache Überschlagsrechnung.
+		\item Einabegrößen überprüfen. Sonderfälle ausprobieren.
+		\begin{itemize}
+			\item $n = 0$, $n = -1$, $n = 1$, $n = 2^{31}-1$, $n = -2^{31}$
+			\item $n$ gerade/ungerade
+			\item Graph ist leer/enthält nur einen Knoten.
+			\item Liste ist leer/enthält nur ein Element.
+			\item Graph ist Multigraph (enthält Schleifen/Mehrfachkanten).
+			\item Sind Kanten gerichtet/ungerichtet?
+			\item Polygon ist konkav/selbstschneidend.
+		\end{itemize}
+		\item Bei DP/Rekursion: Stimmt Basisfall?
+		\item Unsicher bei benutzten STL-Funktionen?
+	\end{itemize}
+\end{itemize}
