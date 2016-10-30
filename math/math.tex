@@ -4,8 +4,15 @@
 \lstinputlisting{math/gcd-lcm.cpp}
 \lstinputlisting{math/extendedEuclid.cpp}
 
+\paragraph{Lemma von \textsc{Bézout}}
+Sei $(x, y)$ eine Lösung für $ax + by = d$.
+Dann lassen sich wie folgt alle Lösungen berechnen:
+\[
+	\left(x + k\frac{b}{\ggT(a, b)},~y - k\frac{a}{\ggT(a, b)}\right)
+\]
+
 \paragraph{Multiplikatives Inverses von $x$ in $\mathbb{Z}/n\mathbb{Z}$}
-Sei $0 \leq x < n$. Definiere $d := \gcd(x, n)$.\newline
+Sei $0 \leq x < n$. Definiere $d := \ggT(x, n)$.\newline
 \textbf{Falls $d = 1$:}
 \begin{itemize}[nosep]
 	\item Erweiterter euklidischer Algorithmus liefert $\alpha$ und $\beta$ mit
@@ -26,11 +33,11 @@ Sei $0 \leq x < n$. Definiere $d := \gcd(x, n)$.\newline
 	\[
 		x \equiv a - y * n * \frac{a - b}{d} \mod \frac{mn}{d}
 		\qquad \text{mit} \qquad
-		d := ggT(n, m) = yn + zm
+		d := \ggT(n, m) = yn + zm
 	\]
 	Formel kann auch für nicht teilerfremde Moduli verwendet werden.
 	Sind die Moduli nicht teilerfremd, existiert genau dann eine Lösung,
-	wenn $a_i \equiv a_j \mod \gcd(m_i, m_j)$.
+	wenn $a_i \equiv a_j \mod \ggT(m_i, m_j)$.
 	In diesem Fall sind keine Faktoren
 	auf der linken Seite erlaubt.
 \end{itemize}
@@ -108,51 +115,64 @@ Multipliziert Polynome $A$ und $B$.
 \subsection{Longest Increasing Subsequence}
 \lstinputlisting{math/longestIncreasingSubsequence.cpp}
 
+\subsection{Satz von \textsc{Sprague-Grundy}}
+Weise jedem Zustand $X$ wie folgt eine \textsc{Grundy}-Zahl $g\left(X\right)$ zu:
+\[
+	g\left(X\right) := \min\left\{
+		\mathbb{Z}_0^+ \setminus
+		\left\{g\left(Y\right) \mid Y \text{ von } X \text{ aus direkt erreichbar}\right\}
+	\right\} 
+\]
+$X$ ist genau dann gewonnen, wenn $g\left(X\right) > 0$ ist.\\\\
+Wenn man $k$ Spiele in den Zuständen $X_1, \ldots, X_k$ hat, dann ist die \textsc{Grundy}-Zahl des Gesamtzustandes $g\left(X_1\right) \oplus \ldots \oplus g\left(X_k\right)$.
+
 \subsection{Kombinatorik}
 
-\begin{tabular}{ll}
-	\toprule
-	\multicolumn{2}{c}{Berühmte Zahlen} \\
-	\midrule 
-	\textsc{Fibonacci}	&
-	$f(0) = 0 \quad
-	f(1) = 1 \quad
-	f(n+2) = f(n+1) + f(n)$ \\
+\begin{flushleft}
+	\begin{tabular}{ll}
+		\toprule
+		\multicolumn{2}{c}{Berühmte Zahlen} \\
+		\midrule 
+		\textsc{Fibonacci}	&
+		$f(0) = 0 \quad
+		f(1) = 1 \quad
+		f(n+2) = f(n+1) + f(n)$ \\
 
-	\textsc{Catalan}	&
-	$C_0 = 1 \qquad
-	C_n = \sum\limits_{k = 0}^{n - 1} C_kC_{n - 1 - k} =
-	\frac{1}{n + 1}\binom{2n}{n} = \frac{2(2n - 1)}{n+1} \cdot C_{n-1}$ \\
+		\textsc{Catalan}	&
+		$C_0 = 1 \qquad
+		C_n = \sum\limits_{k = 0}^{n - 1} C_kC_{n - 1 - k} =
+		\frac{1}{n + 1}\binom{2n}{n} = \frac{2(2n - 1)}{n+1} \cdot C_{n-1}$ \\
 
-	\textsc{Euler} I &
-	$\eulerI{n}{0} = \eulerI{n}{n-1} = 1 \qquad
-	\eulerI{n}{k} = (k+1) \eulerI{n-1}{k} + (n-k) \eulerI{n-1}{k-1} $ \\
+		\textsc{Euler} I &
+		$\eulerI{n}{0} = \eulerI{n}{n-1} = 1 \qquad
+		\eulerI{n}{k} = (k+1) \eulerI{n-1}{k} + (n-k) \eulerI{n-1}{k-1} $ \\
 
-	\textsc{Euler} II &
-	$\eulerII{n}{0} = 1 \quad
-	\eulerII{n}{n} = 0 \quad
-	\eulerII{n}{k} = (k+1) \eulerII{n-1}{k} + (2n-k-1) \eulerII{n-1}{k-1}$ \\
+		\textsc{Euler} II &
+		$\eulerII{n}{0} = 1 \quad
+		\eulerII{n}{n} = 0 \quad
+		\eulerII{n}{k} = (k+1) \eulerII{n-1}{k} + (2n-k-1) \eulerII{n-1}{k-1}$ \\
 
-	\textsc{Stirling} I &
-	$\stirlingI{0}{0} = 1 \qquad
-	\stirlingI{n}{0} = \stirlingI{0}{n} = 0 \qquad
-	\stirlingI{n}{k} = \stirlingI{n-1}{k-1} + (n-1) \stirlingI{n-1}{k}$ \\
+		\textsc{Stirling} I &
+		$\stirlingI{0}{0} = 1 \qquad
+		\stirlingI{n}{0} = \stirlingI{0}{n} = 0 \qquad
+		\stirlingI{n}{k} = \stirlingI{n-1}{k-1} + (n-1) \stirlingI{n-1}{k}$ \\
 
-	\textsc{Stirling} II &
-	$\stirlingII{n}{1} = \stirlingII{n}{n} = 1 \qquad
-	\stirlingII{n}{k} = k \stirlingII{n-1}{k} + \stirlingII{n-1}{k-1}$ \\
+		\textsc{Stirling} II &
+		$\stirlingII{n}{1} = \stirlingII{n}{n} = 1 \qquad
+		\stirlingII{n}{k} = k \stirlingII{n-1}{k} + \stirlingII{n-1}{k-1}$ \\
 
-	\textsc{Bell} &
-	$B_1 = 1 \qquad
-	B_n = \sum\limits_{k = 0}^{n - 1} B_k\binom{n-1}{k}
-	= \sum\limits_{k = 0}^{n}\stirlingII{n}{k}$\\
+		\textsc{Bell} &
+		$B_1 = 1 \qquad
+		B_n = \sum\limits_{k = 0}^{n - 1} B_k\binom{n-1}{k}
+		= \sum\limits_{k = 0}^{n}\stirlingII{n}{k}$\\
 
-	\textsc{Int. Partitions} &
-	$f(1,1) = 1 \quad
-	f(n,k) = 0 \text{ für } k > n \quad
-	f(n,k) = f(n-k,k) + f(n,k-1)$ \\
-	\bottomrule
-\end{tabular}
+		\textsc{Int. Partitions} &
+		$f(1,1) = 1 \quad
+		f(n,k) = 0 \text{ für } k > n \quad
+		f(n,k) = f(n-k,k) + f(n,k-1)$ \\
+		\bottomrule
+	\end{tabular}
+\end{flushleft}
 
 \paragraph{\textsc{Zeckendorfs} Theorem}
 Jede positive natürliche Zahl kann eindeutig als Summe einer oder mehrerer
@@ -223,6 +243,38 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	$\sum\limits_{i = 1}^n \binom{n}{i} F_i = F_{2n} \quad F_n = n\text{-th Fib.}$ \\
 	\bottomrule
 \end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{l|l|l}
+	\toprule
+	\multicolumn{3}{c}{Reihen} \\
+	\midrule
+	$\sum\limits_{i = 1}^n i = \frac{n(n+1)}{2}$ &
+	$\sum\limits_{i = 1}^n i^2 = \frac{n(n + 1)(n + 2)}{6}$ & 
+	$\sum\limits_{i = 1}^n i^3 = \frac{n^2 (n + 1)^2}{4}$ \\
+
+	$\sum\limits_{i = 0}^n c^i = \frac{c^{n + 1} - 1}{c - 1} \quad c \neq 1$ &
+	$\sum\limits_{i = 0}^\infty c^i = \frac{1}{1 - c} \quad \vert c \vert < 1$ &
+	$\sum\limits_{i = 1}^\infty c^i = \frac{c}{1 - c} \quad \vert c \vert < 1$ \\
+
+	\multicolumn{2}{l|}{
+		$\sum\limits_{i = 0}^n ic^i = \frac{nc^{n + 2} - (n + 1)c^{n + 1} + c}{(c - 1)^2} \quad c \neq 1$
+	} &
+	$\sum\limits_{i = 0}^\infty ic^i = \frac{c}{(1 - c)^2} \quad \vert c \vert < 1$ \\
+
+	$H_n = \sum\limits_{i = 1}^n \frac{1}{i}$ &
+	\multicolumn{2}{l}{
+		$\sum\limits_{i = 1}^n iH_i = \frac{n(n + 1)}{2}H_n - \frac{n(n - 1)}{4}$
+	} \\
+
+	$\sum\limits_{i = 1}^n H_i = (n + 1)H_n - n$ &
+	\multicolumn{2}{l}{
+		$\sum\limits_{i = 1}^n \binom{i}{m}H_i =
+		\binom{n + 1}{m + 1} \left(H_{n + 1} - \frac{1}{m  + 1}\right)$
+	} \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
 
 \begin{tabular}{c|cccc}
 	\toprule
@@ -262,62 +314,6 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 \end{tabular}
 \vspace{5mm}
 
-\begin{tabular}{ll}
-	\toprule
-	\multicolumn{2}{c}{Verschiedenes} \\
-	\midrule
-	Türme von Hanoi, minimale Schirttzahl: &
-	$T_n = 2^n - 1$ \\
-
-	\#Regionen zwischen $n$ Gearden	&
-	$\frac{n\left(n + 1\right)}{2} + 1$ \\
-
-	\#abgeschlossene Regionen zwischen $n$ Geraden &
-	$\frac{n^2 - 3n + 2}{2}$ \\
-
-	\#markierte, gewurzelte Bäume	&
-	$n^{n-1}$ \\
-
-	\#markierte, nicht gewurzelte Bäume	&
-	$n^{n-2}$ \\
-
-	\#Wälder mit $k$ gewurzelten Bäumen	&
-	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
-
-\begin{tabular}{l|l|l}
-	\toprule
-	\multicolumn{3}{c}{Reihen} \\
-	\midrule
-	$\sum\limits_{i = 1}^n i = \frac{n(n+1)}{2}$ &
-	$\sum\limits_{i = 1}^n i^2 = \frac{n(n + 1)(n + 2)}{6}$ & 
-	$\sum\limits_{i = 1}^n i^3 = \frac{n^2 (n + 1)^2}{4}$ \\
-
-	$\sum\limits_{i = 0}^n c^i = \frac{c^{n + 1} - 1}{c - 1} \quad c \neq 1$ &
-	$\sum\limits_{i = 0}^\infty c^i = \frac{1}{1 - c} \quad \vert c \vert < 1$ &
-	$\sum\limits_{i = 1}^\infty c^i = \frac{c}{1 - c} \quad \vert c \vert < 1$ \\
-
-	\multicolumn{2}{l|}{
-		$\sum\limits_{i = 0}^n ic^i = \frac{nc^{n + 2} - (n + 1)c^{n + 1} + c}{(c - 1)^2} \quad c \neq 1$
-	} &
-	$\sum\limits_{i = 0}^\infty ic^i = \frac{c}{(1 - c)^2} \quad \vert c \vert < 1$ \\
-
-	$H_n = \sum\limits_{i = 1}^n \frac{1}{i}$ &
-	\multicolumn{2}{l}{
-		$\sum\limits_{i = 1}^n iH_i = \frac{n(n + 1)}{2}H_n - \frac{n(n - 1)}{4}$
-	} \\
-
-	$\sum\limits_{i = 1}^n H_i = (n + 1)H_n - n$ &
-	\multicolumn{2}{l}{
-		$\sum\limits_{i = 1}^n \binom{i}{m}H_i =
-		\binom{n + 1}{m + 1} \left(H_{n + 1} - \frac{1}{m  + 1}\right)$
-	} \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
-
 \begin{tabular}{l|r}
 	\toprule
 	\multicolumn{2}{c}{
@@ -347,17 +343,74 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	$\#A \geq \#B + k$ & $Num = \frac{a - k + 1 - b}{a - k + 1} \binom{a + b - k}{b}$ \\
 	\bottomrule
 \end{tabular}
+\vspace{5mm}
 
-\subsection{Satz von \textsc{Sprague-Grundy}}
-Weise jedem Zustand $X$ wie folgt eine \textsc{Grundy}-Zahl $g\left(X\right)$ zu:
-\[
-	g\left(X\right) := \min\left\{
-		\mathbb{Z}_0^+ \setminus
-		\left\{g\left(Y\right) \mid Y \text{ von } X \text{ aus direkt erreichbar}\right\}
-	\right\} 
-\]
-$X$ ist genau dann gewonnen, wenn $g\left(X\right) > 0$ ist.\\\\
-Wenn man $k$ Spiele in den Zuständen $X_1, \ldots, X_k$ hat, dann ist die \textsc{Grundy}-Zahl des Gesamtzustandes $g\left(X_1\right) \oplus \ldots \oplus g\left(X_k\right)$.
+\begin{tabular}{ll}
+	\toprule
+	\multicolumn{2}{c}{Verschiedenes} \\
+	\midrule
+	Türme von Hanoi, minimale Schirttzahl: &
+	$T_n = 2^n - 1$ \\
+
+	\#Regionen zwischen $n$ Gearden	&
+	$\frac{n\left(n + 1\right)}{2} + 1$ \\
+
+	\#abgeschlossene Regionen zwischen $n$ Geraden &
+	$\frac{n^2 - 3n + 2}{2}$ \\
+
+	\#markierte, gewurzelte Bäume	&
+	$n^{n-1}$ \\
+
+	\#markierte, nicht gewurzelte Bäume	&
+	$n^{n-2}$ \\
+
+	\#Wälder mit $k$ gewurzelten Bäumen	&
+	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{flushleft}
+	\begin{tabular}{l|cccl}
+		\toprule
+		\multicolumn{5}{c}{Platonische Körper} \\
+		\midrule
+		Übersicht       & Seiten & Ecken & Kanten & dual zu \\
+		\midrule
+		Tetraeder       & 4      & 4     & 6      & Tetraeder \\
+		Würfel/Hexaeder & 6      & 8     & 12     & Oktaeder \\
+		Oktaeder        & 8      & 6     & 12     & Würfel/Hexaeder\\
+		Dodekaeder      & 12     & 20    & 30     & Ikosaeder \\
+		Ikosaeder       & 20     & 12    & 30     & Dodekaeder \\
+		\midrule
+		\multicolumn{5}{c}{Färbungen mit maximal $n$ Farben (bis auf Isomorphie)} \\
+		\midrule
+		\multicolumn{3}{l}{Ecken vom Oktaeder/Seiten vom Würfel} &
+		\multicolumn{2}{l}{$(n^6 + 3n^4 + 12n^3 + 8n^2)/24$} \\
+
+		\multicolumn{3}{l}{Ecken vom Würfel/Seiten vom Oktaeder} &
+		\multicolumn{2}{l}{$(n^8 + 17n^4 + 6n^2)/24$} \\
+
+		\multicolumn{3}{l}{Kanten vom Würfel/Oktaeder} &
+		\multicolumn{2}{l}{$(n^{12} + 6n^7 + 3n^6 + 8n^4 + 6n^3)/24$} \\
+
+		\multicolumn{3}{l}{Ecken/Seiten vom Tetraeder} &
+		\multicolumn{2}{l}{$(n^4 + 11n^2)/12$} \\
+
+		\multicolumn{3}{l}{Kanten vom Tetraeder} &
+		\multicolumn{2}{l}{$(n^6 + 3n^4 + 8n^2)/12$} \\
+
+		\multicolumn{3}{l}{Ecken vom Ikosaeder/Seiten vom Dodekaeder} &
+		\multicolumn{2}{l}{$(n^{12} + 15n^6 + 44n^4)/60$} \\
+
+		\multicolumn{3}{l}{Ecken vom Dodekaeder/Seiten vom Ikosaeder} &
+		\multicolumn{2}{l}{$(n^{20} + 15n^{10} + 20n^8 + 24n^4)/60$} \\
+
+		\multicolumn{3}{l}{Kanten vom Dodekaeder/Ikosaeder (evtl. falsch)} &
+		\multicolumn{2}{l}{$(n^{30} + 15n^{16} + 20n^{10} + 24n^6)/60$} \\
+		\bottomrule
+	\end{tabular}
+\end{flushleft}
 
 \subsection{Big Integers}
 \lstinputlisting{math/bigint.cpp}
