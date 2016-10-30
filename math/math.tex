@@ -316,6 +316,37 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	} \\
 	\bottomrule
 \end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{l|r}
+	\toprule
+	\multicolumn{2}{c}{
+		Wahrscheinlichkeitstheorie ($A,B$ Ereignisse und $X,Y$ Variablen)
+	} \\
+	\midrule
+	$\E(X + Y) = \E(X) + \E(Y)$ &
+	$\E(\alpha X) = \alpha \E(X)$ \\
+
+	$X, Y$ unabh. $\Leftrightarrow \E(XY) = \E(X) \cdot \E(Y)$ &
+	$\Pr[A \vert B] = \frac{\Pr[A \land B]}{\Pr[B]}$ \\
+
+	$\Pr[A \lor B] = \Pr[A] + \Pr[B] - \Pr[A \land B]$ &
+	$\Pr[A \land B] = \Pr[A] \cdot \Pr[B]$ \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{lr|lr}
+	\toprule
+	\multicolumn{4}{c}{\textsc{Bertrand}'s Ballot Theorem (Kandidaten $A$ und $B$, $k \in \mathbb{N}$)} \\
+	\midrule
+	$\#A > k\#B$ & $Pr = \frac{a - kb}{a + b}$ &
+	$\#B - \#A \leq k$ & $Pr = 1 - \frac{a!b!}{(a + k + 1)!(b - k - 1)!}$ \\
+
+	$\#A \geq k\#B$ & $Pr = \frac{a + 1 - kb}{a + 1}$ &
+	$\#A \geq \#B + k$ & $Num = \frac{a - k + 1 - b}{a - k + 1} \binom{a + b - k}{b}$ \\
+	\bottomrule
+\end{tabular}
 
 \subsection{Satz von \textsc{Sprague-Grundy}}
 Weise jedem Zustand $X$ wie folgt eine \textsc{Grundy}-Zahl $g\left(X\right)$ zu:
