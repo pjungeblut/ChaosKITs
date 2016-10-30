@@ -126,6 +126,29 @@ Weise jedem Zustand $X$ wie folgt eine \textsc{Grundy}-Zahl $g\left(X\right)$ zu
 $X$ ist genau dann gewonnen, wenn $g\left(X\right) > 0$ ist.\\\\
 Wenn man $k$ Spiele in den Zuständen $X_1, \ldots, X_k$ hat, dann ist die \textsc{Grundy}-Zahl des Gesamtzustandes $g\left(X_1\right) \oplus \ldots \oplus g\left(X_k\right)$.
 
+\subsection{\textsc{Legendre}-Symbol}
+Sei $p \geq 3$ eine Primzahl, $a \in \mathbb{Z}$:
+\begin{align*}
+	\legendre{a}{p} &=
+	\begin{cases*}
+		 0 & falls $p~\vert~a$ \\[-1ex]
+		 1 & falls $\exists x \in \mathbb{Z}\backslash p\mathbb{Z} : a \equiv x^2 \mod p$ \\[-1ex]
+		-1 & sonst
+	\end{cases*} \\
+	\legendre{-1}{p} &= (-1)^{\frac{p - 1}{2}} =
+	\begin{cases*}
+		 1 & falls $p \equiv 1 \mod 4$ \\[-1ex]
+		-1 & falls $p \equiv 3 \mod 4$
+	\end{cases*} \\
+	\legendre{2}{p} &= (-1)^{\frac{p^2 - 1}{8}} =
+	\begin{cases*}
+		 1 & falls $p \equiv \pm 1 \mod 8$ \\[-1ex]
+		-1 & falls $p \equiv \pm 3 \mod 8$
+	\end{cases*} \\
+	\legendre{p}{q} \cdot \legendre{q}{p} &=
+	(-1)^{\frac{p - 1}{2} \cdot \frac{q - 1}{2}}
+\end{align*}
+
 \subsection{Kombinatorik}
 
 \begin{flushleft}
