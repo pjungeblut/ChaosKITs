@@ -82,6 +82,21 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	\item \textbf{Bipartites Matching mit Gewichten auf linken Knoten:}
 	Minimiere Matchinggewicht.
 	Lösung: Sortiere Knoten links aufsteigend nach Gewicht, danach nutze normlen Algorithmus (\textsc{Kuhn}, Seite \pageref{kuhn})
+
+	\item \textbf{Satz von \textsc{Pick}:}
+	Sei $A$ der Flächeninhalt eines einfachen Gitterpolygons, $I$ die Anzahl der Gitterpunkte im Inneren und $R$ die Anzahl der Gitterpunkte auf dem Rand.
+	Es gilt:
+	\[
+		A = I + \frac{R}{2} - 1
+	\]
+
+	\item \textbf{Lemma von \textsc{Burnside}:}
+	Sei $G$ eine endliche Gruppe, die auf der Menge $X$ operiert.
+	Für jedes $g \in G$ sei $X^g$ die Menge der Fixpunkte bei Operation durch $g$, also $X^g = \{x \in X \mid g \bullet x = x\}$.
+	Dann gilt für die Anzahl der Bahnen $[X/G]$ der Operation:
+	\[
+		[X/G] = \frac{1}{\vert G \vert} \sum_{g \in G} \vert X^g \vert
+	\]
 \end{itemize}
 
 \subsection{Tipps \& Tricks}
