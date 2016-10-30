@@ -110,9 +110,10 @@ Multipliziert Polynome $A$ und $B$.
 
 \subsection{Kombinatorik}
 
-\subsubsection{Berühmte Zahlen}
-\begin{tabular}{|l|l|}
-	\hline
+\begin{tabular}{ll}
+	\toprule
+	\multicolumn{2}{c}{Berühmte Zahlen} \\
+	\midrule 
 	\textsc{Fibonacci}	&
 	$f(0) = 0 \quad
 	f(1) = 1 \quad
@@ -142,80 +143,178 @@ Multipliziert Polynome $A$ und $B$.
 	\stirlingII{n}{k} = k \stirlingII{n-1}{k} + \stirlingII{n-1}{k-1}$ \\
 
 	\textsc{Bell} &
+	$B_1 = 1 \qquad
+	B_n = \sum\limits_{k = 0}^{n - 1} B_k\binom{n-1}{k}
+	= \sum\limits_{k = 0}^{n}\stirlingII{n}{k}$\\
+
+	\textsc{Int. Partitions} &
 	$f(1,1) = 1 \quad
 	f(n,k) = 0 \text{ für } k > n \quad
 	f(n,k) = f(n-k,k) + f(n,k-1)$ \\
-	\hline
+	\bottomrule
 \end{tabular}
 
-\begin{bem}[\textsc{Zeckendorfs} Theorem]
-	Jede positive natürliche Zahl kann eindeutig als Summe einer oder mehrerer
-	verschiedener \textsc{Fibonacci}-Zahlen geschrieben werden, sodass keine zwei
-	aufeinanderfolgenden \textsc{Fibonacci}-Zahlen in der Summe vorkommen.
+\paragraph{\textsc{Zeckendorfs} Theorem}
+Jede positive natürliche Zahl kann eindeutig als Summe einer oder mehrerer
+verschiedener \textsc{Fibonacci}-Zahlen geschrieben werden, sodass keine zwei
+aufeinanderfolgenden \textsc{Fibonacci}-Zahlen in der Summe vorkommen.\\
+\emph{Lösung:} Greedy, nimm immer die größte \textsc{Fibonacci}-Zahl, die noch
+hineinpasst.
 
-	\emph{Lösung:} Greedy, nimm immer die größte \textsc{Fibonacci}-Zahl, die noch
-	hineinpasst.
-\end{bem}
-
-\begin{bem}[\textsc{Catalan}-Zahlen]
+\paragraph{\textsc{Catalan}-Zahlen}
+\begin{itemize}[nosep]
+	\item Die erste und dritte angegebene Formel sind relativ sicher gegen Overflows.
+	\item Die erste Formel kann auch zur Berechnung der \textsc{Catalan}-Zahlen
+	bezüglich eines Moduls genutzt werden.
+	\item Die \textsc{Catalan}-Zahlen geben an: $C_n =$
 	\begin{itemize}[nosep]
-		\item Die erste und dritte angegebene Formel sind relativ sicher gegen Overflows.
-		\item Die erste Formel kann auch zur Berechnung der \textsc{Catalan}-Zahlen
-		bezüglich eines Moduls genutzt werden.
-		\item Die \textsc{Catalan}-Zahlen geben an: $C_n =$
-		\begin{itemize}[nosep]
-			\item Anzahl der Binärbäume mit $n$ nicht unterscheidbaren Knoten.
-			\item Anzahl der validen Klammerausdrücke mit $n$ Klammerpaaren.
-			\item Anzahl der korrekten Klammerungen von $n+1$ Faktoren.
-			\item Anzahl der Möglichkeiten ein konvexes Polygon mit $n + 2$ Ecken in
-			Dreiecke zu zerlegen.
-			\item Anzahl der monotonen Pfade (zwischen gegenüberliegenden Ecken) in
-			einem $n \times n$-Gitter, die nicht die Diagonale kreuzen.
-		\end{itemize}
+		\item Anzahl der Binärbäume mit $n$ nicht unterscheidbaren Knoten.
+		\item Anzahl der validen Klammerausdrücke mit $n$ Klammerpaaren.
+		\item Anzahl der korrekten Klammerungen von $n+1$ Faktoren.
+		\item Anzahl der Möglichkeiten ein konvexes Polygon mit $n + 2$ Ecken in
+		Dreiecke zu zerlegen.
+		\item Anzahl der monotonen Pfade (zwischen gegenüberliegenden Ecken) in
+		einem $n \times n$-Gitter, die nicht die Diagonale kreuzen.
 	\end{itemize}
-\end{bem}
+\end{itemize}
 
-\begin{bem}[\textsc{Euler}-Zahlen 1. Ordnung]
-	Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Anstiegen.
+\paragraph{\textsc{Euler}-Zahlen 1. Ordnung}
+Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Anstiegen.
+Für die $n$-te Zahl gibt es $n$ mögliche Positionen zum Einfügen.
+Dabei wird entweder ein Ansteig in zwei gesplitted oder ein Anstieg um $n$ ergänzt.
 
-	Begründung: Für die $n$-te Zahl gibt es $n$ mögliche Positionen zum Einfügen.
-	Dabei wird entweder ein Ansteig in zwei gesplitted oder ein Anstieg um $n$ ergänzt.
-	\end{bem}
+\paragraph{\textsc{Euler}-Zahlen 2. Ordnung}
+Die Anzahl der Permutationen von $\{1,1, \ldots, n,n\}$ mit genau $k$ Anstiegen.
 
-\begin{bem}[\textsc{Euler}-Zahlen 2. Ordnung]
-	Die Anzahl der Permutationen von $\{1,1, \ldots, n,n\}$ mit genau $k$ Anstiegen.
-\end{bem}
+\paragraph{\textsc{Stirling}-Zahlen 1. Ordnung}
+Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Zyklen.
+Es gibt zwei Möglichkeiten für die $n$-te Zahl. Entweder sie bildet einen eigene Zyklus, oder sie kann an jeder Position in jedem Zyklus einsortiert werden.
 
-\begin{bem}[\textsc{Stirling}-Zahlen 1. Ordnung]
-	Die Anzahl der Permutationen von $\{1, \ldots, n\}$ mit genau $k$ Zyklen.
+\paragraph{\textsc{Stirling}-Zahlen 2. Ordnung}
+Die Anzahl der Möglichkeiten $n$ Elemente in $k$ nichtleere Teilmengen zu zerlegen.
+Es gibt $k$ Möglichkeiten die $n$ in eine $n-1$-Partition einzuordnen.
+Dazu kommt der Fall, dass die $n$ in ihrer eigenen Teilmenge (alleine) steht.
 
-	Begründung: Es gibt zwei Möglichkeiten für die $n$-te Zahl. Entweder sie
-	bildet einen eigene Zyklus, oder sie kann an jeder Position in jedem Zyklus
-	einsortiert werden.
-\end{bem}
+\paragraph{\textsc{Bell}-Zahlen}
+Anzahl der Partitionen von $\{1, \ldots, n\}$.
+Wie \textsc{Striling}-Zahlen 2. Ordnung ohne Limit durch $k$.
 
-\begin{bem}[\textsc{Stirling}-Zahlen 2. Ordnung]
-	Die Anzahl der Möglichkeiten $n$ Elemente in $k$ nichtleere Teilmengen zu zerlegen.
+\paragraph{Integer Partitions}
+Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximalem Elment $\leq k$.\\
 
-	Begründung: Es gibt $k$ Möglichkeiten die $n$ in eine $n-1$-Partition
-	einzuordnen. Dazu kommt der Fall, dass die $n$ in ihrer eigenen Teilmenge
-	(alleine) steht.
-\end{bem}
+\begin{tabular}{lcr}
+	\toprule
+	\multicolumn{3}{c}{Binomialkoeffizienten} \\
+	\midrule
+	$\binom{n}{k} = \frac{n!}{k!(n - k)!}$ &
+	$\binom{n}{k} = \binom{n - 1}{k} + \binom{n - 1}{k - 1}$ &
+	$\sum\limits_{k = 0}^n\binom{r + k}{k} = \binom{r + n + 1}{n}$ \\
 
-\begin{bem}[Bell-Zahlen]
-	Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit
-	maximalem Elment $\leq k$.
-\end{bem}
+	$\sum\limits_{k = 0}^n \binom{n}{k} = 2^n$ &
+	$\binom{n}{m}\binom{m}{k} = \binom{n}{k}\binom{n - k}{m - k}$ &
+	$\binom{n}{k} = (-1)^k \binom{k - n - 1}{k}$ \\
 
-\subsubsection{Verschiedenes}
-\begin{tabular}{|l|l|}
-	\hline
-	Türme von Hanoi, minimale Schirttzahl:					& $T_n = 2^n - 1$ \\
-	\#Regionen zwischen $n$ Gearden									& $n\left(n + 1\right) / 2 + 1$ \\
-	\#Abgeschlossene Regionen zwischen $n$ Geraden	& $\left(n^2 - 3n + 2\right) / 2$ \\
-	\#Markierte, gewurzelte Bäume										& $n^{n-1}$ \\
-	\#Markierte, nicht gewurzelte Bäume							& $n^{n-2}$ \\
-	\hline
+	$\binom{n}{k} = \binom{n}{n - k}$ &
+	$\sum\limits_{k = 0}^n \binom{k}{m} = \binom{n + 1}{m + 1}$ &
+	$\sum\limits_{i = 0}^n \binom{n}{i}^2 = \binom{2n}{n}$ \\
+
+	$\binom{n}{k} = \frac{n}{k}\binom{n - 1}{k - 1}$ &
+	$\sum\limits_{k = 0}^n \binom{r}{k}\binom{s}{n - k} = \binom{r + s}{n}$ &
+	$\sum\limits_{i = 1}^n \binom{n}{i} F_i = F_{2n} \quad F_n = n\text{-th Fib.}$ \\
+	\bottomrule
+\end{tabular}
+
+\begin{tabular}{c|cccc}
+	\toprule
+	\multicolumn{5}{c}{The Twelvefold Way (verteile $n$ Bälle auf $k$ Boxen)} \\
+	\midrule
+	Bälle & identisch & unterscheidbar & identisch      & unterscheidbar \\
+	Boxen & identisch & identisch      & unterscheidbar & unterscheidbar \\
+	\midrule
+	- &
+	$p_k(n)$ &
+	$\sum\limits_{i = 0}^k \stirlingII{n}{i}$ &
+	$\binom{n + k - 1}{k - 1}$ &
+	$k^n$ \\
+
+	size $\geq 1$ &
+	$p(n, k)$ &
+	$\stirlingII{n}{k}$ &
+	$\binom{n - 1}{k - 1}$ &
+	$k! \stirlingII{n}{k}$ \\
+
+	size $\leq 1$ &
+	$[n \leq k]$ &
+	$[n \leq k]$ &
+	$\binom{k}{n}$ &
+	$n! \binom{k}{n}$ \\
+	\midrule
+	\multicolumn{5}{l}{
+		$p_k(n)$: \#Anzahl der Partitionen von $n$ in $\leq k$ positive Summanden.
+	} \\
+	\multicolumn{5}{l}{
+		$p(n, k)$: \#Anzahl der Partitionen von $n$ in genau $k$ positive Summanden.
+	} \\
+	\multicolumn{5}{l}{
+		$[\text{Bedingung}]$: \lstinline{return Bedingung ? 1 : 0;}
+	} \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{ll}
+	\toprule
+	\multicolumn{2}{c}{Verschiedenes} \\
+	\midrule
+	Türme von Hanoi, minimale Schirttzahl: &
+	$T_n = 2^n - 1$ \\
+
+	\#Regionen zwischen $n$ Gearden	&
+	$\frac{n\left(n + 1\right)}{2} + 1$ \\
+
+	\#abgeschlossene Regionen zwischen $n$ Geraden &
+	$\frac{n^2 - 3n + 2}{2}$ \\
+
+	\#markierte, gewurzelte Bäume	&
+	$n^{n-1}$ \\
+
+	\#markierte, nicht gewurzelte Bäume	&
+	$n^{n-2}$ \\
+
+	\#Wälder mit $k$ gewurzelten Bäumen	&
+	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{l|l|l}
+	\toprule
+	\multicolumn{3}{c}{Reihen} \\
+	\midrule
+	$\sum\limits_{i = 1}^n i = \frac{n(n+1)}{2}$ &
+	$\sum\limits_{i = 1}^n i^2 = \frac{n(n + 1)(n + 2)}{6}$ & 
+	$\sum\limits_{i = 1}^n i^3 = \frac{n^2 (n + 1)^2}{4}$ \\
+
+	$\sum\limits_{i = 0}^n c^i = \frac{c^{n + 1} - 1}{c - 1} \quad c \neq 1$ &
+	$\sum\limits_{i = 0}^\infty c^i = \frac{1}{1 - c} \quad \vert c \vert < 1$ &
+	$\sum\limits_{i = 1}^\infty c^i = \frac{c}{1 - c} \quad \vert c \vert < 1$ \\
+
+	\multicolumn{2}{l|}{
+		$\sum\limits_{i = 0}^n ic^i = \frac{nc^{n + 2} - (n + 1)c^{n + 1} + c}{(c - 1)^2} \quad c \neq 1$
+	} &
+	$\sum\limits_{i = 0}^\infty ic^i = \frac{c}{(1 - c)^2} \quad \vert c \vert < 1$ \\
+
+	$H_n = \sum\limits_{i = 1}^n \frac{1}{i}$ &
+	\multicolumn{2}{l}{
+		$\sum\limits_{i = 1}^n iH_i = \frac{n(n + 1)}{2}H_n - \frac{n(n - 1)}{4}$
+	} \\
+
+	$\sum\limits_{i = 1}^n H_i = (n + 1)H_n - n$ &
+	\multicolumn{2}{l}{
+		$\sum\limits_{i = 1}^n \binom{i}{m}H_i =
+		\binom{n + 1}{m + 1} \left(H_{n + 1} - \frac{1}{m  + 1}\right)$
+	} \\
+	\bottomrule
 \end{tabular}
 
 \subsection{Satz von \textsc{Sprague-Grundy}}
