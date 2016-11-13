@@ -17,7 +17,7 @@ int kuhn(int n) { // n = #Knoten links.
 	int ans = 0;
 	// Greedy Matching. Optionale Beschleunigung.
 	for (int i = 0; i < n; i++) for (auto w : adjlist[i])
-		if (pairs[w] == -1) pairs[i] = w; pairs[w] = i; ans++; break;	}
+		if (pairs[w] == -1) { pairs[i] = w; pairs[w] = i; ans++; break;	}
 	for (int i = 0; i < n; i++) if (pairs[i] == -1) {
 		visited.assign(n, false);
 		ans += dfs(i);
