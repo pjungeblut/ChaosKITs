@@ -268,37 +268,6 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 \end{tabular}
 \vspace{5mm}
 
-\begin{tabular}{l|l|l}
-	\toprule
-	\multicolumn{3}{c}{Reihen} \\
-	\midrule
-	$\sum\limits_{i = 1}^n i = \frac{n(n+1)}{2}$ &
-	$\sum\limits_{i = 1}^n i^2 = \frac{n(n + 1)(n + 2)}{6}$ & 
-	$\sum\limits_{i = 1}^n i^3 = \frac{n^2 (n + 1)^2}{4}$ \\
-
-	$\sum\limits_{i = 0}^n c^i = \frac{c^{n + 1} - 1}{c - 1} \quad c \neq 1$ &
-	$\sum\limits_{i = 0}^\infty c^i = \frac{1}{1 - c} \quad \vert c \vert < 1$ &
-	$\sum\limits_{i = 1}^\infty c^i = \frac{c}{1 - c} \quad \vert c \vert < 1$ \\
-
-	\multicolumn{2}{l|}{
-		$\sum\limits_{i = 0}^n ic^i = \frac{nc^{n + 2} - (n + 1)c^{n + 1} + c}{(c - 1)^2} \quad c \neq 1$
-	} &
-	$\sum\limits_{i = 0}^\infty ic^i = \frac{c}{(1 - c)^2} \quad \vert c \vert < 1$ \\
-
-	$H_n = \sum\limits_{i = 1}^n \frac{1}{i}$ &
-	\multicolumn{2}{l}{
-		$\sum\limits_{i = 1}^n iH_i = \frac{n(n + 1)}{2}H_n - \frac{n(n - 1)}{4}$
-	} \\
-
-	$\sum\limits_{i = 1}^n H_i = (n + 1)H_n - n$ &
-	\multicolumn{2}{l}{
-		$\sum\limits_{i = 1}^n \binom{i}{m}H_i =
-		\binom{n + 1}{m + 1} \left(H_{n + 1} - \frac{1}{m  + 1}\right)$
-	} \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
-
 \begin{tabular}{c|cccc}
 	\toprule
 	\multicolumn{5}{c}{The Twelvefold Way (verteile $n$ Bälle auf $k$ Boxen)} \\
@@ -335,63 +304,7 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	} \\
 	\bottomrule
 \end{tabular}
-\vspace{5mm}
-
-\begin{tabular}{l|r}
-	\toprule
-	\multicolumn{2}{c}{
-		Wahrscheinlichkeitstheorie ($A,B$ Ereignisse und $X,Y$ Variablen)
-	} \\
-	\midrule
-	$\E(X + Y) = \E(X) + \E(Y)$ &
-	$\E(\alpha X) = \alpha \E(X)$ \\
-
-	$X, Y$ unabh. $\Leftrightarrow \E(XY) = \E(X) \cdot \E(Y)$ &
-	$\Pr[A \vert B] = \frac{\Pr[A \land B]}{\Pr[B]}$ \\
-
-	$\Pr[A \lor B] = \Pr[A] + \Pr[B] - \Pr[A \land B]$ &
-	$\Pr[A \land B] = \Pr[A] \cdot \Pr[B]$ \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
-
-\begin{tabular}{lr|lr}
-	\toprule
-	\multicolumn{4}{c}{\textsc{Bertrand}'s Ballot Theorem (Kandidaten $A$ und $B$, $k \in \mathbb{N}$)} \\
-	\midrule
-	$\#A > k\#B$ & $Pr = \frac{a - kb}{a + b}$ &
-	$\#B - \#A \leq k$ & $Pr = 1 - \frac{a!b!}{(a + k + 1)!(b - k - 1)!}$ \\
-
-	$\#A \geq k\#B$ & $Pr = \frac{a + 1 - kb}{a + 1}$ &
-	$\#A \geq \#B + k$ & $Num = \frac{a - k + 1 - b}{a - k + 1} \binom{a + b - k}{b}$ \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
-
-\begin{tabular}{ll}
-	\toprule
-	\multicolumn{2}{c}{Verschiedenes} \\
-	\midrule
-	Türme von Hanoi, minimale Schirttzahl: &
-	$T_n = 2^n - 1$ \\
-
-	\#Regionen zwischen $n$ Gearden	&
-	$\frac{n\left(n + 1\right)}{2} + 1$ \\
-
-	\#abgeschlossene Regionen zwischen $n$ Geraden &
-	$\frac{n^2 - 3n + 2}{2}$ \\
-
-	\#markierte, gewurzelte Bäume	&
-	$n^{n-1}$ \\
-
-	\#markierte, nicht gewurzelte Bäume	&
-	$n^{n-2}$ \\
-
-	\#Wälder mit $k$ gewurzelten Bäumen	&
-	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
+\vspace{1mm}
 
 \begin{flushleft}
 	\begin{tabular}{l|cccl}
@@ -434,6 +347,191 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 		\bottomrule
 	\end{tabular}
 \end{flushleft}
+\vspace{1mm}
+
+\begin{tabular}{l|r}
+	\toprule
+	\multicolumn{2}{c}{
+		Wahrscheinlichkeitstheorie ($A,B$ Ereignisse und $X,Y$ Variablen)
+	} \\
+	\midrule
+	$\E(X + Y) = \E(X) + \E(Y)$ &
+	$\E(\alpha X) = \alpha \E(X)$ \\
+
+	$X, Y$ unabh. $\Leftrightarrow \E(XY) = \E(X) \cdot \E(Y)$ &
+	$\Pr[A \vert B] = \frac{\Pr[A \land B]}{\Pr[B]}$ \\
+
+	$\Pr[A \lor B] = \Pr[A] + \Pr[B] - \Pr[A \land B]$ &
+	$\Pr[A \land B] = \Pr[A] \cdot \Pr[B]$ \\
+	\bottomrule
+\end{tabular}
+\vspace{1mm}
+
+\begin{tabular}{lr|lr}
+	\toprule
+	\multicolumn{4}{c}{\textsc{Bertrand}'s Ballot Theorem (Kandidaten $A$ und $B$, $k \in \mathbb{N}$)} \\
+	\midrule
+	$\#A > k\#B$ & $Pr = \frac{a - kb}{a + b}$ &
+	$\#B - \#A \leq k$ & $Pr = 1 - \frac{a!b!}{(a + k + 1)!(b - k - 1)!}$ \\
+
+	$\#A \geq k\#B$ & $Pr = \frac{a + 1 - kb}{a + 1}$ &
+	$\#A \geq \#B + k$ & $Num = \frac{a - k + 1 - b}{a - k + 1} \binom{a + b - k}{b}$ \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{p{4.3cm}|p{7cm}}
+	\toprule
+	\multicolumn{2}{c}{Nim-Spiele (\ding{182} letzter gewinnt (normal), \ding{183} letzter verliert)} \\
+	\midrule
+	Beschreibung &
+	Strategie \\
+	\midrule
+
+	$M = [\mathit{pile}_i]$\newline
+	$[x] := \{1, \ldots, x\}$&
+	$\mathit{SG} = \oplus_{i = 1}^n \mathit{pile}_i$\newline
+	\ding{182} Nimm von einem Stapel, sodass $\mathit{SG}$ $0$ wird.\newline
+	\ding{183} Genauso.
+	Außer: Bleiben nur noch Stapel der Größe $1$, erzeuge ungerade Anzahl solcher Stapel.\\
+	\midrule
+
+	$M = \{a^m \mid m \geq 0\}$ &
+	$a$ ungerade: $\mathit{SG}_n = n \% 2$\newline
+	$a$ gerade:\newline
+	$\mathit{SG}_n = 2$, falls $n \equiv a \mod (a + 1) $\newline
+	$\mathit{SG}_n = n \% (a + 1) \% 2$, sonst.\\
+	\midrule
+
+	$M_{\text{\ding{172}}} = \left[\frac{\mathit{pile}_i}{2}\right]$\newline
+	$M_{\text{\ding{173}}} =
+	\left\{\left\lceil\frac{\mathit{pile}_i}{2}\right\rceil,
+	\mathit{pile}_i\right\}$ &
+	\ding{172}
+	$\mathit{SG}_{2n} = n$,
+	$\mathit{SG}_{2n+1} = \mathit{SG}_n$\newline
+	\ding{173}
+	$\mathit{SG}_0 = 0$,
+	$\mathit{SG}_n = [\log_2 n] + 1$ \\
+	\midrule
+
+	$M_{\text{\ding{172}}} = \text{Teiler von $\mathit{pile}_i$}$\newline
+	$M_{\text{\ding{173}}} = \text{echte Teiler von $\mathit{pile}_i$}$ &
+	\ding{172}
+	$\mathit{SG}_0 = 0$,
+	$\mathit{SG}_n = \mathit{SG}_{\text{\ding{173},n}} + 1$\newline
+	\ding{173}
+	$\mathit{ST}_1 = 0$,
+	$\mathit{SG}_n = \text{\#Nullen am Ende von $n_{bin}$}$\\
+	\midrule
+
+	$M_{\text{\ding{172}}} = [k]$\newline
+	$M_{\text{\ding{173}}} = S$, ($S$ endlich)\newline
+	$M_{\text{\ding{174}}} = S \cup \{\mathit{pile}_i\}$ &
+	$\mathit{SG}_{\text{\ding{172}}, n} = n \mod (k + 1)$\newline
+	\ding{182} Niederlage bei $\mathit{SG} = 0$\newline
+	\ding{183} Niederlage bei $\mathit{SG} = 1$\newline
+	$\mathit{SG}_{\text{\ding{174}}, n} = \mathit{SG}_{\text{\ding{173}}, n} + 1$\\
+	\midrule
+
+	\multicolumn{2}{l}{
+		Für jedes endliche $M$ ist $\mathit{SG}$ eines Stapels irgendwann periodisch.
+	} \\
+	\midrule
+
+	\textsc{Moore}'s Nim:\newline
+	Beliebige Zahl von maximal $k$ Stapeln. &
+	\ding{182}
+	Schreibe $\mathit{pile}_i$ binär.
+	Addiere ohne Übertrag zur Basis $k + 1$.
+	Niederlage, falls Ergebnis gleich 0.\newline
+	\ding{183}
+	Wenn alle Stapel $1$ sind:
+	Niederlage, wenn $n \equiv 1 \mod (k + 1)$.
+	Sonst wie in \ding{182}.\\
+	\midrule
+
+	Staircase Nim:\newline
+	$n$ Stapel in einer Reihe.
+	Beliebige Zahl von Stapel $i$ nach Stapel $i-1$. &
+	Niederlage, wenn Nim der ungeraden Spiele verloren ist:\newline
+	$\oplus_{i = 0}^{(n - 1) / 2} \mathit{pile}_{2i + 1} = 0$\\
+	\midrule
+
+	\textsc{Lasker}'s Nim:\newline
+	Zwei mögliche Züge:\newline
+	1) Nehme beliebige Zahl.\newline
+	2) Teile Stapel in zwei Stapel (ohne Entnahme).&
+	$\mathit{SG}_n = n$, falls $n \equiv 1,2 \mod 4$\newline
+	$\mathit{SG}_n = n + 1$, falls $n \equiv 3 \mod 4$\newline
+	$\mathit{SG}_n = n - 1$, falls $n \equiv 0 \mod 4$\\
+	\midrule
+
+	\textsc{Kayles}' Nim:\newline
+	Zwei mögliche Züge:\newline
+	1) Nehme beliebige Zahl.\newline
+	2) Teile Stapel in zwei Stapel (mit Entnahme).&
+	Berechne $\mathit{SG}_n$ für kleine $n$ rekursiv.\newline
+	$n \in [72,83]: \quad 4, 1, 2, 8, 1, 4, 7, 2, 1, 8, 2, 7$\newline
+	Periode ab $n = 72$ der Länge $12$.\\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{l|l|l}
+	\toprule
+	\multicolumn{3}{c}{Reihen} \\
+	\midrule
+	$\sum\limits_{i = 1}^n i = \frac{n(n+1)}{2}$ &
+	$\sum\limits_{i = 1}^n i^2 = \frac{n(n + 1)(n + 2)}{6}$ & 
+	$\sum\limits_{i = 1}^n i^3 = \frac{n^2 (n + 1)^2}{4}$ \\
+
+	$\sum\limits_{i = 0}^n c^i = \frac{c^{n + 1} - 1}{c - 1} \quad c \neq 1$ &
+	$\sum\limits_{i = 0}^\infty c^i = \frac{1}{1 - c} \quad \vert c \vert < 1$ &
+	$\sum\limits_{i = 1}^\infty c^i = \frac{c}{1 - c} \quad \vert c \vert < 1$ \\
+
+	\multicolumn{2}{l|}{
+		$\sum\limits_{i = 0}^n ic^i = \frac{nc^{n + 2} - (n + 1)c^{n + 1} + c}{(c - 1)^2} \quad c \neq 1$
+	} &
+	$\sum\limits_{i = 0}^\infty ic^i = \frac{c}{(1 - c)^2} \quad \vert c \vert < 1$ \\
+
+	$H_n = \sum\limits_{i = 1}^n \frac{1}{i}$ &
+	\multicolumn{2}{l}{
+		$\sum\limits_{i = 1}^n iH_i = \frac{n(n + 1)}{2}H_n - \frac{n(n - 1)}{4}$
+	} \\
+
+	$\sum\limits_{i = 1}^n H_i = (n + 1)H_n - n$ &
+	\multicolumn{2}{l}{
+		$\sum\limits_{i = 1}^n \binom{i}{m}H_i =
+		\binom{n + 1}{m + 1} \left(H_{n + 1} - \frac{1}{m  + 1}\right)$
+	} \\
+	\bottomrule
+\end{tabular}
+\vspace{5mm}
+
+\begin{tabular}{ll}
+	\toprule
+	\multicolumn{2}{c}{Verschiedenes} \\
+	\midrule
+	Türme von Hanoi, minimale Schirttzahl: &
+	$T_n = 2^n - 1$ \\
+
+	\#Regionen zwischen $n$ Gearden	&
+	$\frac{n\left(n + 1\right)}{2} + 1$ \\
+
+	\#abgeschlossene Regionen zwischen $n$ Geraden &
+	$\frac{n^2 - 3n + 2}{2}$ \\
+
+	\#markierte, gewurzelte Bäume	&
+	$n^{n-1}$ \\
+
+	\#markierte, nicht gewurzelte Bäume	&
+	$n^{n-2}$ \\
+
+	\#Wälder mit $k$ gewurzelten Bäumen	&
+	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
+	\bottomrule
+\end{tabular}
 
 \subsection{Big Integers}
 \lstinputlisting{math/bigint.cpp}
