@@ -93,7 +93,7 @@ double distToLine(pt a, pt b, pt p) {
 
 // Liegt p auf der Geraden a-b?
 bool pointOnLine(pt a, pt b, pt p) {
-	return orientation(a, b, c) == 0;
+	return orientation(a, b, p) == 0;
 }
 
 // Liegt p auf der Strecke a-b?
@@ -108,15 +108,15 @@ bool pointOnLineSegment(pt a, pt b, pt p) {
 // Entfernung von Punkt p zur Strecke a-b.
 double distToSegment(pt a, pt b, pt p) {
   if (a == b) return abs(p - a);
-    double segLength = abs(a - b);
-		double u = ((real(p) - real(a)) * (real(b) - real(a)) +
-				(imag(p) - imag(a)) * (imag(b) - imag(a))) /
-				(segLength * segLength);
-    pt projection(real(a) + u * (real(b) - real(a)),
-    		imag(a) + u * (imag(b) - imag(a)));
-    double projectionDist = abs(p - projection);
-    if (!pointOnLineSegment(a, b, projection)) projectionDist = 1e30;
-    return min(projectionDist, min(abs(p - a), abs(p - b)));
+  double segLength = abs(a - b);
+	double u = ((real(p) - real(a)) * (real(b) - real(a)) +
+			(imag(p) - imag(a)) * (imag(b) - imag(a))) /
+			(segLength * segLength);
+  pt projection(real(a) + u * (real(b) - real(a)),
+  		imag(a) + u * (imag(b) - imag(a)));
+  double projectionDist = abs(p - projection);
+  if (!pointOnLineSegment(a, b, projection)) projectionDist = 1e30;
+  return min(projectionDist, min(abs(p - a), abs(p - b)));
 }
 
 // Kürzeste Entfernung zwischen den Strecken a-b und c-d.

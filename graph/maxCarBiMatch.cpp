@@ -1,5 +1,5 @@
 // Laufzeit: O(n*min(ans^2, |E|))
-vector< vector<int> > adjlist; // Von links nach rechts.
+vector<vector<int>> adjlist; // Von links nach rechts.
 vector<int> pairs; // Der gematchte Knoten oder -1.
 vector<bool> visited;
 
