@@ -2,7 +2,7 @@
 #define N 100000000 // Bis 10^8 in unter 64MB Speicher.
 bitset<N / 2> isNotPrime;
 
-inline bool check(int x) { // Diese Methode zum Lookup verwenden.
+inline bool isPrime(int x) { // Diese Methode zum Lookup verwenden.
   if (x < 2) return false;
   else if (x == 2) return true;
   else if (!(x & 1)) return false;

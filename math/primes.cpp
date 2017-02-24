@@ -22,7 +22,7 @@ ll rho(ll n) { // Findet Faktor < n, nicht unbedingt prim.
     x = (multMod(x, x, n) + c) % n;
     y = (multMod(y, y, n) + c) % n;
     y = (multMod(y, y, n) + c) % n;
-    d = __gcd(abs(x - y), n);
+    d = gcd(abs(x - y), n); // Implementierung von oben.
   }
   return d == n ? rho(n) : d;
 }
@@ -34,6 +34,6 @@ void factor(ll n, map<ll, int> &facts) {
     return;
   }
   ll f = rho(n);
-  factor(n/f, facts);
+  factor(n / f, facts);
   factor(f, facts);
 }
