@@ -1,5 +1,5 @@
 struct node {
-	node *(e)[26]; // Implementierung für Kleinbuchstaben.
+	node *e[26]; // Implementierung für Kleinbuchstaben.
 	int c = 0; // Anzahl der Wörter, die an diesem node enden.
 	node() { for(int i = 0; i < 26; i++) e[i] = NULL; }	
 };

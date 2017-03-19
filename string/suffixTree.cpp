@@ -1,21 +1,20 @@
 // Baut Suffixbaum online auf. Laufzeit: O(n)
 // Einmal initSuffixTree() aufrufen und dann extend für jeden Buchstaben.
-// $-Zeichen (oder ähnliches) an den Text anhängen!
-static const int ALPHABET_SIZE = 128, INF = 0x3FFFFFFF;
+// '\0'-Zeichen (oder ähnliches) an den Text anhängen!
 string s;
 int root, lastIdx, needsSuffix, pos, remainder, curVert, curEdge, curLen;
 struct Vert {
-  int start, end, suffix, next[ALPHABET_SIZE];
+  int start, end, suffix; // Kante [start,end)
+  map<char, int> next;
   int len() { return min(end, pos + 1) - start; }
 };
 vector<Vert> tree;
 
-int newVert(int start, int end = INF) {
+int newVert(int start, int end) {
   Vert v;
   v.start = start;
   v.end = end;
   v.suffix = 0;
-  memset(v.next, 0, sizeof(v.next));
   tree.push_back(v);
   return ++lastIdx;
 }
@@ -47,13 +46,13 @@ void extend() {
   remainder++;
   while (remainder) {
     if (curLen == 0) curEdge = pos;
-    if (tree[curVert].next[(int)s[curEdge]] == 0) {
-      int leaf = newVert(pos);
-      tree[curVert].next[(int)s[curEdge]] = leaf;
-      tree[curVert].next[(int)s[curEdge]] = leaf;
+    if (!tree[curVert].next.count(s[curEdge])) {
+      int leaf = newVert(pos, s.size());
+      tree[curVert].next[s[curEdge]] = leaf;
+      tree[curVert].next[s[curEdge]] = leaf;
       addSuffixLink(curVert);
     } else {
-      int nxt = tree[curVert].next[(int)s[curEdge]];
+      int nxt = tree[curVert].next[s[curEdge]];
       if (fullImplicitEdge(nxt)) continue;
       if (s[tree[nxt].start + curLen] == s[pos]) {
         curLen++;
@@ -61,11 +60,11 @@ void extend() {
         break;
       }
       int split = newVert(tree[nxt].start, tree[nxt].start + curLen);
-      tree[curVert].next[(int)s[curEdge]] = split;
-      int leaf = newVert(pos);
-      tree[split].next[(int)s[pos]] = leaf;
+      tree[curVert].next[s[curEdge]] = split;
+      int leaf = newVert(pos, s.size());
+      tree[split].next[s[pos]] = leaf;
       tree[nxt].start += curLen;
-      tree[split].next[(int)s[tree[nxt].start]] = nxt;
+      tree[split].next[s[tree[nxt].start]] = nxt;
       addSuffixLink(split);
     }
     remainder--;
