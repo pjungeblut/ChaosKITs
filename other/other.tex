@@ -110,6 +110,20 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	Alle Kofaktoren von $R$ sind gleich und die Anzahl der Spannbäume von $G$.
 	\newline
 	Entferne letzte Zeile und Spalte und berechne Betrag der Determinante.
+
+	\item \textbf{\textsc{Dilworth}'s-Theorem:}
+	Sei $S$ eine Menge und $\leq$ eine partielle Ordnung ($S$ ist ein Poset).
+	Eine \emph{Kette} ist eine Teilmenge $\{x_1,\ldots,x_n\}$ mit $x_1 \leq \ldots \leq x_n$.
+	Eine \emph{Partition} ist eine Menge von Ketten, sodass jedes $s \in S$ in genau einer Kette ist.
+	Eine \emph{Antikette} ist eine Menge von Elementen, die paarweise nicht vergleichbar sind.
+	\newline
+	Es gilt: Die Größe der längsten Antikette gleicht der Größe der kleinsten Partition.
+	$\Rightarrow$ \emph{Weite} des Poset.
+	\newline
+	Berechnung: Maximales Matching in bipartitem Graphen.
+	Dupliziere jedes $s \in S$ in $u_s$ und $v_s$.
+	Falls $x \leq y$, füge Kante $u_x \to v_y$ hinzu.
+	Wenn Matching zu langsam ist, versuche Struktur des Posets auszunutzen und evtl. anders eine maximale Anitkette zu finden. 
 \end{itemize}
 
 \subsection{Tipps \& Tricks}
