@@ -18,4 +18,4 @@ int getLCA(int a, int b) { // Laufzeit: O(1)
 // Benutzung:
 int c = 0;
 initLCA(0, 0, c);
-initRMQ();
+initRMQ(); // Ersetze das data im RMQ-Code von oben durch depth.
