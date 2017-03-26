@@ -1,6 +1,6 @@
 // Komplexe Zahlen als Darstellung für Punkte. Wenn immer möglich
 // complex<int> verwenden. Funktionen wie abs() geben dann int zurück.
-typedef pt complex<double>;
+typedef complex<double> pt;
 
 // Winkel zwischen Punkt und x-Achse in [0, 2 * PI).
 double angle = arg(a);
