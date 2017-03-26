@@ -1,6 +1,8 @@
 vector<int> visited(2*MAX_N), first(MAX_N, 2*MAX_N), depth(2*MAX_N);
 vector<vector<int>> graph(MAX_N);
 
+// Funktioniert nur mit von der Wurzel weggerichteten Kanten.
+// Falls ungerichtete Kanten, visited-check einführen.
 void initLCA(int gi, int d, int &c) { // Laufzeit: O(n)
 	visited[c] = gi, depth[c] = d, first[gi] = min(c, first[gi]), c++;
 	for(int gn : graph[gi]) {
@@ -16,4 +18,4 @@ int getLCA(int a, int b) { // Laufzeit: O(1)
 // Benutzung:
 int c = 0;
 initLCA(0, 0, c);
-initRMQ(); // Ersetze das data im RMQ-Code von oben durch depth.
+initRMQ();
