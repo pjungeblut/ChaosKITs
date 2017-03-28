@@ -12,3 +12,5 @@ a ^= (1 << j)
 a = -1
 // Setzt die ersten n Bits auf 1. Achtung: Overflows.
 a = (1 << n) - 1
+// Iteriert über alle Teilmengen einer Bitmaske (außer der leeren Menge).
+for (int subset = bitmask; subset > 0; subset = (subset - 1) & bitmask)
