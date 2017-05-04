@@ -2,6 +2,8 @@
 // Berechnet das Maximum im Array.
 int a[MAX_N], m[4 * MAX_N];
 
+int gcd(int a, int b) { return b == 0 ? a : gcd (b, a % b); }
+
 int query(int x, int y, int k = 0, int X = 0, int Y = MAX_N - 1) {
 	if (x <= X && Y <= y) return m[k];
 	if (y < X || Y < x) return -INF; // Ein "neutrales" Element.
