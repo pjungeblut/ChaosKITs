@@ -191,9 +191,9 @@ Sei $p \geq 3$ eine Primzahl, $a \in \mathbb{Z}$:
 		= \sum\limits_{k = 0}^{n}\stirlingII{n}{k}$\\
 
 		\textsc{Partitions} &
-		$f(1,1) = 1 \quad
-		f(n,k) = 0 \text{ für } k > n \quad
-		f(n,k) = f(n-k,k) + f(n-1,k-1)$ \\
+		$f(0,0) = 1 \quad
+		f(n,k) = 0 \text{ für } k > n \text{ oder } n \leq 0 \text{ oder } k \leq 0$ \\
+		& $f(n,k) = f(n-k,k) + f(n-1,k-1)$ \\
 		\bottomrule
 	\end{tabular}
 \end{flushleft}
