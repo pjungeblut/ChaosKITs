@@ -7,7 +7,7 @@ bool isPrime(ll n) { // Miller Rabin Primzahltest. O(log n)
 		ll v = powMod(a, d, n); // Implementierung von oben.
 		if(v == 1 || v == n - 1) continue;
 		for(int i = 1;  i <= j; i++) {
-			v = multMod(v, v, n); // Implementierung von oben.
+			v = (v * v) % n;
 			if(v == n - 1 || v <= 1) break;
 		}
 		if(v != n - 1) return false;
@@ -19,9 +19,8 @@ ll rho(ll n) { // Findet Faktor < n, nicht unbedingt prim.
   if (~n & 1) return 2;
   ll c = rand() % n, x = rand() % n, y = x, d = 1;
   while (d == 1) {
-    x = (multMod(x, x, n) + c) % n;
-    y = (multMod(y, y, n) + c) % n;
-    y = (multMod(y, y, n) + c) % n;
+    x = ((x * x) % n + c) % n;
+    y = ((y * y) % n + c) % n;
     d = gcd(abs(x - y), n); // Implementierung von oben.
   }
   return d == n ? rho(n) : d;
