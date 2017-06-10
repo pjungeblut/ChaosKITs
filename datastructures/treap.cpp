@@ -1,35 +1,35 @@
 struct item {
   int key, prior;
   item *l, *r;
-  item() { }
-  item (int key, int prior) : key(key), prior(prior), l(NULL), r(NULL) { }
+  item() {}
+  item(int key, int prior) : key(key), prior(prior), l(NULL), r(NULL) {}
 };
 
-void split (item *t, int key, item *l, item *r) {
+void split(item *t, int key, item *l, item *r) {
   if (!t) l = r = NULL;
   else if (key < t->key) split(t->l, key, l, t->l), r = t;
   else split(t->r, key, t->r, r), l = t;
 }
 
-void insert (item *t, item *it) {
+void insert(item *t, item *it) {
   if (!t) t = it;
   else if (it->prior > t->prior) split(t, it->key, it->l, it->r), t = it;
   else insert(it->key < t->key ? t->l : t->r, it);
 }
 
-void merge (item *t, item *l, item *r) {
+void merge(item *t, item *l, item *r) {
   if (!l || !r) t = l ? l : r;
   else if (l->prior > r->prior) merge(l->r, l->r, r), t = l;
   else merge(r->l, l, r->l), t = r;
 }
 
-void erase (item *t, int key) {
+void erase(item *t, int key) {
   if (t->key == key) merge (t, t->l, t->r);
   else erase(key < t->key ? t->l : t->r, key);
 }
 
-item *unite (item *l, item *r) {
-  if (!l || !r)  return l ? l : r;
+item *unite(item *l, item *r) {
+  if (!l || !r) return l ? l : r;
   if (l->prior < r->prior) swap(l, r);
   item * lt, rt;
   split(r, l->key, lt, rt);
