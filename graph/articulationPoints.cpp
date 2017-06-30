@@ -20,7 +20,7 @@ void dfs(int v, int parent) { // Mit parent=-1 aufrufen.
 }}}
 
 void findArticulationPoints() {
-	couter = 1; // Nicht auf 0 setzen!
+	counter = 1; // Nicht auf 0 setzen!
 	low.resize(adjlist.size());
 	d.assign(adjlist.size(), 0);
 	isArtPoint.assign(adjlist.size(), false);
