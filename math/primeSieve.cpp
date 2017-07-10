@@ -1,4 +1,6 @@
 // Laufzeit: O(n * log log n)
+// Kann erweitert werden: Für jede Zahl den kleinsten Primfaktor.
+// Dabei vorsicht: Nicht kleinere Faktoren überschreiben.
 #define N 100000000 // Bis 10^8 in unter 64MB Speicher.
 bitset<N / 2> isNotPrime;
 
@@ -13,7 +15,7 @@ inline int primeSieve() { // Rückgabe: Anzahl der Primzahlen < N.
   int counter = 1; // Die 2, die sonst vergessen würde.
   for (int i = 3; i < N; i += 2) {
     if (!isNotPrime[i / 2]) {
-      for (int j = 3 * i; j < N; j+= 2 * i) isNotPrime[j / 2] = 1;
+      for (int j = i * i; j < N; j+= 2 * i) isNotPrime[j / 2] = 1;
       counter++;
   }}
   return counter;
