@@ -1,5 +1,6 @@
-// Laufzeit: O(n*min(ans^2, |E|))
-vector<vector<int>> adjlist; // Von links nach rechts.
+// Laufzeit: O(n*min(ans^2, |E|)) 
+// Kanten von links nach rechts. Die ersten n Knoten sind links, die anderen rechts.
+vector<vector<int>> adjlist;
 vector<int> pairs; // Der gematchte Knoten oder -1.
 vector<bool> visited;
 
