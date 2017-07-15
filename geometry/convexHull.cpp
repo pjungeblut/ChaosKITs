@@ -1,5 +1,4 @@
 // Laufzeit: O(n*log(n))
-
 ll cross(const pt p, const pt a, const pt b) {
   return (a.x - p.x) * (b.y - p.y) - (a.y - p.y) * (b.x - p.x);
 }
