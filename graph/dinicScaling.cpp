@@ -1,3 +1,5 @@
+// Laufzeit: O(|V|^2*|E|)
+// Knoten müssen von 0 nummeriert sein.
 const int INF = 0x3FFFFFFF, MAXN = 500;
 struct edge { int a, b; ll f, c; };
 int n, m, pt[MAXN], d[MAXN], s, t;
@@ -6,7 +8,7 @@ vector<int> g[MAXN];
 ll flow = 0, lim;
 queue<int> q;
 
-void add_edge(int a, int b, ll c) {
+void addEdge(int a, int b, ll c) {
   g[a].push_back(e.size());
   e.push_back(edge {a, b, 0, c});
   g[b].push_back(e.size());
