@@ -14,7 +14,7 @@ struct sat2 {
 		adjlist[1^v2].push_back(1^v1);
 	}
 	void addEquiv(int v1, int v2) { addImpl(v1, v2); addImpl(v2, v1); }
-	void addOr(int v1, int v2) { addImpl(1^v1, v2); addImpl(1^v2, v1); }
+	void addOr(int v1, int v2) { addImpl(1^v1, v2); }
 	void addXor(int v1, int v2) { addOr(v1, v2); addOr(1^v1, 1^v2); }
 	void addTrue(int v1) { addImpl(1^v1, v1); }
 	void addFalse(int v1) { addTrue(1^v1); }
