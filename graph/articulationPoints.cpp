@@ -2,7 +2,7 @@
 vector<vector<int>> adjlist;
 vector<bool> isArt;
 vector<int> d, low;
-int counter, root, rootCount; // root >= 2 <=> Wurzel Artikulationspunkt
+int counter, root, rootCount; // rootCount >= 2 <=> root Artikulationspunkt
 vector<ii> bridges; // Nur fuer Brücken.
 
 void dfs(int v, int parent = -1) {
