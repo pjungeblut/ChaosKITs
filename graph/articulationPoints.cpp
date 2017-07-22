@@ -1,13 +1,13 @@
 // Laufzeit: O(|V|+|E|)
-vector< vector<int> > adjlist;
+vector<vector<int>> adjlist;
 vector<bool> isArt;
 vector<int> d, low;
-int counter, root; // root >= 2 <=> Wurzel Artikulationspunkt
+int counter, root, rootCount; // root >= 2 <=> Wurzel Artikulationspunkt
 vector<ii> bridges; // Nur fuer Brücken.
 
-void dfs(int v, int parent) { // Mit parent=-1 aufrufen.
-	d[v] = low[v] = counter++;
-	if (parent == 0) root++;
+void dfs(int v, int parent = -1) {
+	d[v] = low[v] = ++counter;
+	if (parent == root) ++rootCount;
 	
 	for (auto w : adjlist[v]) {
 		if (!d[w]) {
@@ -20,10 +20,14 @@ void dfs(int v, int parent) { // Mit parent=-1 aufrufen.
 }}}
 
 void findArticulationPoints() {
-	counter = 1; // Nicht auf 0 setzen!
+	counter = 0;
 	low.resize(adjlist.size());
 	d.assign(adjlist.size(), 0);
 	isArtPoint.assign(adjlist.size(), false);
 	bridges.clear(); //nur fuer Bruecken
-	for (int v = 0; v < (int)adjlist.size(); v++) if (!d[v]) dfs(v, -1);
-}
+	for (int v = 0; v < (int)adjlist.size(); v++) {
+		if (!d[v]) {
+			root = v; rootCount = 0;
+			dfs(v);
+			if (rootCount > 1) isArt[v] = true;
+}}}
