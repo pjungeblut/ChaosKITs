@@ -12,7 +12,7 @@ void dfs(int v, int parent = -1) {
 	for (auto w : adjlist[v]) {
 		if (!d[w]) {
 			dfs(w, v);
-			if (low[w] >= d[v]) isArt[v] = true;
+			if (low[w] >= d[v] && v != root) isArt[v] = true;
 			if (low[w] > d[v]) bridges.push_back(ii(v, w));
 			low[v] = min(low[v], low[w]);
 		} else if (w != parent) {
