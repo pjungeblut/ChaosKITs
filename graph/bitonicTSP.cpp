@@ -28,7 +28,7 @@ void bitonicTSP() {
         }
         n = j + 1;
     } while(j != 0);
-    lt.push_back(0);
+    (lt.back() == 1 ? lt : ut).push_back(0);
     reverse(lt.begin(), lt.end());
     lt.insert(lt.end(), ut.begin(), ut.end());
     //return lt;// Enthält Knoten 0 zweimal. An erster und letzter Position.
