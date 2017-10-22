@@ -158,6 +158,25 @@ Sei $p \geq 3$ eine Primzahl, $a \in \mathbb{Z}$:
 \end{align*}
 \lstinputlisting{math/legendre.cpp}
 
+
+\subsection{\textsc{Möbius}-Funktion und \textsc{Möbius}-Inversion}
+\begin{itemize}
+	\item Seien $f,g : \mathbb{N} \to \mathbb{N}$ und  $g(n) := \sum_{d \vert n}f(d)$.
+	Dann ist $f(n) = \sum_{d \vert n}g(d)\mu(\frac{n}{d})$.
+	\item $\sum_{d \vert n}\mu(d) =
+			\begin{cases*}
+				1 & falls $n = 1$\\
+				0 & sonst
+			\end{cases*}$
+\end{itemize}
+\textbf{Beispiel Inklusion/Exklusion:}
+Gegeben sein eine Sequenz $A={a_1,\ldots,a_n}$ von Zahlen, $1 \leq a_i \leq N$. Zähle die Anzahl der \emph{coprime subsequences}.\newline
+\textbf{Lösung}:
+Für jedes $x$, sei $cnt[x]$ die Anzahl der Vielfachen von $x$ in $A$.
+Es gibt $2^{cnt[x]}-1$ nicht leere Subsequences in $A$, die nur Vielfache von $x$ enthalten.
+Die Anzahl der Subsequences mit $\ggT=1$ ist gegeben durch $\sum_{i = 1}^N \mu(i) \cdot (2^{cnt[i]} - 1)$.
+\lstinputlisting{math/mobius.cpp}
+
 \subsection{Kombinatorik}
 
 \begin{flushleft}
