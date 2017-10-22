@@ -23,7 +23,7 @@ void findArticulationPoints() {
 	counter = 1; // Nicht auf 0 setzen!
 	low.resize(adjlist.size());
 	d.assign(adjlist.size(), 0);
-	isArtPoint.assign(adjlist.size(), false);
+	isArt.assign(adjlist.size(), false);
 	bridges.clear(); //nur fuer Bruecken
 	for (int v = 0; v < (int)adjlist.size(); v++) if (!d[v]) dfs(v, -1);
 }
