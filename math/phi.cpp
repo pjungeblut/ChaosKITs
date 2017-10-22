@@ -10,3 +10,11 @@ ll phi(ll n) { // Laufzeit: O(sqrt(n))
   if(n > 1) result -= result / n;
   return result;
 }
+
+// Sieb, falls alle Werte benötigt werden. Laufzeit: O(N*log(log(N)))
+for (int i = 1; i <= N; i++) phi[i] = i;
+for (int i = 2; i <= N; i++) if (phi[i] == i) {
+  for (int j = i; j <= N; j += i) {
+    phi[j] /= i;
+    phi[j] *= i - 1;
+}}
