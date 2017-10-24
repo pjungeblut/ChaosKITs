@@ -126,7 +126,15 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	Berechnung: Maximales Matching in bipartitem Graphen.
 	Dupliziere jedes $s \in S$ in $u_s$ und $v_s$.
 	Falls $x \leq y$, füge Kante $u_x \to v_y$ hinzu.
-	Wenn Matching zu langsam ist, versuche Struktur des Posets auszunutzen und evtl. anders eine maximale Anitkette zu finden. 
+	Wenn Matching zu langsam ist, versuche Struktur des Posets auszunutzen und evtl. anders eine maximale Anitkette zu finden.
+
+	\item \textbf{\textsc{Mo}'s Algorithm:}
+	SQRT-Decomposition auf $n$ Intervall Queries $[l,r]$.
+	Gruppiere Queries in $\sqrt{n}$ Blöcke nach linker Grenze $l$.
+	Sortiere nach Block und bei gleichem Block nach rechter Grenze $r$.
+	Beantworte Queries offline durch schrittweise Vergrößern/Verkleinern des aktuellen Intervalls.
+	Laufzeit:~$\mathcal{O}(n\cdot\sqrt{n})$.
+	(Anzahl der Blöcke als Konstante in Code schreiben.)
 \end{itemize}
 
 \subsection{Tipps \& Tricks}
