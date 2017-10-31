@@ -135,6 +135,13 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	Beantworte Queries offline durch schrittweise Vergrößern/Verkleinern des aktuellen Intervalls.
 	Laufzeit:~$\mathcal{O}(n\cdot\sqrt{n})$.
 	(Anzahl der Blöcke als Konstante in Code schreiben.)
+
+	\item \textbf{Centroids of a Tree:}
+	Ein \emph{Centroid} ist ein Konten, der einen Baum in Komponenten der maximalen Größe $\frac{\vert V \vert}{2}$ splitted.
+	Es kann $2$ Centroids geben!
+	\textbf{Centroid Decomposition:}
+	Wähle zufälligen Knoten und mache DFS.
+	Verschiebe ausgewählten Knoten in Richtung des tiefsten Teilbaums, bis Centroid gefunden. Entferne Knoten, mache rekursiv in Teilbäumen weiter. Laufzeit:~$\mathcal{O}(\vert V \vert \log(\vert V \vert))$.
 \end{itemize}
 
 \subsection{Tipps \& Tricks}
