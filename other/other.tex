@@ -151,6 +151,28 @@ $n$ Personen im Kreis, jeder $k$-te wird erschossen.
 	\textbf{Centroid Decomposition:}
 	Wähle zufälligen Knoten und mache DFS.
 	Verschiebe ausgewählten Knoten in Richtung des tiefsten Teilbaums, bis Centroid gefunden. Entferne Knoten, mache rekursiv in Teilbäumen weiter. Laufzeit:~$\mathcal{O}(\vert V \vert \log(\vert V \vert))$.
+
+	\item \textbf{Kreuzprodukt}
+	\[
+		a \times b =
+		\begin{pmatrix}
+			a_1 \\
+			a_2 \\
+			a_3
+		\end{pmatrix}
+		\times
+		\begin{pmatrix}
+			b_1 \\
+			b_2 \\
+			b_3
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+				a_2b_3 - a_3b_2 \\
+				a_3b_1 - a_1b_3 \\
+				a_1b_2 - a_2b_1
+		\end{pmatrix}
+	\]
 \end{itemize}
 
 \subsection{Tipps \& Tricks}
