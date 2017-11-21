@@ -14,6 +14,9 @@ a = -1
 a = (1 << n) - 1
 // Iteriert über alle Teilmengen einer Bitmaske (außer der leeren Menge).
 for (int subset = bitmask; subset > 0; subset = (subset - 1) & bitmask)
-// Zählt Anzahl der gesetzten Bits.
+// Anzahl der gesetzten Bits.
 int __builtin_popcount(unsigned int x);
 int __builtin_popcountll(unsigned long long x);
+// Anzahl der führenden 0-Bits.
+int __builtin_clz(unsigned int x);
+int __builtin_clzll(unsigned long long x);
