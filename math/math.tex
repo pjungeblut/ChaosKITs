@@ -293,7 +293,7 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	$\sum\limits_{i = 1}^n \binom{n}{i} F_i = F_{2n} \quad F_n = n\text{-th Fib.}$ \\
 	\bottomrule
 \end{tabular}
-\vspace{5mm}
+\vspace{1mm}
 
 \begin{tabular}{l|l|l}
 	\toprule
@@ -322,6 +322,37 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 		$\sum\limits_{i = 1}^n \binom{i}{m}H_i =
 		\binom{n + 1}{m + 1} \left(H_{n + 1} - \frac{1}{m  + 1}\right)$
 	} \\
+	\bottomrule
+\end{tabular}
+\vspace{1mm}
+
+\begin{tabular}{l|r}
+	\toprule
+	\multicolumn{2}{c}{
+		Wahrscheinlichkeitstheorie ($A,B$ Ereignisse und $X,Y$ Variablen)
+	} \\
+	\midrule
+	$\E(X + Y) = \E(X) + \E(Y)$ &
+	$\E(\alpha X) = \alpha \E(X)$ \\
+
+	$X, Y$ unabh. $\Leftrightarrow \E(XY) = \E(X) \cdot \E(Y)$ &
+	$\Pr[A \vert B] = \frac{\Pr[A \land B]}{\Pr[B]}$ \\
+
+	$\Pr[A \lor B] = \Pr[A] + \Pr[B] - \Pr[A \land B]$ &
+	$\Pr[A \land B] = \Pr[A] \cdot \Pr[B]$ \\
+	\bottomrule
+\end{tabular}
+\vspace{1mm}
+
+\begin{tabular}{lr|lr}
+	\toprule
+	\multicolumn{4}{c}{\textsc{Bertrand}'s Ballot Theorem (Kandidaten $A$ und $B$, $k \in \mathbb{N}$)} \\
+	\midrule
+	$\#A > k\#B$ & $Pr = \frac{a - kb}{a + b}$ &
+	$\#B - \#A \leq k$ & $Pr = 1 - \frac{a!b!}{(a + k + 1)!(b - k - 1)!}$ \\
+
+	$\#A \geq k\#B$ & $Pr = \frac{a + 1 - kb}{a + 1}$ &
+	$\#A \geq \#B + k$ & $Num = \frac{a - k + 1 - b}{a - k + 1} \binom{a + b - k}{b}$ \\
 	\bottomrule
 \end{tabular}
 \vspace{5mm}
@@ -407,36 +438,36 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 \end{flushleft}
 \vspace{1mm}
 
-\begin{tabular}{l|r}
+\begin{tabular}{ll}
 	\toprule
-	\multicolumn{2}{c}{
-		Wahrscheinlichkeitstheorie ($A,B$ Ereignisse und $X,Y$ Variablen)
-	} \\
+	\multicolumn{2}{c}{Verschiedenes} \\
 	\midrule
-	$\E(X + Y) = \E(X) + \E(Y)$ &
-	$\E(\alpha X) = \alpha \E(X)$ \\
+	Türme von Hanoi, minimale Schirttzahl: &
+	$T_n = 2^n - 1$ \\
 
-	$X, Y$ unabh. $\Leftrightarrow \E(XY) = \E(X) \cdot \E(Y)$ &
-	$\Pr[A \vert B] = \frac{\Pr[A \land B]}{\Pr[B]}$ \\
+	\#Regionen zwischen $n$ Gearden	&
+	$\frac{n\left(n + 1\right)}{2} + 1$ \\
 
-	$\Pr[A \lor B] = \Pr[A] + \Pr[B] - \Pr[A \land B]$ &
-	$\Pr[A \land B] = \Pr[A] \cdot \Pr[B]$ \\
+	\#geschlossene Regionen zwischen $n$ Geraden &
+	$\frac{n^2 - 3n + 2}{2}$ \\
+
+	\#markierte, gewurzelte Bäume	&
+	$n^{n-1}$ \\
+
+	\#markierte, nicht gewurzelte Bäume	&
+	$n^{n-2}$ \\
+
+	\#Wälder mit $k$ gewurzelten Bäumen	&
+	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
+
+	Derangements &
+	$!n = (n - 1)(!(n - 1) + !(n - 2))$ \\
+	&
+	$!n = \left\lfloor\frac{n!}{e} + \frac{1}{2}\right\rfloor$ \\
+	&
+	$\lim\limits_{n \to \infty} \frac{!n}{n!} = \frac{1}{e}$ \\
 	\bottomrule
 \end{tabular}
-\vspace{1mm}
-
-\begin{tabular}{lr|lr}
-	\toprule
-	\multicolumn{4}{c}{\textsc{Bertrand}'s Ballot Theorem (Kandidaten $A$ und $B$, $k \in \mathbb{N}$)} \\
-	\midrule
-	$\#A > k\#B$ & $Pr = \frac{a - kb}{a + b}$ &
-	$\#B - \#A \leq k$ & $Pr = 1 - \frac{a!b!}{(a + k + 1)!(b - k - 1)!}$ \\
-
-	$\#A \geq k\#B$ & $Pr = \frac{a + 1 - kb}{a + 1}$ &
-	$\#A \geq \#B + k$ & $Num = \frac{a - k + 1 - b}{a - k + 1} \binom{a + b - k}{b}$ \\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
 
 \begin{tabular}{p{4.3cm}|p{7cm}}
 	\toprule
@@ -532,38 +563,6 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	Berechne $\mathit{SG}_n$ für kleine $n$ rekursiv.\newline
 	$n \in [72,83]: \quad 4, 1, 2, 8, 1, 4, 7, 2, 1, 8, 2, 7$\newline
 	Periode ab $n = 72$ der Länge $12$.\\
-	\bottomrule
-\end{tabular}
-\vspace{5mm}
-
-\begin{tabular}{ll}
-	\toprule
-	\multicolumn{2}{c}{Verschiedenes} \\
-	\midrule
-	Türme von Hanoi, minimale Schirttzahl: &
-	$T_n = 2^n - 1$ \\
-
-	\#Regionen zwischen $n$ Gearden	&
-	$\frac{n\left(n + 1\right)}{2} + 1$ \\
-
-	\#geschlossene Regionen zwischen $n$ Geraden &
-	$\frac{n^2 - 3n + 2}{2}$ \\
-
-	\#markierte, gewurzelte Bäume	&
-	$n^{n-1}$ \\
-
-	\#markierte, nicht gewurzelte Bäume	&
-	$n^{n-2}$ \\
-
-	\#Wälder mit $k$ gewurzelten Bäumen	&
-	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
-
-	Derangements &
-	$!n = (n - 1)(!(n - 1) + !(n - 2))$ \\
-	&
-	$!n = \left\lfloor\frac{n!}{e} + \frac{1}{2}\right\rfloor$ \\
-	&
-	$\lim\limits_{n \to \infty} \frac{!n}{n!} = \frac{1}{e}$ \\
 	\bottomrule
 \end{tabular}
 
