@@ -41,6 +41,7 @@ int match(int l, int r) {
             slack[y] = alt;
     }}}}
     while (y != -1) {
+      // Jede Iteration vergrößert Matching um 1 (können 0-Kanten sein!).
       int x = augmenting[y];
       int prec = xy[x];
       yx[y] = x;
@@ -48,5 +49,5 @@ int match(int l, int r) {
       y = prec;
   }}
   return accumulate(lx.begin(), lx.end(), 0) +
-         accumulate(ly.begin(), ly.end(), 0);
+         accumulate(ly.begin(), ly.end(), 0); // Wert des Matchings.
 }
