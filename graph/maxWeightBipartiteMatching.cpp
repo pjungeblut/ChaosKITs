@@ -1,6 +1,7 @@
 // Laufzeit: O(|V|^3)
 int costs[N_LEFT][N_RIGHT];
 
+// Es muss l<=r sein, ansonsten terminiert der Algorithmus nicht.
 int match(int l, int r) {
   vector<int> xy(l, -1), yx(r, -1), lx(l), ly(r, 0), augmenting(r);
   vector<bool> s(l);
