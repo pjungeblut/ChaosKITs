@@ -21,6 +21,7 @@ ll rho(ll n) { // Findet Faktor < n, nicht unbedingt prim.
   while (d == 1) {
     x = ((x * x) % n + c) % n;
     y = ((y * y) % n + c) % n;
+    y = ((y * y) % n + c) % n;
     d = gcd(abs(x - y), n); // Implementierung von oben.
   }
   return d == n ? rho(n) : d;
