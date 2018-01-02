@@ -438,37 +438,6 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 \end{flushleft}
 \vspace{1mm}
 
-\begin{tabular}{ll}
-	\toprule
-	\multicolumn{2}{c}{Verschiedenes} \\
-	\midrule
-	Türme von Hanoi, minimale Schirttzahl: &
-	$T_n = 2^n - 1$ \\
-
-	\#Regionen zwischen $n$ Gearden	&
-	$\frac{n\left(n + 1\right)}{2} + 1$ \\
-
-	\#geschlossene Regionen zwischen $n$ Geraden &
-	$\frac{n^2 - 3n + 2}{2}$ \\
-
-	\#markierte, gewurzelte Bäume	&
-	$n^{n-1}$ \\
-
-	\#markierte, nicht gewurzelte Bäume	&
-	$n^{n-2}$ \\
-
-	\#Wälder mit $k$ gewurzelten Bäumen	&
-	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
-
-	Derangements &
-	$!n = (n - 1)(!(n - 1) + !(n - 2))$ \\
-	&
-	$!n = \left\lfloor\frac{n!}{e} + \frac{1}{2}\right\rfloor$ \\
-	&
-	$\lim\limits_{n \to \infty} \frac{!n}{n!} = \frac{1}{e}$ \\
-	\bottomrule
-\end{tabular}
-
 \begin{tabular}{p{4.3cm}|p{7cm}}
 	\toprule
 	\multicolumn{2}{c}{Nim-Spiele (\ding{182} letzter gewinnt (normal), \ding{183} letzter verliert)} \\
@@ -563,6 +532,37 @@ Anzahl der Teilmengen von $\mathbb{N}$, die sich zu $n$ aufaddieren mit maximale
 	Berechne $\mathit{SG}_n$ für kleine $n$ rekursiv.\newline
 	$n \in [72,83]: \quad 4, 1, 2, 8, 1, 4, 7, 2, 1, 8, 2, 7$\newline
 	Periode ab $n = 72$ der Länge $12$.\\
+	\bottomrule
+\end{tabular}
+
+\begin{tabular}{ll}
+	\toprule
+	\multicolumn{2}{c}{Verschiedenes} \\
+	\midrule
+	Türme von Hanoi, minimale Schirttzahl: &
+	$T_n = 2^n - 1$ \\
+
+	\#Regionen zwischen $n$ Gearden	&
+	$\frac{n\left(n + 1\right)}{2} + 1$ \\
+
+	\#geschlossene Regionen zwischen $n$ Geraden &
+	$\frac{n^2 - 3n + 2}{2}$ \\
+
+	\#markierte, gewurzelte Bäume	&
+	$n^{n-1}$ \\
+
+	\#markierte, nicht gewurzelte Bäume	&
+	$n^{n-2}$ \\
+
+	\#Wälder mit $k$ gewurzelten Bäumen	&
+	$\frac{k}{n}\binom{n}{k}n^{n-k}$ \\
+
+	Derangements &
+	$!n = (n - 1)(!(n - 1) + !(n - 2))$ \\
+	&
+	$!n = \left\lfloor\frac{n!}{e} + \frac{1}{2}\right\rfloor$ \\
+	&
+	$\lim\limits_{n \to \infty} \frac{!n}{n!} = \frac{1}{e}$ \\
 	\bottomrule
 \end{tabular}
 
