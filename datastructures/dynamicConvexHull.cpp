@@ -3,7 +3,7 @@ struct Line {
     ll m, b;
     mutable function<const Line*()> succ;
     bool operator<(const Line& rhs) const {
-        if (rhs.b != is_query) return m < rhs.m;
+        if (rhs.b != LLONG_MIN) return m < rhs.m;
         const Line* s = succ();
         if (!s) return 0;
         ll x = rhs.m;
@@ -28,8 +28,8 @@ struct HullDynamic : public multiset<Line> {
         while (next(y) != end() && bad(next(y))) erase(next(y));
         while (y != begin() && bad(prev(y))) erase(prev(y));
     }
-    ll query(ll x) { // Laufzeit: O(log(n))
-        auto l = *lower_bound((Line) { x, -(1LL<<62) });
+    ll query(ll x) { // Laufzeit: O(log(n)) 
+        auto l = *lower_bound((Line) {x, LLONG_MIN});
         return l.m * x + l.b;
     }
 };
